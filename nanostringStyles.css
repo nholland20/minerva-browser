@@ -1,0 +1,27 @@
+/*! Nanostring-specific */
+@media (min-width: 1000px) {
+    .minerva-root .minerva-sidebar-menu {
+        width: 450px;
+    }
+    .minerva-root .minerva-sidebar-menu.toggled {
+        margin-left: -420px;
+    }
+    .minerva-root .openseadragon-canvas {
+        left: 100px !important;
+    }
+  }
+  
+  @media (max-width: 999px) {
+    .minerva-root .openseadragon-canvas {
+        left: 50px !important;
+    }
+  }
+  
+  @media (max-width: 674px) {
+    .minerva-root .minerva-sidebar-menu {
+        width: 200px;
+    }
+    .minerva-root .minerva-sidebar-menu.toggled {
+        margin-left: -170px;
+    }
+  }
