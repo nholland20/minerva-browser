@@ -347,6 +347,8 @@ RenderOSD.prototype = {
   addPolygon: function(id, polygon) {
     var svg_overlay = this.svg_overlay;
 
+    // for Nanostring story purposes - to capture the Polygon object
+    console.log(polygon);
     d3.select('#' + id).remove();
     var selPoly = svg_overlay.selectAll(id).data([polygon]);
     selPoly.enter().append("polygon")

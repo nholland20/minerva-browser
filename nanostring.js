@@ -1,6 +1,7 @@
 import * as d3 from "d3"
-import {OpenSeadragonSvgOverlay} from './openseadragon-svg-overlay.js';
-OpenSeadragonSvgOverlay(OpenSeadragon);
+// import {OpenSeadragonSvgOverlay} from './openseadragon-svg-overlay.js';
+// OpenSeadragonSvgOverlay(OpenSeadragon);
+const slideMedulla = require('./slideMedulla.json')
 
 
 // Add cartoon image to a specific waypoint
@@ -44,15 +45,17 @@ document.addEventListener('waypointBuildEvent', function(e) {
         ellipse.setAttribute('ry', 25);
         ellipse.setAttribute('fill','#95B3D7A0');
         // Event listener for the SVG - highlights corresponding image when hovered over.
-
         ellipse.addEventListener('click', function(e){
-            // osd.addPolygon('slideMedulla', )
+            osd.addPolygon('slideMedulla', slideMedulla);
         })
         svgNode.appendChild(ellipse);
         domElement.appendChild(cartoonImgContainer);
       }
 })
 
+// ***********************************************************************************************************
+// NEEDED: GETTING RID OF THE POLYGON WHEN IT'S ON THE SCREEN - MOVING WAYPOINTS &/OR CLICKING THE OTHER SVG
+// ***********************************************************************************************************
       
 // Nanostring-specific
 // Update the size of the description box to be bigger based on waypoint

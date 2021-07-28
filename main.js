@@ -6,6 +6,7 @@ import { HashState } from "./state"
 import { Render } from './render'
 import { RenderOSD } from './osd'
 import * as d3 from "d3"
+import * as nanostring from './nanostring'
 
 // Flatten an array of arrays
 const flatten = function(items) {
@@ -2500,6 +2501,65 @@ body .tooltip {
 
 .minerva-root .axis--x path {
     display: none;
+}
+
+/*! Nanostring-specific */
+@media (min-width: 1000px) {
+  .minerva-root .minerva-sidebar-menu {
+      width: 450px;
+  }
+  .minerva-root .minerva-sidebar-menu.toggled {
+      margin-left: -420px;
+  }
+  .minerva-root .openseadragon-canvas {
+      left: 100px !important;
+  }
+  #kidneySvgContainer {
+    position: relative;
+    width: 400px;
+    height: 500px;
+    vertical-align: middle;
+    margin: 0;
+    overflow: hidden;
+  }
+  #kidneySvgContainer svg {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%
+  }
+
+
+@media (max-width: 999px) {
+  .minerva-root .openseadragon-canvas {
+      left: 50px !important;
+  }
+
+@media (max-width: 674px) {
+  .minerva-root .minerva-sidebar-menu {
+      width: 200px;
+  }
+  .minerva-root .minerva-sidebar-menu.toggled {
+      margin-left: -170px;
+  }
+  #kidneySvgContainer {
+    position: relative;
+    width: 175px;
+    height: 275px;
+    vertical-align: middle;
+    margin: 0;
+    overflow: hidden;
+  }
+  #kidneySvgContainer svg {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%
+  }
 }
 `
 

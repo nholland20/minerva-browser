@@ -1119,7 +1119,13 @@ Render.prototype = {
 
     finish_waypoint('');
 
-  },
+    // Nanostring-specific event listener - for adding content to a specific waypoint
+    const currentWaypointInfo = {waypointNum: HS.w, storyNum: HS.s, domElement: wid_waypoint, osd: this.osd}
+    const waypointBuildEvent = new CustomEvent('waypointBuildEvent', {
+      detail: currentWaypointInfo});
+    document.dispatchEvent(waypointBuildEvent);
+},
+
   // Color all the remaining HTML Code elements
   colorMarkerText: function (wid_waypoint) {
     const HS = this.hashstate;
