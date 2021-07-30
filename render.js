@@ -1119,7 +1119,7 @@ Render.prototype = {
 
     finish_waypoint('');
 
-    // Nanostring-specific event listener - for adding content to a specific waypoint
+    // Nanostring-specific event - for adding content to a specific waypoint
     const currentWaypointInfo = {waypointNum: HS.w, storyNum: HS.s, domElement: wid_waypoint, osd: this.osd}
     const waypointBuildEvent = new CustomEvent('waypointBuildEvent', {
       detail: currentWaypointInfo});
