@@ -2504,7 +2504,7 @@ body .tooltip {
 }
 
 /*! Nanostring-specific */
-@media (min-width: 1000px) {
+@media (min-width: 1100px) {
   .minerva-root .minerva-sidebar-menu {
       width: 450px;
   }
@@ -2514,7 +2514,7 @@ body .tooltip {
   .minerva-root .openseadragon-canvas {
       left: 100px !important;
   }
-  #kidneySvgContainer {
+  #largeKidneySvgContainer {
     position: relative;
     width: 400px;
     height: 500px;
@@ -2522,7 +2522,7 @@ body .tooltip {
     margin: 0;
     overflow: hidden;
   }
-  #kidneySvgContainer svg {
+  #largeKidneySvgContainer svg {
     display: inline-block;
     position: absolute;
     top: 0;
@@ -2530,21 +2530,39 @@ body .tooltip {
     width: 100%;
     height: 100%
   }
+}
 
-
-@media (max-width: 999px) {
+@media (max-width: 1099px) {
   .minerva-root .openseadragon-canvas {
       left: 50px !important;
   }
+
+  #mediumKidneySvgContainer {
+    position: relative;
+    width: 350px;
+    height: 450px;
+    vertical-align: middle;
+    margin: 0;
+    overflow: hidden;
+  }
+  #mediumKidneySvgContainer svg {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%
+  }
+}
 
 @media (max-width: 674px) {
   .minerva-root .minerva-sidebar-menu {
       width: 200px;
   }
   .minerva-root .minerva-sidebar-menu.toggled {
-      margin-left: -170px;
+      margin-left: -175px;
   }
-  #kidneySvgContainer {
+  #smallKidneySvgContainer {
     position: relative;
     width: 175px;
     height: 275px;
@@ -2552,7 +2570,7 @@ body .tooltip {
     margin: 0;
     overflow: hidden;
   }
-  #kidneySvgContainer svg {
+  #smallKidneySvgContainer svg {
     display: inline-block;
     position: absolute;
     top: 0;
