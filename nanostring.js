@@ -2,13 +2,260 @@ const slideMedulla = require('./slideMedulla.json');
 const slideCortex = require('./slideCortex.json');
 const { path } = require('d3');
 
+// Breakpoints for when to resize the cartoon image and subsequently redraw the corresponding SVGs
+// Align with CSS breakpoints (or TO DO: set description box width dynamically with JavaScript)
+const scrnWBps = [0, 675, 1100]
 
-function createSvgNode(){
-    const svgNS = 'http://www.w3.org/2000/svg';
-    const svgNode = document.createElementNS(svgNS, 'svg');
-    svgNode.setAttribute('xmlns', svgNS);
-    svgNode.setAttribute('preserveAspectRatio', 'xMinYMin meet');
-    return svgNode
+// Objects for creating small, medium, and large SVGs - to be used with specific screensizes
+// For the first cartoon image:
+// const largeSlideMedullaEllipse = {
+//     type: 'ellipse', 
+//     id: 'medullaSvg', 
+//     cx: 289, 
+//     cy: 258, 
+//     rx: 29, 
+//     ry: 25, 
+//     fill: '#95B3D7A0',
+//     stroke: 'red',
+//     strokeWidth: '4',
+//     eventType: 'addPolygon',
+//     file: slideMedulla,
+//     polygonID: 'slideMedulla'
+// }
+
+// Objects for creating small, medium, and large SVGs - to be used with specific screensizes
+// For the first cartoon image:
+const largeSlideMedullaPath = {
+    type: 'path',
+    id: 'medullaSvg',
+    d: 'M 280 230 A 205,200 0 0,1 155 350 A5,5 0 1,0 280 230',
+    fill: '#95B3D7A0',
+    stroke: 'red',
+    strokeWidth: '2',
+    eventType: 'addPolygon',
+    file: slideMedulla,
+    polygonID: 'slideMedulla'
+}
+
+const largeCortexPath = {
+    type: 'path',
+    id: 'cortexSvg',
+    d: 'M 330 240 C400,425 150,475 140,350 A50,50 0 0,1 155,350 C175,400 370,380 280 230 A50,50 0 0,1 330,240',
+    eventType: 'addPolygon',
+    fill: '#90EE90A0',
+    strokeWidth: '2',
+    stroke: 'red',
+    file: slideCortex,
+    polygonID: 'slideCortex'
+}
+
+// const mediumSlideMedullaEllipse = {
+//     type: 'ellipse', 
+//     id: 'medullaSvg', 
+//     cx: 289, 
+//     cy: 258, 
+//     rx: 29, 
+//     ry: 25, 
+//     fill: '#95B3D7A0',
+//     eventType: 'addPolygon',
+//     file: slideMedulla,
+//     polygonID: 'slideMedulla'
+// }
+
+const mediumSlideMedullaPath = {
+    type: 'path',
+    id: 'medullaSvg',
+    d: 'M240 215 A 180,130 0 0,1 140,315 A5,5 0 1,0 240 215',
+    fill: '#95B3D7A0',
+    stroke: 'red',
+    strokeWidth: '2',
+    eventType: 'addPolygon',
+    file: slideMedulla,
+    polygonID: 'slideMedulla'
+}
+
+const mediumCortexPath = {
+    type: 'path',
+    id: 'cortexSvg',
+    d: 'M290,220 C340,335 155,445 125,315 A50,50 0 0,1 140,315 C150,355 320,340 240 215 A50,50 0 0,1 290,220',
+    fill: '#90EE90A0',
+    stroke: 'red',
+    strokeWidth: '2',
+    eventType: 'addPolygon',
+    file: slideCortex,
+    polygonID: 'slideCortex'
+}
+
+
+const smallSlideMedullaPath = {
+    type: 'path',
+    id: 'medullaSvg',
+    d: 'M 120 130 A 180,130 0 0,1 70,180 A25,25 0 1,0 120,130',
+    fill: '#95B3D7A0',
+    stroke: 'red',
+    strokeWidth: '2',
+    eventType: 'addPolygon',
+    file: slideMedulla,
+    polygonID: 'slideMedulla'
+}
+
+const smallCortexPath = {
+    type: 'path',
+    id: 'cortexSvg',
+    d: 'M148,133 C175,165 110,255 63,185 A50,50 0 0,1 70,180 C125,218 143,150 120 130 A50,50 0 0,1 148,133',
+    fill: '#90EE90A0',
+    stroke: 'red',
+    strokeWidth: '2',
+    eventType: 'addPolygon',
+    file: slideCortex,
+    polygonID: 'slideCortex'
+}
+
+//SVG objects for the second waypoint of the story - based on different screen sizes
+const largeCollectingDuctRect = {
+    type: 'rect',
+    id: 'tubulesSvg',
+    x: 318,
+    y: 190,
+    width: 32,
+    height: 150,
+    rx: 25,
+    stroke: 'red',
+    strokeWidth: '2',
+    fill: '#FFD580A0',
+    eventType: 'panAndZoom',
+    panCoord:{x: 0.2068, y: 0.4028},
+    zoomRatio: 10.3196
+}
+const largeDctRect = {
+    type: 'rect',
+    id: 'dctSvg',
+    x: 203,
+    y: 190,
+    width: 32,
+    height: 150,
+    rx: 25,
+    fill: '#90EE90A0',
+    stroke: 'red',
+    strokeWidth: '2',
+    eventType: 'panAndZoom',
+    panCoord: {x: 0.3287, y: 0.2976},
+    zoomRatio: 14.3333
+}
+
+const mediumCollectingDuctRect = {
+    type: 'rect',
+    id: 'tubulesSvg',
+    x: 277,
+    y: 177,
+    width: 27,
+    height: 120,
+    rx: 25,
+    fill: '#FFD580A0',
+    stroke: 'red',
+    strokeWidth: '2',
+    eventType: 'panAndZoom',
+    panCoord:{x: 0.2068, y: 0.4028},
+    zoomRatio: 10.3196
+}
+const mediumDctRect = {
+    type: 'rect',
+    id: 'dctSvg',
+    x: 177,
+    y: 177,
+    width: 27,
+    height: 120,
+    rx: 25,
+    fill: '#90EE90A0',
+    stroke: 'red',
+    strokeWidth: '2',
+    eventType: 'panAndZoom',
+    panCoord: {x: 0.3287, y: 0.2976},
+    zoomRatio: 14.3333
+}
+
+const smallCollectingDuctRect = {
+    type: 'rect',
+    id: 'tubulesSvg',
+    x: 135,
+    y: 110,
+    width: 20,
+    height: 70,
+    rx: 25,
+    fill: '#FFD580A0',
+    stroke: 'red',
+    strokeWidth: '2',
+    eventType: 'panAndZoom',
+    panCoord:{x: 0.2068, y: 0.4028},
+    zoomRatio: 10.3196
+}
+const smallDctRect = {
+    type: 'rect',
+    id: 'dctSvg',
+    x: 85,
+    y: 110,
+    width: 20,
+    height: 70,
+    rx: 25,
+    fill: '#90EE90A0',
+    stroke: 'red',
+    strokeWidth: '2',
+    eventType: 'panAndZoom',
+    panCoord: {x: 0.3287, y: 0.2976},
+    zoomRatio: 14.3333
+}
+
+// Functions to build Rectangle, Ellipse, and Path SVGs
+function buildRectSvg(osd, svgNS, rectObj){
+    const rectSvg = document.createElementNS(svgNS,'rect');
+    rectSvg.id = rectObj.id;
+    rectSvg.setAttribute('x', rectObj.x);
+    rectSvg.setAttribute('y', rectObj.y);
+    rectSvg.setAttribute('width', rectObj.width);
+    rectSvg.setAttribute('height', rectObj.height);
+    rectSvg.setAttribute('rx', rectObj.rx);
+    rectSvg.setAttribute('fill', rectObj.fill);
+    rectSvg.setAttribute('stroke', rectObj.stroke);
+    rectSvg.setAttribute('stroke-width', rectObj.strokeWidth)
+    if (rectObj.eventType) {
+        addEListener(osd, rectObj, rectSvg)
+    }
+    return rectSvg
+}
+
+function buildEllipseSvg(osd, svgNS, ellipseObj){
+    const ellipseSvg = document.createElementNS(svgNS, 'ellipse');
+    ellipseSvg.id = ellipseObj.id;
+    ellipseSvg.setAttribute('cx', ellipseObj.cx);
+    ellipseSvg.setAttribute('cy', ellipseObj.cy);
+    ellipseSvg.setAttribute('rx', ellipseObj.rx);
+    ellipseSvg.setAttribute('ry', ellipseObj.ry);
+    ellipseSvg.setAttribute('fill', ellipseObj.fill);
+    ellipseSvg.setAttribute('stroke', ellipseObj.stroke);
+    ellipseSvg.setAttribute('stroke-width', ellipseObj.strokeWidth)
+    if (ellipseObj.eventType) {
+        addEListener(osd, ellipseObj, ellipseSvg)
+    }
+    return ellipseSvg
+}
+
+function buildPathSvg(osd, svgNS, pathObj){
+    const pathSvg = document.createElementNS(svgNS, 'path');
+    pathSvg.id = pathObj.id;
+    pathSvg.setAttribute('d', pathObj.d);
+    pathSvg.setAttribute('fill', pathObj.fill);
+    pathSvg.setAttribute('stroke', pathObj.stroke);
+    pathSvg.setAttribute('stroke-width', pathObj.strokeWidth)
+    if (pathObj.eventType) {
+        addEListener(osd, pathObj, pathSvg)
+    }
+    return pathSvg
+}
+
+// Event Listener to pan and zoom to a specific place on the slide
+function panZoom(osd, panCoord, zoomRatio) {
+    osd.viewer.viewport.panTo(panCoord)
+    osd.viewer.viewport.zoomTo(zoomRatio)
 }
 
 // Event listener for the SVGs - circles (or removes the ciricle of) the corresponding part on the slide when clicked.
@@ -20,60 +267,26 @@ function addSlidePolygon(polygonID, fileName, osd){
     }
 }
 
-function buildRectSvg(svgNS, rectObj){
-    const rectSvg = document.createElementNS(svgNS,'rect');
-    rectSvg.id = rectObj.id;
-    rectSvg.setAttribute('x', rectObj.x);
-    rectSvg.setAttribute('y', rectObj.y);
-    rectSvg.setAttribute('width', rectObj.width);
-    rectSvg.setAttribute('height', rectObj.height);
-    rectSvg.setAttribute('rx', rectObj.rx);
-    rectSvg.setAttribute('fill', rectObj.fill);
-    return rectSvg
-}
-
-function panZoom(osd, panCoord, zoomRatio) {
-    osd.viewer.viewport.panTo(panCoord)
-    osd.viewer.viewport.zoomTo(zoomRatio)
-}
-
-function buildEllipseSvg(svgNS, ellipseObj){
-    const ellipseSvg = document.createElementNS(svgNS, 'ellipse');
-    ellipseSvg.id = ellipseObj.id;
-    ellipseSvg.setAttribute('cx', ellipseObj.cx);
-    ellipseSvg.setAttribute('cy', ellipseObj.cy);
-    ellipseSvg.setAttribute('rx', ellipseObj.rx);
-    ellipseSvg.setAttribute('ry', ellipseObj.ry);
-    ellipseSvg.setAttribute('fill', ellipseObj.fill);
-    ellipseSvg.addEventListener('click', () => addSlidePolygon(ellipseObj.polygonID, ellipseObj.file, ellipseObj.osd));
-    return ellipseSvg
-}
-
-function addEListener(svgObj, svg) {
+//Add Event Listeners to SVG elements based on attributes in their SVG object
+function addEListener(osd, svgObj, svg) {
     if (svgObj.eventType === 'addPolygon') {
-        svg.addEventListener('click', () => addSlidePolygon(svgObj.polygonID, svgObj.file, svgObj.osd));
+        svg.addEventListener('click', () => addSlidePolygon(svgObj.polygonID, svgObj.file, osd));
 }
     else if (svgObj.eventType === 'panAndZoom') {
-        svg.addEventListener('click', () => panZoom(osd, {x: 0.2068, y: 0.4028}, 10.3196))
+        svg.addEventListener('click', () => panZoom(osd, svgObj.panCoord, svgObj.zoomRatio))
     }
 }
 
-function buildPathSvg(svgNS, pathObj){
-    const pathSvg = document.createElementNS(svgNS, 'path');
-    pathSvg.id = pathObj.id;
-    pathSvg.setAttribute('d', pathObj.d);
-    pathSvg.setAttribute('fill', pathObj.fill);
-    if (pathObj.eventType) {
-        addEListener(pathObj, pathSvg)
-    }
-    // if (pathObj.eventType === 'svgClicked') {
-    //     pathSvg.addEventListener('click', () => svgClicked(pathObj.polygonID, pathObj.file, pathObj.osd));
-    // }
-    
-    return pathSvg
+// Build components on the waypoint: Cartoon image, SVG Node
+function createSvgNode(){
+    const svgNS = 'http://www.w3.org/2000/svg';
+    const svgNode = document.createElementNS(svgNS, 'svg');
+    svgNode.setAttribute('xmlns', svgNS);
+    svgNode.setAttribute('preserveAspectRatio', 'xMinYMin meet');
+    return svgNode
 }
 
-function buildCartoonImage(svgNS, id, imagePath, svgTypes) {
+function buildCartoonImage(osd, svgNS, id, imagePath, svgTypes) {
     const cartoonImgContainer = document.createElement("figure");
     cartoonImgContainer.id = id;
     const svgNode = createSvgNode();
@@ -84,15 +297,15 @@ function buildCartoonImage(svgNS, id, imagePath, svgTypes) {
     svgNode.appendChild(cartoonSvg);
     for (let i = 0; i < svgTypes.length; i++) {
         if (svgTypes[i].type === 'ellipse') {
-            let ellipseSvg = buildEllipseSvg(svgNS, svgTypes[i]);
+            let ellipseSvg = buildEllipseSvg(osd, svgNS, svgTypes[i]);
             svgNode.appendChild(ellipseSvg);
         }
         else if (svgTypes[i].type === 'path'){
-            let pathSvg = buildPathSvg(svgNS, svgTypes[i]);
+            let pathSvg = buildPathSvg(osd, svgNS, svgTypes[i]);
             svgNode.appendChild(pathSvg);
         }
         else if (svgTypes[i].type === 'rect'){
-            let rectSvg = buildRectSvg(svgNS, svgTypes[i]);
+            let rectSvg = buildRectSvg(osd, svgNS, svgTypes[i]);
             svgNode.appendChild(rectSvg)
         }
     }
@@ -100,131 +313,50 @@ function buildCartoonImage(svgNS, id, imagePath, svgTypes) {
     return cartoonImgContainer
 }
 
+function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElement, osd) {
+    console.log('buildWaypointCartoon')
+    const svgNS = 'http://www.w3.org/2000/svg';
+    if (waypointNum === 0 && storyNum === 1 && windowInnerWidth >= scrnWBps[2]) {
+        cartoonImgContainer = buildCartoonImage(osd, svgNS, 'largeKidneySvgContainer', 'img/kidney_cartoon.png', [largeSlideMedullaPath, largeCortexPath])
+        domElement.appendChild(cartoonImgContainer);
+      }
+    else if (waypointNum === 0 && storyNum === 1 && windowInnerWidth >= scrnWBps[1] && windowInnerWidth <= scrnWBps[2]){
+        cartoonImgContainer = buildCartoonImage(osd, svgNS, 'mediumKidneySvgContainer', 'img/kidney_cartoon.png', [mediumSlideMedullaPath, mediumCortexPath])
+        domElement.appendChild(cartoonImgContainer);
+    }
+    else if (waypointNum === 0 && storyNum === 1 && windowInnerWidth < scrnWBps[1]){
+        cartoonImgContainer = buildCartoonImage(osd, svgNS, 'smallKidneySvgContainer', 'img/kidney_cartoon.png', [smallSlideMedullaPath, smallCortexPath])
+        domElement.appendChild(cartoonImgContainer);
+    }
+
+    else if (waypointNum === 1 && storyNum === 1 && windowInnerWidth >= scrnWBps[2]) {
+        cartoonImgContainer = buildCartoonImage(osd, svgNS, 'largeKidneySvgContainer', 'img/tubules.jpg', [largeCollectingDuctRect, largeDctRect] )
+        domElement.appendChild(cartoonImgContainer);
+    }
+    else if (waypointNum === 1 && storyNum === 1 && windowInnerWidth >= scrnWBps[1] && windowInnerWidth <= scrnWBps[2]) {
+        cartoonImgContainer = buildCartoonImage(osd, svgNS, 'mediumKidneySvgContainer', 'img/tubules.jpg', [mediumCollectingDuctRect, mediumDctRect] )
+        domElement.appendChild(cartoonImgContainer);
+    }
+    else if (waypointNum === 1 && storyNum === 1 && windowInnerWidth < scrnWBps[1]) {
+        cartoonImgContainer = buildCartoonImage(osd, svgNS, 'smallKidneySvgContainer', 'img/tubules.jpg', [smallCollectingDuctRect, smallDctRect] )
+        domElement.appendChild(cartoonImgContainer);
+    }
+}
+
 // Add cartoon image to a specific waypoint
 // Change the number that HS.w is equal to based on which waypoint the image needs to appear on.
 // If the waypoint is the first one after the Table of Contents HS.s must also be set, otherwise, it appears in the TOC too
 document.addEventListener('waypointBuildEvent', function(e) {
-    const svgNS = 'http://www.w3.org/2000/svg';
     const {waypointNum, storyNum, domElement, osd} = e.detail;
-    const screenWidths = [0, 675, 1100]
-    if (waypointNum === 0 && storyNum === 1 && window.innerWidth >= screenWidths[2]) {
-        const slideMedullaEllipse = {
-            type: 'ellipse', 
-            id: 'medullaSvg', 
-            cx: 289, 
-            cy: 258, 
-            rx: 29, 
-            ry: 25, 
-            fill: '#95B3D7A0',
-            eventType: 'addPolygon',
-            osd: osd,
-            file: slideMedulla,
-            polygonID: 'slideMedulla'
-        }
-        // const slideMedullaPath = {
-        //     type: 'path',
-        //     id: 'medullaSvg',
-        //     d: 'M 280 230 A 35, 30 0 1,1 150 350 A 5, 15 0 1,0 280 230',
-        //     fill: '#95B3D7A0',
-        //     osd: osd,
-        //     file: slideMedulla,
-        //     polygonID: 'slideMedulla'
-        // }
-        const cortexMedullaPath = {
-            type: 'path',
-            id: 'cortexSvg',
-            d: 'M 305 230 A 30, 30 0 1,1 305 290 A 5, 15 0 1,0 305 230',
-            fill: '#90EE90A0',
-            eventType: 'addPolygon',
-            osd: osd,
-            file: slideCortex,
-            polygonID: 'slideCortex'
-        }
-        cartoonImgContainer = buildCartoonImage(svgNS, 'largeKidneySvgContainer', 'img/kidney_cartoon.png', [slideMedullaEllipse, cortexMedullaPath])
-        domElement.appendChild(cartoonImgContainer);
-      }
-    else if (waypointNum === 0 && storyNum === 1 && window.innerWidth >= screenWidths[1] && window.innerWidth < screenWidths[2]){
-        const slideMedullaEllipse = {
-            type: 'ellipse', 
-            id: 'medullaSvg', 
-            cx: 289, 
-            cy: 258, 
-            rx: 29, 
-            ry: 25, 
-            fill: '#95B3D7A0',
-            osd: osd,
-            file: slideMedulla,
-            polygonID: 'slideMedulla'
-        }
-        const cortexMedullaPath = {
-            type: 'path',
-            id: 'cortexSvg',
-            d: 'M 305 230 A 30, 30 0 1,1 305 290 A 5, 15 0 1,0 305 230',
-            fill: '#90EE90A0',
-            osd: osd,
-            file: slideCortex,
-            polygonID: 'slideCortex'
-        }
-        cartoonImgContainer = buildCartoonImage(svgNS, 'mediumKidneySvgContainer', 'img/kidney_cartoon.png', [slideMedullaEllipse, cortexMedullaPath])
-        domElement.appendChild(cartoonImgContainer);
+    width = window.innerWidth
+    window.waypointAttr = {
+        waypointNum: waypointNum,
+        storyNum: storyNum,
+        domElement: domElement,
+        osd: osd,
+        width: width
     }
-    else if (waypointNum === 1 && storyNum === 1) {
-        const tubulesRect = {
-            type: 'rect',
-            id: 'tubulesSvg',
-            x: 300,
-            y: 180,
-            width: 32,
-            height: 150,
-            rx: 25,
-            fill: '#FFD580A0',
-            osd: osd,
-            panCoord:{x: 0.2068, y: 0.4028},
-            zoomRatio: 10.3196
-        }
-        const dctRect = {
-            type: 'rect',
-            id: 'dctSvg',
-            x: 192,
-            y: 180,
-            width: 32,
-            height: 150,
-            rx: 25,
-            fill: '#90EE90A0',
-            osd: osd,
-            panCoord: {x: 0.3287, y: 0.2976},
-            zoomRatio: 14.3333
-        }
-        cartoonImgContainer = buildCartoonImage(svgNS, 'largeKidneySvgContainer', 'img/tubules.jpg', [tubulesRect, dctRect] )
-        // const cartoonImgContainer = document.createElement("figure");
-        // cartoonImgContainer.id = 'largeKidneySvgContainer';
-        // const svgNode = createSvgNode();
-        // cartoonImgContainer.appendChild(svgNode);
-        // const cartoonImg = document.createElementNS(svgNS,'image');
-        // cartoonImg.setAttribute('width', '90%');
-        // cartoonImg.setAttribute('height', '90%');
-        // cartoonImg.setAttribute('href', 'img/tubules.jpg')
-        // svgNode.appendChild(cartoonImg);
-        // Create tubules svg
-        // const tubulesSvg = rectSvg(svgNS, 'tubulesSvg', 300, 180, 32, 150, 25, '#FFD580A0')
-
-        // Event listener for the SVG - zooms and pans when an svg is clicked on. activateViewport in OSD.js
-        // tubulesSvg.addEventListener('click', (e) => panZoom(osd, {x: 0.2068, y: 0.4028}, 10.3196))
-        // svgNode.appendChild(tubulesSvg);
-
-        // Create DCT SVG
-        // const dctSvg = document.createElementNS(svgNS, 'rect');
-        // dctSvg.id = 'dctSvg';
-        // dctSvg.setAttribute('x', 192);
-        // dctSvg.setAttribute('y', 180);
-        // dctSvg.setAttribute('width', 32);
-        // dctSvg.setAttribute('height', 150);
-        // dctSvg.setAttribute('rx', 25);
-        // dctSvg.setAttribute('fill','#90EE90A0');
-        // dctSvg.addEventListener('click', (e) => panZoom(osd, {x: 0.3287, y: 0.2976}, 14.3333))
-        // svgNode.appendChild(dctSvg);
-        domElement.appendChild(cartoonImgContainer);
-      }
+    buildWaypointCartoon(waypointNum, storyNum, width, domElement, osd)
     })
 
 // Remove polygons when the waypoint is changed
@@ -235,6 +367,22 @@ document.addEventListener('waypointBuildEvent', function(e){
     if (document.querySelector('#slideCortex')) {
         document.querySelector('#slideCortex').remove();
     }
+})
+
+window.addEventListener('resize', function (e){
+    currW = e.target.window.innerWidth
+    oldW = e.target.window.waypointAttr.width
+    if ((currW < scrnWBps[1] && oldW >= scrnWBps[1]) || (currW < scrnWBps[2] && oldW >= scrnWBps[2]) || (currW > scrnWBps[2] && oldW <= scrnWBps[2]) || (currW > scrnWBps[1] && oldW <= scrnWBps[1])) {
+        const {waypointNum, storyNum, domElement, osd} = e.target.window.waypointAttr;
+        const svgCont = ['#largeKidneySvgContainer', '#mediumKidneySvgContainer', '#smallKidneySvgContainer']
+        for (let id of svgCont) {
+            if (document.querySelector(id)) {
+                document.querySelector(id).remove();
+            }
+        }
+        buildWaypointCartoon(waypointNum, storyNum, currW, domElement, osd);
+    } 
+    e.target.window.waypointAttr.width = currW
 })
 
       

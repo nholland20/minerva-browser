@@ -2560,7 +2560,7 @@ body .tooltip {
       width: 200px;
   }
   .minerva-root .minerva-sidebar-menu.toggled {
-      margin-left: -175px;
+      margin-left: -185px;
   }
   #smallKidneySvgContainer {
     position: relative;
