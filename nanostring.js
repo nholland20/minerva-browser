@@ -339,6 +339,22 @@ function buildCartoonImage(osd, svgNS, id, imagePath, svgTypes) {
     return cartoonImgContainer
 }
 
+function addMask(osd) {
+    let maskToShow = 'Collecting Duct'
+    let mask = osd.hashstate.masks.filter(mask => {
+        return maskToShow.includes(mask.Name)
+    })
+    let m = 1;
+    if(osd.hashstate.m.includes(m)) {
+        osd.hashstate.m = osd.hashstate.m.filter(i => i != m)
+    }
+    else {
+        osd.hashstate.m.push(m);
+    }
+    osd.hashstate.pushState();
+    window.onpopstate();
+}
+
 function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElement, osd) {
     const svgNS = 'http://www.w3.org/2000/svg';
     if (waypointNum === 0 && storyNum === 1 && windowInnerWidth >= scrnWBps[2]) {
@@ -365,6 +381,12 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
     else if (waypointNum === 1 && storyNum === 1 && windowInnerWidth < scrnWBps[1]) {
         cartoonImgContainer = buildCartoonImage(osd, svgNS, 'smallKidneySvgContainer', 'img/tubules.jpg', [smallCollectingDuctRect, smallDctRect] )
         domElement.appendChild(cartoonImgContainer);
+    }
+    else if (waypointNum === 0 && storyNum === 0) {
+        let btn = document.createElement('button');
+        btn.innerHTML = 'Add Collecting Duct Mask';
+        btn.addEventListener('click', () => addMask(osd))
+        domElement.appendChild(btn);
     }
 }
 
