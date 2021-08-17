@@ -125,7 +125,9 @@ const largeCollectingDuctRect = {
     fill: '#FFD580A0',
     eventType: 'panAndZoom',
     panCoord:{x: 0.2068, y: 0.4028},
-    zoomRatio: 10.3196
+    zoomRatio: 10.3196,
+    ROIBox: {overlay: {x: 0.1996, y: 0.3753, width: 0.03, height: 0.0341},
+            storyNum: 1, waypointNum: 1}
 }
 const largeDctRect = {
     type: 'rect',
@@ -140,7 +142,9 @@ const largeDctRect = {
     strokeWidth: '2',
     eventType: 'panAndZoom',
     panCoord: {x: 0.3287, y: 0.2976},
-    zoomRatio: 14.3333
+    zoomRatio: 14.3333,
+    ROIBox: {overlay: {x: 0.3141, y: 0.2802, width: 0.0382, height: 0.0301},
+            storyNum:1, waypointNum: 1}
 }
 
 const mediumCollectingDuctRect = {
@@ -156,7 +160,9 @@ const mediumCollectingDuctRect = {
     strokeWidth: '2',
     eventType: 'panAndZoom',
     panCoord:{x: 0.2068, y: 0.4028},
-    zoomRatio: 10.3196
+    zoomRatio: 10.3196,
+    ROIBox: {overlay: {x: 0.1996, y: 0.3753, width: 0.03, height: 0.0341},
+    storyNum: 1, waypointNum: 1}
 }
 const mediumDctRect = {
     type: 'rect',
@@ -171,7 +177,9 @@ const mediumDctRect = {
     strokeWidth: '2',
     eventType: 'panAndZoom',
     panCoord: {x: 0.3287, y: 0.2976},
-    zoomRatio: 14.3333
+    zoomRatio: 14.3333,
+    ROIBox: {overlay: {x: 0.3141, y: 0.2802, width: 0.0382, height: 0.0301},
+    storyNum:1, waypointNum: 1}
 }
 
 const smallCollectingDuctRect = {
@@ -187,7 +195,9 @@ const smallCollectingDuctRect = {
     strokeWidth: '2',
     eventType: 'panAndZoom',
     panCoord:{x: 0.2068, y: 0.4028},
-    zoomRatio: 10.3196
+    zoomRatio: 10.3196,
+    ROIBox: {overlay: {x: 0.1996, y: 0.3753, width: 0.03, height: 0.0341},
+            storyNum: 1, waypointNum: 1}
 }
 const smallDctRect = {
     type: 'rect',
@@ -202,7 +212,9 @@ const smallDctRect = {
     strokeWidth: '2',
     eventType: 'panAndZoom',
     panCoord: {x: 0.3287, y: 0.2976},
-    zoomRatio: 14.3333
+    zoomRatio: 14.3333,
+    ROIBox: {overlay: {x: 0.3141, y: 0.2802, width: 0.0382, height: 0.0301},
+            storyNum:1, waypointNum: 1}
 }
 
 // Functions to build Rectangle, Ellipse, and Path SVGs
@@ -253,9 +265,18 @@ function buildPathSvg(osd, svgNS, pathObj){
 }
 
 // Event Listener to pan and zoom to a specific place on the slide
-function panZoom(osd, panCoord, zoomRatio) {
-    osd.viewer.viewport.panTo(panCoord)
-    osd.viewer.viewport.zoomTo(zoomRatio)
+function panZoom(osd, svgObj) {
+    const id = 'ROIBox'
+    const {x, y, width, height} = svgObj.ROIBox
+    osd.viewer.viewport.panTo(svgObj.panCoord)
+    osd.viewer.viewport.zoomTo(svgObj.zoomRatio)
+    //TO DO: Add something to make sure the person didn't just click on the same one so
+    // it doesn't remove if they did (maybe compare x coord). Then debug remove logic.
+
+    if (document.querySelector(`#${id}`)){
+        osd.viewer.removeOverlay(`#${id}`)
+    }
+    addROIBox(osd, svgObj.ROIBox, id)
 }
 
 // Event listener for the SVGs - circles (or removes the ciricle of) the corresponding part on the slide when clicked.
@@ -267,13 +288,18 @@ function addSlidePolygon(polygonID, fileName, osd){
     }
 }
 
+function addROIBox(osd, ROIBox, id){
+    const {overlay, storyNum, waypointNum} = ROIBox
+    osd.addOverlay(overlay, id, storyNum, waypointNum)
+}
+
 //Add Event Listeners to SVG elements based on attributes in their SVG object
 function addEListener(osd, svgObj, svg) {
     if (svgObj.eventType === 'addPolygon') {
         svg.addEventListener('click', () => addSlidePolygon(svgObj.polygonID, svgObj.file, osd));
 }
     else if (svgObj.eventType === 'panAndZoom') {
-        svg.addEventListener('click', () => panZoom(osd, svgObj.panCoord, svgObj.zoomRatio))
+        svg.addEventListener('click', () => panZoom(osd, svgObj))
     }
 }
 
@@ -314,7 +340,6 @@ function buildCartoonImage(osd, svgNS, id, imagePath, svgTypes) {
 }
 
 function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElement, osd) {
-    console.log('buildWaypointCartoon')
     const svgNS = 'http://www.w3.org/2000/svg';
     if (waypointNum === 0 && storyNum === 1 && windowInnerWidth >= scrnWBps[2]) {
         cartoonImgContainer = buildCartoonImage(osd, svgNS, 'largeKidneySvgContainer', 'img/kidney_cartoon.png', [largeSlideMedullaPath, largeCortexPath])
@@ -359,14 +384,19 @@ document.addEventListener('waypointBuildEvent', function(e) {
     buildWaypointCartoon(waypointNum, storyNum, width, domElement, osd)
     })
 
-// Remove polygons when the waypoint is changed
+// Remove polygons and overlays when the waypoint is changed
 document.addEventListener('waypointBuildEvent', function(e){
-    if (document.querySelector('#slideMedulla')) {
-        document.querySelector('#slideMedulla').remove();
+    const {osd} = e.detail
+    const overlayIds = ['#slideMedulla', '#slideCortex']
+    for (let id of overlayIds) {
+        if (document.querySelector(id)) {
+            document.querySelector(id).remove();
+        }
     }
-    if (document.querySelector('#slideCortex')) {
-        document.querySelector('#slideCortex').remove();
-    }
+    if (document.querySelector('#ROIBox')){
+        osd.viewer.removeOverlay('ROIBox')
+        document.querySelector('#ROIBox').remove()
+    }    
 })
 
 window.addEventListener('resize', function (e){
