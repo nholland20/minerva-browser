@@ -477,7 +477,7 @@ RenderOSD.prototype = {
 
   // add a box overlay to openseadragon
   addOverlay: function(overlay, el, s, w) {
-
+    // console.log( `overlay: x: ${overlay.x}, y: ${overlay.y}, width: ${overlay.width}, height: ${overlay.height}`)
     const current = this.viewer.getOverlayById(el);
     const HS = this.hashstate;
 

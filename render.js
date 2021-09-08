@@ -702,6 +702,7 @@ Render.prototype = {
       }
       // Add mask index to m
       else {
+        console.log(m)
         HS.m.push(m);
       }
       HS.pushState();

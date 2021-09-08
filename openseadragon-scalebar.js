@@ -330,7 +330,8 @@ export const OpenSeadragonScalebar = function($) {
                         y = Math.min(y, pixel.y - barHeight);
                     }
                 }
-                return new $.Point(x - this.xOffset, y - this.yOffset);
+                // Nanostring change: subtracted 40 from x and y to offset it from the bottom so it shows up in Safari when the transparent url bar is enabled and on iPad
+                return new $.Point(x - this.xOffset - 40, y - this.yOffset - 40);
             }
             if (this.location === $.ScalebarLocation.BOTTOM_LEFT) {
                 var barHeight = this.divElt.offsetHeight;
