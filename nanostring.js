@@ -11,7 +11,7 @@ const scrnWBps = [0, 675, 1100]
 const largeSlideMedullaPath = {
     type: 'path',
     id: 'medullaSvg',
-    d: 'M 280 230 A 205,200 0 0,1 155 350 A5,5 0 1,0 280 230',
+    d: 'M 219,245 A60,60 0 0,1 288,229 C330,333 175,479 124,383 A33,33 0 0,1 130,353 A95,95 0 0,0 219,245',
     fill: '#95B3D7A0',
     stroke: 'red',
     strokeWidth: '2',
@@ -23,11 +23,10 @@ const largeSlideMedullaPath = {
 const largeCortexPath = {
     type: 'path',
     id: 'cortexSvg',
-    d: 'M 330 240 C400,425 150,475 140,350 A50,50 0 0,1 155,350 C175,400 370,380 280 230 A50,50 0 0,1 330,240',
-    eventType: 'addPolygon',
+    d: 'M 288,229 A31,32 0 0,1 322,217 C352,473 103,518 86,363 A50,51 0 0,1 124,358 C122,497 339,353 288,229',
     fill: '#90EE90A0',
-    strokeWidth: '2',
     stroke: 'red',
+    strokeWidth: '2',
     eventTypes: ['addPolygon'],
     file: slideCortex,
     polygonID: 'slideCortex'
@@ -36,7 +35,7 @@ const largeCortexPath = {
 const mediumSlideMedullaPath = {
     type: 'path',
     id: 'medullaSvg',
-    d: 'M240 215 A 180,130 0 0,1 140,315 A5,5 0 1,0 240 215',
+    d: 'M192,219 A51,51 0 0,1 252,206 C276,313 143,423 107,348 A39,40 0 0,1 107,313 A79,84 0 0,0 192,219',
     fill: '#95B3D7A0',
     stroke: 'red',
     strokeWidth: '2',
@@ -48,7 +47,7 @@ const mediumSlideMedullaPath = {
 const mediumCortexPath = {
     type: 'path',
     id: 'cortexSvg',
-    d: 'M290,220 C340,335 155,445 125,315 A50,50 0 0,1 140,315 C150,355 320,340 240 215 A50,50 0 0,1 290,220',
+    d: 'M252,206 A30,30 0 0,1 283,202 C316,391 99,482 72,325 A40,40 0 0,1 106,313 C93,456 288,321 252,206',
     fill: '#90EE90A0',
     stroke: 'red',
     strokeWidth: '2',
@@ -61,7 +60,7 @@ const mediumCortexPath = {
 const smallSlideMedullaPath = {
     type: 'path',
     id: 'medullaSvg',
-    d: 'M 120 130 A 180,130 0 0,1 70,180 A25,25 0 1,0 120,130',
+    d: 'M87,89 A28,36 0 0,1 110,83 C120,150 55,178 50,130 A35,35 0 0,0 87,89',
     fill: '#95B3D7A0',
     stroke: 'red',
     strokeWidth: '2',
@@ -73,7 +72,7 @@ const smallSlideMedullaPath = {
 const smallCortexPath = {
     type: 'path',
     id: 'cortexSvg',
-    d: 'M148,133 C175,165 110,255 63,185 A50,50 0 0,1 70,180 C125,218 143,150 120 130 A50,50 0 0,1 148,133',
+    d: 'M110,83 A 17,17 0 0,1 125,83 C125,200 25,165 40,130 A19,19 0 0,1 50,130 C40,155 115,180 110,83',
     fill: '#90EE90A0',
     stroke: 'red',
     strokeWidth: '2',
@@ -83,33 +82,28 @@ const smallCortexPath = {
 }
 
 //SVG objects for the second waypoint of the story - based on different screen sizes
-const largeCollectingDuctRect = {
-    type: 'rect',
-    id: 'tubulesSvg',
-    x: 318,
-    y: 190,
-    width: 32,
-    height: 150,
-    rx: 25,
+const largeCollDuctPath = {
+    type: 'path',
+    id: 'collDuctSvg',
+    d: 'M257,185 A32,34 0 0,1 290,185 Q290,323 281,540 A40,40 0 0,1 243,537 Q258,324 257,185',
     stroke: 'red',
     strokeWidth: '2',
-    fill: '#FFD580A0',
+    fill: '#30B2DE50',
     eventType: ['panAndZoom', 'addMask'],
     panCoord:{x: 0.2068, y: 0.4028},
     zoomRatio: 10.3196,
     ROIBox: {overlay: {x: 0.1996, y: 0.3753, width: 0.03, height: 0.0341},
             storyNum: 1, waypointNum: 1},
-    maskNum: 1
+    maskNum: [1]
 }
-const largeDctRect = {
-    type: 'rect',
+const largeDctEllipse = {
+    type: 'ellipse',
     id: 'dctSvg',
-    x: 203,
-    y: 190,
-    width: 32,
-    height: 150,
-    rx: 25,
-    fill: '#90EE90A0',
+    rx: 31,
+    ry: 44,
+    cx: 240,
+    cy: 143,
+    fill: '#30B2DE50',
     stroke: 'red',
     strokeWidth: '2',
     eventType: ['panAndZoom', 'addMask'],
@@ -117,18 +111,86 @@ const largeDctRect = {
     zoomRatio: 14.3333,
     ROIBox: {overlay: {x: 0.3141, y: 0.2802, width: 0.0382, height: 0.0301},
             storyNum:1, waypointNum: 1},
-    maskNum: 4
+    maskNum: [4]
 }
 
-const mediumCollectingDuctRect = {
-    type: 'rect',
-    id: 'tubulesSvg',
-    x: 277,
-    y: 177,
-    width: 27,
-    height: 120,
-    rx: 25,
-    fill: '#FFD580A0',
+const largePctEllipse = {
+    type: 'ellipse',
+    id: 'pctSvg',
+    rx: 33,
+    ry: 57,
+    cx: 170,
+    cy: 177,
+    fill: '#30B2DE50',
+    stroke: 'red',
+    strokeWidth: '2',
+    eventType: ['panAndZoom', 'addMask'],
+    // panCoord: {x: 0.3287, y: 0.2976},
+    // zoomRatio: 14.3333,
+    // ROIBox: {overlay: {x: 0.3141, y: 0.2802, width: 0.0382, height: 0.0301},
+    //         storyNum:1, waypointNum: 1},
+    maskNum: [10]
+}
+
+const largeLoopHEllipse = {
+    type: 'ellipse',
+    id: 'loopHSvg',
+    rx: 17,
+    ry: 110,
+    cx: 200,
+    cy: 397,
+    fill: '#30B2DE50',
+    stroke: 'red',
+    strokeWidth: '2',
+    eventType: ['panAndZoom', 'addMask'],
+    // panCoord: {x: 0.3287, y: 0.2976},
+    // zoomRatio: 14.3333,
+    // ROIBox: {overlay: {x: 0.3141, y: 0.2802, width: 0.0382, height: 0.0301},
+    //         storyNum:1, waypointNum: 1},
+    maskNum: [7]
+}
+
+const largeGlomEllipse = {
+    type: 'ellipse',
+    id: 'glomSvg',
+    rx: 21,
+    ry: 33,
+    cx: 125,
+    cy: 219,
+    fill: '#30B2DE50',
+    stroke: 'red',
+    strokeWidth: '2',
+    eventType: ['panAndZoom', 'addMask'],
+    // panCoord: {x: 0.3287, y: 0.2976},
+    // zoomRatio: 14.3333,
+    // ROIBox: {overlay: {x: 0.3141, y: 0.2802, width: 0.0382, height: 0.0301},
+    //         storyNum:1, waypointNum: 1},
+    maskNum: [5, 2, 8, 9]
+}
+
+const largeFiltMemEllipse = {
+    type: 'ellipse',
+    id: 'filtMemSvg',
+    rx: 10,
+    ry: 15,
+    cx: 125,
+    cy: 219,
+    fill: '#30B2DE50',
+    stroke: 'red',
+    strokeWidth: '2',
+    eventType: ['panAndZoom', 'addMask'],
+    // panCoord: {x: 0.3287, y: 0.2976},
+    // zoomRatio: 14.3333,
+    // ROIBox: {overlay: {x: 0.3141, y: 0.2802, width: 0.0382, height: 0.0301},
+    //         storyNum:1, waypointNum: 1},
+    maskNum: [3, 6]
+}
+
+const medCollDuctPath = {
+    type: 'path',
+    id: 'collDuctSvg',
+    d: 'M220,151 A25,27 0 0,1 250,151 Q250,297 243,442 A40,40 0 0,1 209,442 Q218,297 220,151',
+    fill: '#30B2DE50',
     stroke: 'red',
     strokeWidth: '2',
     eventType: ['panAndZoom', 'addMask'],
@@ -136,17 +198,16 @@ const mediumCollectingDuctRect = {
     zoomRatio: 10.3196,
     ROIBox: {overlay: {x: 0.1996, y: 0.3753, width: 0.03, height: 0.0341},
     storyNum: 1, waypointNum: 1},
-    maskNum: 1
+    maskNum: [1]
 }
-const mediumDctRect = {
-    type: 'rect',
+const medDctEllipse = {
+    type: 'ellipse',
     id: 'dctSvg',
-    x: 177,
-    y: 177,
-    width: 27,
-    height: 120,
-    rx: 25,
-    fill: '#90EE90A0',
+    rx: 27,
+    ry: 35,
+    cx: 211,
+    cy: 115,
+    fill: '#30B2DE50',
     stroke: 'red',
     strokeWidth: '2',
     eventType: ['panAndZoom', 'addMask'],
@@ -154,18 +215,86 @@ const mediumDctRect = {
     zoomRatio: 14.3333,
     ROIBox: {overlay: {x: 0.3141, y: 0.2802, width: 0.0382, height: 0.0301},
     storyNum:1, waypointNum: 1},
-    maskNum: 4
+    maskNum: [4]
 }
 
-const smallCollectingDuctRect = {
-    type: 'rect',
-    id: 'tubulesSvg',
-    x: 135,
-    y: 110,
-    width: 20,
-    height: 70,
-    rx: 25,
-    fill: '#FFD580A0',
+const medPctEllipse = {
+    type: 'ellipse',
+    id: 'pctSvg',
+    rx: 26,
+    ry: 45,
+    cx: 150,
+    cy: 145,
+    fill: '#30B2DE50',
+    stroke: 'red',
+    strokeWidth: '2',
+    // eventType: ['panAndZoom', 'addMask'],
+    // panCoord: {x: 0.3287, y: 0.2976},
+    // zoomRatio: 14.3333,
+    // ROIBox: {overlay: {x: 0.3141, y: 0.2802, width: 0.0382, height: 0.0301},
+    //         storyNum:1, waypointNum: 1},
+    // maskNum: 4
+}
+
+const medLoopHEllipse = {
+    type: 'ellipse',
+    id: 'loopHSvg',
+    rx: 15,
+    ry: 88,
+    cx: 176,
+    cy: 323,
+    fill: '#30B2DE50',
+    stroke: 'red',
+    strokeWidth: '2',
+    // eventType: ['panAndZoom', 'addMask'],
+    // panCoord: {x: 0.3287, y: 0.2976},
+    // zoomRatio: 14.3333,
+    // ROIBox: {overlay: {x: 0.3141, y: 0.2802, width: 0.0382, height: 0.0301},
+    //         storyNum:1, waypointNum: 1},
+    // maskNum: 4
+}
+
+const medGlomEllipse = {
+    type: 'ellipse',
+    id: 'glomSvg',
+    rx: 18,
+    ry: 26,
+    cx: 113,
+    cy: 179,
+    fill: '#30B2DE50',
+    stroke: 'red',
+    strokeWidth: '2',
+    // eventType: ['panAndZoom', 'addMask'],
+    // panCoord: {x: 0.3287, y: 0.2976},
+    // zoomRatio: 14.3333,
+    // ROIBox: {overlay: {x: 0.3141, y: 0.2802, width: 0.0382, height: 0.0301},
+    //         storyNum:1, waypointNum: 1},
+    // maskNum: 4
+}
+
+const medFiltMemEllipse = {
+    type: 'ellipse',
+    id: 'filtMemSvg',
+    rx: 9,
+    ry: 12,
+    cx: 113,
+    cy: 179,
+    fill: '#30B2DE50',
+    stroke: 'red',
+    strokeWidth: '2',
+    // eventType: ['panAndZoom', 'addMask'],
+    // panCoord: {x: 0.3287, y: 0.2976},
+    // zoomRatio: 14.3333,
+    // ROIBox: {overlay: {x: 0.3141, y: 0.2802, width: 0.0382, height: 0.0301},
+    //         storyNum:1, waypointNum: 1},
+    // maskNum: 4
+}
+
+const smallCollDuctPath = {
+    type: 'path',
+    id: 'collDuctSvg',
+    d:'M115,93 A57,58 0 0,1 133,93 Q133,177 128,260 A60,60 0 0,1 108,260 Q112,135 115,93',
+    fill: '#30B2DE50',
     stroke: 'red',
     strokeWidth: '2',
     eventType: ['panAndZoom', 'addMask'],
@@ -173,17 +302,17 @@ const smallCollectingDuctRect = {
     zoomRatio: 10.3196,
     ROIBox: {overlay: {x: 0.1996, y: 0.3753, width: 0.03, height: 0.0341},
             storyNum: 1, waypointNum: 1},
-    maskNum: 1
+    maskNum: [1]
 }
-const smallDctRect = {
-    type: 'rect',
+
+const smallDctEll = {
+    type: 'ellipse',
     id: 'dctSvg',
-    x: 85,
-    y: 110,
-    width: 20,
-    height: 70,
-    rx: 25,
-    fill: '#90EE90A0',
+    rx: 17,
+    ry: 22,
+    cx: 108,
+    cy: 71,
+    fill: '#30B2DE50',
     stroke: 'red',
     strokeWidth: '2',
     eventType: ['panAndZoom', 'addMask'],
@@ -191,7 +320,79 @@ const smallDctRect = {
     zoomRatio: 14.3333,
     ROIBox: {overlay: {x: 0.3141, y: 0.2802, width: 0.0382, height: 0.0301},
             storyNum:1, waypointNum: 1},
-    maskNum: 4
+    maskNum: [4]
+}
+
+const smallPctEll = {
+    type: 'ellipse',
+    id: 'pctSvg',
+    rx: 15,
+    ry: 27,
+    cx: 75,
+    cy: 86,
+    fill: '#30B2DE50',
+    stroke: 'red',
+    strokeWidth: '2',
+    // eventType: ['panAndZoom', 'addMask'],
+    // panCoord: {x: 0.3287, y: 0.2976},
+    // zoomRatio: 14.3333,
+    // ROIBox: {overlay: {x: 0.3141, y: 0.2802, width: 0.0382, height: 0.0301},
+    //         storyNum:1, waypointNum: 1},
+    // maskNum: 4
+}
+
+const smallLoopHEll = {
+    type: 'ellipse',
+    id: 'loopHSvg',
+    rx: 7,
+    ry: 52,
+    cx: 90,
+    cy: 193,
+    fill: '#30B2DE50',
+    stroke: 'red',
+    strokeWidth: '2',
+    // eventType: ['panAndZoom', 'addMask'],
+    // panCoord: {x: 0.3287, y: 0.2976},
+    // zoomRatio: 14.3333,
+    // ROIBox: {overlay: {x: 0.3141, y: 0.2802, width: 0.0382, height: 0.0301},
+    //         storyNum:1, waypointNum: 1},
+    // maskNum: 4
+}
+
+const smallGlomEll = {
+    type: 'ellipse',
+    id: 'glomSvg',
+    rx: 11,
+    ry: 16,
+    cx: 53,
+    cy: 106,
+    fill: '#30B2DE50',
+    stroke: 'red',
+    strokeWidth: '2',
+    // eventType: ['panAndZoom', 'addMask'],
+    // panCoord: {x: 0.3287, y: 0.2976},
+    // zoomRatio: 14.3333,
+    // ROIBox: {overlay: {x: 0.3141, y: 0.2802, width: 0.0382, height: 0.0301},
+    //         storyNum:1, waypointNum: 1},
+    // maskNum: 4
+}
+
+const smallFiltMemEll = {
+    type: 'ellipse',
+    id: 'filtMemSvg',
+    rx: 5,
+    ry: 6,
+    cx: 53,
+    cy: 106,
+    fill: '#30B2DE50',
+    stroke: 'red',
+    strokeWidth: '2',
+    // eventType: ['panAndZoom', 'addMask'],
+    // panCoord: {x: 0.3287, y: 0.2976},
+    // zoomRatio: 14.3333,
+    // ROIBox: {overlay: {x: 0.3141, y: 0.2802, width: 0.0382, height: 0.0301},
+    //         storyNum:1, waypointNum: 1},
+    // maskNum: 4
 }
 
 // Functions to build Rectangle, Ellipse, and Path SVGs
@@ -240,9 +441,6 @@ function panZoom(osd, svgObj) {
     const id = 'ROIBox'
     osd.viewer.viewport.panTo(svgObj.panCoord)
     osd.viewer.viewport.zoomTo(svgObj.zoomRatio)
-    //TO DO: Add something to make sure the person didn't just click on the same one so
-    // it doesn't remove if they did (maybe compare x coord). Then debug remove logic.
-
     if (document.querySelector(`#${id}`)){
         osd.viewer.removeOverlay(`#${id}`)
     }
@@ -264,15 +462,17 @@ function addROIBox(osd, ROIBox, id){
 }
 
 function addMask(osd, svgObj) {
-    const m = svgObj.maskNum;
-    if(osd.hashstate.m.includes(m)) {
-        osd.hashstate.m = osd.hashstate.m.filter(i => i != m)
+    const maskNums = svgObj.maskNum;
+    for (let maskInd of maskNums){
+        if(osd.hashstate.m.includes(maskInd)) {
+            osd.hashstate.m = osd.hashstate.m.filter(i => i != maskInd)
+        }
+        else {
+            osd.hashstate.m.push(maskInd);
+        }
+        osd.hashstate.pushState();
+        window.onpopstate();
     }
-    else {
-        osd.hashstate.m.push(m);
-    }
-    osd.hashstate.pushState();
-    window.onpopstate();
 }
 
 
@@ -303,8 +503,8 @@ function buildCartoonImage(osd, svgNS, id, imagePath, svgTypes, eventType) {
     cartoonImgContainer.id = id;
     const svgNode = createSvgNode();
     const cartoonSvg = document.createElementNS(svgNS,'image');
-    cartoonSvg.setAttribute('width', '95%');
-    cartoonSvg.setAttribute('height', '95%');
+    cartoonSvg.setAttribute('width', '100%');
+    cartoonSvg.setAttribute('height', '100%');
     cartoonSvg.setAttribute('href', imagePath);
     svgNode.appendChild(cartoonSvg);
     for (let i = 0; i < svgTypes.length; i++) {
@@ -328,40 +528,40 @@ function buildCartoonImage(osd, svgNS, id, imagePath, svgTypes, eventType) {
 function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElement, osd) {
     const svgNS = 'http://www.w3.org/2000/svg';
     if (waypointNum === 0 && storyNum === 1 && windowInnerWidth >= scrnWBps[2]) {
-        cartoonImgContainer = buildCartoonImage(osd, svgNS, 'largeKidneySvgContainer', 'img/kidney_cartoon.png', [largeSlideMedullaPath, largeCortexPath], 'addPolygon')
+        cartoonImgContainer = buildCartoonImage(osd, svgNS, 'largeKidneySvgContainer', 'img/finalKidney.jpeg', [largeSlideMedullaPath, largeCortexPath], 'addPolygon')
         domElement.appendChild(cartoonImgContainer);
       }
     else if (waypointNum === 0 && storyNum === 1 && windowInnerWidth >= scrnWBps[1] && windowInnerWidth <= scrnWBps[2]){
-        cartoonImgContainer = buildCartoonImage(osd, svgNS, 'mediumKidneySvgContainer', 'img/kidney_cartoon.png', [mediumSlideMedullaPath, mediumCortexPath], 'addPolygon')
+        cartoonImgContainer = buildCartoonImage(osd, svgNS, 'mediumKidneySvgContainer', 'img/finalKidney.jpeg', [mediumSlideMedullaPath, mediumCortexPath], 'addPolygon')
         domElement.appendChild(cartoonImgContainer);
     }
     else if (waypointNum === 0 && storyNum === 1 && windowInnerWidth < scrnWBps[1]){
-        cartoonImgContainer = buildCartoonImage(osd, svgNS, 'smallKidneySvgContainer', 'img/kidney_cartoon.png', [smallSlideMedullaPath, smallCortexPath], 'addPolygon')
+        cartoonImgContainer = buildCartoonImage(osd, svgNS, 'smallKidneySvgContainer', 'img/finalKidney.jpeg', [smallSlideMedullaPath, smallCortexPath], 'addPolygon')
         domElement.appendChild(cartoonImgContainer);
     }
 
     else if (waypointNum === 1 && storyNum === 1 && windowInnerWidth >= scrnWBps[2]) {
-        cartoonImgContainer = buildCartoonImage(osd, svgNS, 'largeKidneySvgContainer', 'img/tubules.jpg', [largeCollectingDuctRect, largeDctRect], 'panAndZoom')
+        cartoonImgContainer = buildCartoonImage(osd, svgNS, 'largeSubstructureSvgContainer', 'img/kidneySubstructures.png', [largeCollDuctPath, largeDctEllipse, largePctEllipse, largeLoopHEllipse, largeGlomEllipse, largeFiltMemEllipse], 'panAndZoom')
         domElement.appendChild(cartoonImgContainer);
     }
     else if (waypointNum === 1 && storyNum === 1 && windowInnerWidth >= scrnWBps[1] && windowInnerWidth <= scrnWBps[2]) {
-        cartoonImgContainer = buildCartoonImage(osd, svgNS, 'mediumKidneySvgContainer', 'img/tubules.jpg', [mediumCollectingDuctRect, mediumDctRect], 'panAndZoom')
+        cartoonImgContainer = buildCartoonImage(osd, svgNS, 'mediumSubstructureSvgContainer', 'img/kidneySubstructures.png', [medCollDuctPath, medDctEllipse, medPctEllipse, medLoopHEllipse, medGlomEllipse, medFiltMemEllipse], 'panAndZoom')
         domElement.appendChild(cartoonImgContainer);
     }
     else if (waypointNum === 1 && storyNum === 1 && windowInnerWidth < scrnWBps[1]) {
-        cartoonImgContainer = buildCartoonImage(osd, svgNS, 'smallKidneySvgContainer', 'img/tubules.jpg', [smallCollectingDuctRect, smallDctRect], 'panAndZoom')
+        cartoonImgContainer = buildCartoonImage(osd, svgNS, 'smallSubstructureSvgContainer', 'img/kidneySubstructures.png', [smallCollDuctPath, smallDctEll, smallPctEll, smallLoopHEll, smallGlomEll, smallFiltMemEll], 'panAndZoom')
         domElement.appendChild(cartoonImgContainer);
     }
     else if (waypointNum === 0 && storyNum === 0 && windowInnerWidth >= scrnWBps[2]) {
-        cartoonImgContainer = buildCartoonImage(osd, svgNS, 'largeKidneySvgContainer', 'img/tubules.jpg', [largeCollectingDuctRect, largeDctRect], 'addMask')
+        cartoonImgContainer = buildCartoonImage(osd, svgNS, 'largeSubstructureSvgContainer', 'img/kidneySubstructures.png', [largeCollDuctPath, largeDctEllipse, largePctEllipse, largeLoopHEllipse, largeGlomEllipse, largeFiltMemEllipse], 'addMask')
         domElement.appendChild(cartoonImgContainer);
     }
     else if (waypointNum === 0 && storyNum === 0 && windowInnerWidth >= scrnWBps[1] && windowInnerWidth <= scrnWBps[2]) {
-        cartoonImgContainer = buildCartoonImage(osd, svgNS, 'mediumKidneySvgContainer', 'img/tubules.jpg', [mediumCollectingDuctRect, mediumDctRect], 'addMask')
+        cartoonImgContainer = buildCartoonImage(osd, svgNS, 'mediumSubstructureSvgContainer', 'img/kidneySubstructures.png', [medCollDuctPath, medDctEllipse, medPctEllipse, medLoopHEllipse, medGlomEllipse, medFiltMemEllipse], 'addMask')
         domElement.appendChild(cartoonImgContainer);
     }
     else if (waypointNum === 0 && storyNum === 0 && windowInnerWidth < scrnWBps[1]) {
-        cartoonImgContainer = buildCartoonImage(osd, svgNS, 'smallKidneySvgContainer', 'img/tubules.jpg', [smallCollectingDuctRect, smallDctRect], 'addMask')
+        cartoonImgContainer = buildCartoonImage(osd, svgNS, 'smallSubstructureSvgContainer', 'img/kidneySubstructures.png', [smallCollDuctPath, smallDctEll, smallPctEll, smallLoopHEll, smallGlomEll, smallFiltMemEll], 'addMask')
         domElement.appendChild(cartoonImgContainer);
     }
 }
@@ -402,7 +602,7 @@ window.addEventListener('resize', function (e){
     oldW = e.target.window.waypointAttr.width
     if ((currW < scrnWBps[1] && oldW >= scrnWBps[1]) || (currW < scrnWBps[2] && oldW >= scrnWBps[2]) || (currW > scrnWBps[2] && oldW <= scrnWBps[2]) || (currW > scrnWBps[1] && oldW <= scrnWBps[1])) {
         const {waypointNum, storyNum, domElement, osd} = e.target.window.waypointAttr;
-        const svgCont = ['#largeKidneySvgContainer', '#mediumKidneySvgContainer', '#smallKidneySvgContainer']
+        const svgCont = ['#largeKidneySvgContainer', '#mediumKidneySvgContainer', '#smallKidneySvgContainer', '#largeSubstructureSvgContainer', '#mediumSubstructureSvgContainer', '#smallSubstructureSvgContainer']
         for (let id of svgCont) {
             if (document.querySelector(id)) {
                 document.querySelector(id).remove();
@@ -412,18 +612,3 @@ window.addEventListener('resize', function (e){
     } 
     e.target.window.waypointAttr.width = currW
 })
-
-      
-// Nanostring-specific
-// Update the size of the description box to be bigger based on waypoint
-// function changeDescriptionBoxSize() {
-//       if (HS.w == 0 && HS.s == 1) {
-//             const descriptionBox = document.querySelector('.minerva-sidebar-menu');
-//             descriptionBox.style.setProperty('width', '800px')
-//       } else {
-//             const descriptionBox = document.querySelector('.minerva-sidebar-menu');
-//             descriptionBox.style.setProperty('width', '400px')
-//       }
-// }
-
-// module.exports = {}

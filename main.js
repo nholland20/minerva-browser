@@ -2516,8 +2516,8 @@ body .tooltip {
   }
   #largeKidneySvgContainer {
     position: relative;
-    width: 400px;
-    height: 500px;
+    width: 380px;
+    height: 480px;
     vertical-align: middle;
     margin: 0;
     overflow: hidden;
@@ -2530,6 +2530,22 @@ body .tooltip {
     width: 100%;
     height: 100%
   }
+  #largeSubstructureSvgContainer {
+      position: relative;
+      width: 350px;
+      height: 626px;
+      vertical-align: middle;
+      margin: 0;
+      overflow: hidden;
+    }
+    #largeSubstructureSvgContainer svg {
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%
+    }
 }
 
 @media (max-width: 1099px) {
@@ -2539,13 +2555,29 @@ body .tooltip {
 
   #mediumKidneySvgContainer {
     position: relative;
-    width: 350px;
-    height: 450px;
+    width: 330px;
+    height: 430px;
     vertical-align: middle;
     margin: 0;
     overflow: hidden;
   }
   #mediumKidneySvgContainer svg {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%
+  }
+  #mediumSubstructureSvgContainer {
+    position: relative;
+    width: 310px;
+    height: 510px;
+    vertical-align: middle;
+    margin: 0;
+    overflow: hidden;
+  }
+  #mediumSubstructureSvgContainer svg {
     display: inline-block;
     position: absolute;
     top: 0;
@@ -2564,13 +2596,29 @@ body .tooltip {
   }
   #smallKidneySvgContainer {
     position: relative;
-    width: 175px;
-    height: 275px;
+    width: 150px;
+    height: 175px;
     vertical-align: middle;
     margin: 0;
     overflow: hidden;
   }
   #smallKidneySvgContainer svg {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%
+  }
+  #smallSubstructureSvgContainer {
+    position: relative;
+    width: 155px;
+    height: 300px;
+    vertical-align: middle;
+    margin: 0;
+    overflow: hidden;
+  }
+  #smallSubstructureSvgContainer svg {
     display: inline-block;
     position: absolute;
     top: 0;
