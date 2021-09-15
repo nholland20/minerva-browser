@@ -2546,6 +2546,22 @@ body .tooltip {
       width: 100%;
       height: 100%
     }
+    #largeBoxPlotGenes {
+      position: relative;
+      width: 380px;
+      height: 700px;
+      vertical-align: middle;
+      margin: 0;
+      overflow: hidden;
+    }
+    #largeBoxPlotGenes svg {
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%
+    }
 }
 
 @media (max-width: 1099px) {
@@ -2578,6 +2594,22 @@ body .tooltip {
     overflow: hidden;
   }
   #mediumSubstructureSvgContainer svg {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%
+  }
+  #medBoxPlotGenes {
+    position: relative;
+    width: 330px;
+    height: 600px;
+    vertical-align: middle;
+    margin: 0;
+    overflow: hidden;
+  }
+  #medBoxPlotGenes svg {
     display: inline-block;
     position: absolute;
     top: 0;
@@ -2619,6 +2651,22 @@ body .tooltip {
     overflow: hidden;
   }
   #smallSubstructureSvgContainer svg {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%
+  }
+  #smallBoxPlotGenes {
+    position: relative;
+    width: 155px;
+    height: 300px;
+    vertical-align: middle;
+    margin: 0;
+    overflow: hidden;
+  }
+  #smallBoxPlotGenes svg {
     display: inline-block;
     position: absolute;
     top: 0;
