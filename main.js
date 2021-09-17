@@ -2546,21 +2546,8 @@ body .tooltip {
       width: 100%;
       height: 100%
     }
-    #largeBoxPlotGenes {
-      position: relative;
-      width: 380px;
-      height: 700px;
-      vertical-align: middle;
-      margin: 0;
-      overflow: hidden;
-    }
-    #largeBoxPlotGenes svg {
-      display: inline-block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%
+    #boxPlotSvg {
+      width: 425
     }
 }
 

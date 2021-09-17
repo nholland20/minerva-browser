@@ -819,8 +819,8 @@ function addROIBox(osd, ROIBox, id){
     osd.addOverlay(overlay, id, storyNum, waypointNum)
 }
 
-function addMask(osd, svgObj) {
-    const maskNums = svgObj.maskNum;
+function addMask(osd, maskNums) {
+    // const maskNums = svgObj.maskNum;
     const numMasks = osd.hashstate.masks.length
     //Add the mask to all the ROIs of the same structure
     for (let i=0; i <= numMasks; i++){
@@ -847,7 +847,7 @@ function addEListener(osd, svgObj, svg, eventType) {
         svg.addEventListener('click', () => panZoom(osd, svgObj))
     }
     else if (eventType === 'addMask') {
-        svg.addEventListener('click', () => addMask(osd, svgObj))
+        svg.addEventListener('click', () => addMask(osd, svgObj.maskNum))
     }
 }
 
@@ -890,41 +890,56 @@ function buildCartoonImage(osd, svgNS, id, imagePath, svgTypes) {
 function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElement, osd) {
     const svgNS = 'http://www.w3.org/2000/svg';
     if (waypointNum === 0 && storyNum === 1 && windowInnerWidth >= scrnWBps[2]) {
-        cartoonImgContainer = buildCartoonImage(osd, svgNS, 'largeKidneySvgContainer', 'img/finalKidney.jpeg', [largeSlideMedullaPath, largeCortexPath])
+        const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'largeKidneySvgContainer', 'img/finalKidney.jpeg', [largeSlideMedullaPath, largeCortexPath])
         domElement.appendChild(cartoonImgContainer);
       }
     else if (waypointNum === 0 && storyNum === 1 && windowInnerWidth >= scrnWBps[1] && windowInnerWidth <= scrnWBps[2]){
-        cartoonImgContainer = buildCartoonImage(osd, svgNS, 'mediumKidneySvgContainer', 'img/finalKidney.jpeg', [mediumSlideMedullaPath, mediumCortexPath])
+        const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'mediumKidneySvgContainer', 'img/finalKidney.jpeg', [mediumSlideMedullaPath, mediumCortexPath])
         domElement.appendChild(cartoonImgContainer);
     }
     else if (waypointNum === 0 && storyNum === 1 && windowInnerWidth < scrnWBps[1]){
-        cartoonImgContainer = buildCartoonImage(osd, svgNS, 'smallKidneySvgContainer', 'img/finalKidney.jpeg', [smallSlideMedullaPath, smallCortexPath])
+        const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'smallKidneySvgContainer', 'img/finalKidney.jpeg', [smallSlideMedullaPath, smallCortexPath])
         domElement.appendChild(cartoonImgContainer);
     }
 
     else if (waypointNum === 1 && storyNum === 1 && windowInnerWidth >= scrnWBps[2]) {
-        cartoonImgContainer = buildCartoonImage(osd, svgNS, 'largeSubstructureSvgContainer', 'img/kidneySubstructures.png', [largeCollDuctPath, largeDctEllipse, largePctEllipse, largeLoopHEllipse, largeGlomEllipse, largeFiltMemEllipse])
+        const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'largeSubstructureSvgContainer', 'img/kidneySubstructures.png', [largeCollDuctPath, largeDctEllipse, largePctEllipse, largeLoopHEllipse, largeGlomEllipse, largeFiltMemEllipse])
         domElement.appendChild(cartoonImgContainer);
     }
     else if (waypointNum === 1 && storyNum === 1 && windowInnerWidth >= scrnWBps[1] && windowInnerWidth <= scrnWBps[2]) {
-        cartoonImgContainer = buildCartoonImage(osd, svgNS, 'mediumSubstructureSvgContainer', 'img/kidneySubstructures.png', [medCollDuctPath, medDctEllipse, medPctEllipse, medLoopHEllipse, medGlomEllipse, medFiltMemEllipse])
+        const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'mediumSubstructureSvgContainer', 'img/kidneySubstructures.png', [medCollDuctPath, medDctEllipse, medPctEllipse, medLoopHEllipse, medGlomEllipse, medFiltMemEllipse])
         domElement.appendChild(cartoonImgContainer);
     }
     else if (waypointNum === 1 && storyNum === 1 && windowInnerWidth < scrnWBps[1]) {
-        cartoonImgContainer = buildCartoonImage(osd, svgNS, 'smallSubstructureSvgContainer', 'img/kidneySubstructures.png', [smallCollDuctPath, smallDctEll, smallPctEll, smallLoopHEll, smallGlomEll, smallFiltMemEll])
+        const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'smallSubstructureSvgContainer', 'img/kidneySubstructures.png', [smallCollDuctPath, smallDctEll, smallPctEll, smallLoopHEll, smallGlomEll, smallFiltMemEll])
         domElement.appendChild(cartoonImgContainer);
     }
-    else if (waypointNum === 2 && storyNum === 1 && windowInnerWidth >= scrnWBps[2]) {
-        cartoonImgContainer = buildCartoonImage(osd, svgNS, 'largeBoxPlotGenes', 'img/genesDetected.png', [largeCollDuctBox, largeDctBox, largePctBox, largeLoopHBox, largeCortGlomBox, largeMedGlomBox, largeCorFiltMemBox, largeMedFiltMemBox])
-        domElement.appendChild(cartoonImgContainer);
-    }
-    else if (waypointNum === 2 && storyNum === 1 && windowInnerWidth >= scrnWBps[1] && windowInnerWidth <= scrnWBps[2]) {
-        cartoonImgContainer = buildCartoonImage(osd, svgNS, 'medBoxPlotGenes', 'img/genesDetected.png', [medCollDuctBox, medDctBox, medPctBox, medLoopHBox, medCortGlomBox, medMedGlomBox, medCorFiltMemBox, medMedFiltMemBox])
-        domElement.appendChild(cartoonImgContainer);
-    }
-    else if (waypointNum === 2 && storyNum === 1 && windowInnerWidth < scrnWBps[1]) {
-        cartoonImgContainer = buildCartoonImage(osd, svgNS, 'smallBoxPlotGenes', 'img/genesDetected.png', [smallCollDuctBox, smallDctBox, smallPctBox, smallLoopHBox, smallCortGlomBox, smallMedGlomBox, smallCorFiltMemBox, smallMedFiltMemBox])
-        domElement.appendChild(cartoonImgContainer);
+
+    else if (waypointNum === 2 && storyNum === 1) {
+        const svgContainer = document.createElement('object');
+        svgContainer.data = 'svg/GenesDetected.svg'
+        svgContainer.type = 'image/svg+xml'
+        svgContainer.id = 'plotSvg'
+        svgContainer.onload = function (){
+            const doc = this.getSVGDocument();
+            const collDuct = doc.querySelector('#collDuct');
+            collDuct.addEventListener('click', () => addMask(osd, [1]));
+            const loop = doc.querySelector('#loop');
+            loop.addEventListener('click', () => addMask(osd, [7]));
+            const dct = doc.querySelector('#dct');
+            dct.addEventListener('click', () => addMask(osd, [4]));
+            const pct = doc.querySelector('#pct');
+            pct.addEventListener('click', () => addMask(osd, [8]));
+            const corGlom = doc.querySelector('#corGlom');
+            corGlom.addEventListener('click', () => addMask(osd, [3]));
+            const medGlom = doc.querySelector('#medGlom');
+            medGlom.addEventListener('click', () => addMask(osd, [6]));
+            const medFiltMem = doc.querySelector('#medFiltMem');
+            medFiltMem.addEventListener('click', () => addMask(osd, [5]));
+            const corFiltMem = doc.querySelector('#corFiltMem');
+            corFiltMem.addEventListener('click', () => addMask(osd, [2]));
+        }
+        domElement.appendChild(svgContainer);
     }
 }
 
@@ -933,7 +948,7 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
 // If the waypoint is the first one after the Table of Contents HS.s must also be set, otherwise, it appears in the TOC too
 document.addEventListener('waypointBuildEvent', function(e) {
     const {waypointNum, storyNum, domElement, osd} = e.detail;
-    const width = window.innerWidth
+    const width = window.innerWidth;
     window.waypointAttr = {
         waypointNum: waypointNum,
         storyNum: storyNum,
@@ -967,7 +982,7 @@ window.addEventListener('resize', function (e){
     const oldW = e.target.window.waypointAttr.width
     if ((currW < scrnWBps[1] && oldW >= scrnWBps[1]) || (currW < scrnWBps[2] && oldW >= scrnWBps[2]) || (currW >= scrnWBps[2] && oldW < scrnWBps[2]) || (currW >= scrnWBps[1] && oldW < scrnWBps[1])) {
         const {waypointNum, storyNum, domElement, osd} = e.target.window.waypointAttr;
-        const svgCont = ['#largeKidneySvgContainer', '#mediumKidneySvgContainer', '#smallKidneySvgContainer', '#largeSubstructureSvgContainer', '#mediumSubstructureSvgContainer', '#smallSubstructureSvgContainer','#largeBoxPlotGenes', '#medBoxPlotGenes', '#smallBoxPlotGenes']
+        const svgCont = ['#largeKidneySvgContainer', '#mediumKidneySvgContainer', '#smallKidneySvgContainer', '#largeSubstructureSvgContainer', '#mediumSubstructureSvgContainer', '#smallSubstructureSvgContainer','#plotSvg']
         for (let id of svgCont) {
             if (document.querySelector(id)) {
                 document.querySelector(id).remove();
