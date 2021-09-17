@@ -458,7 +458,6 @@ function panZoom(osd, svgObj) {
     osd.viewer.viewport.zoomTo(svgObj.zoomRatio)
     //If a 'Best in Class ROI is already highlighted, remove it and add a box around the new one
     if (document.querySelector(`#${id}-1`)){
-        console.log(document.querySelectorAll(`[id^=${id}-`))
         const ROIBoxes = document.querySelectorAll(`[id^=${id}-`)
         for (let box of ROIBoxes){
           osd.viewer.removeOverlay(`#${box.id}`)
