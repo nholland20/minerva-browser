@@ -958,16 +958,19 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
         svgContainer.onload = function (){
             const doc = this.getSVGDocument();
             const dct = doc.querySelector('#dct')
-            dct.addEventListener('click', () => addMask(osd, [7, 4]));
-            dct.addEventListener('click', () => panZoom(osd, allROIs.r044, storyNum, waypointNum));
+            addEListener(osd, allROIs.r044, dct, ['addMask', 'panZoom'], storyNum, waypointNum);
             const collDuct = doc.querySelector('#cd');
-            collDuct.addEventListener('click', () => panZoom(osd, allROIs.r056, storyNum, waypointNum));
-            collDuct.addEventListener('click', () => addMask(osd, allROIs.r056.maskNum));
+            addEListener(osd, allROIs.r056, collDuct, ['addMask', 'panZoom'], storyNum, waypointNum);
             const pct = doc.querySelector('#pct');
-            pct.addEventListener('click', () => panZoom(osd, allROIs.r041, storyNum, waypointNum))
-            pct.addEventListener('click', () => addMask(osd, allROIs.r041.maskNum))
+            addEListener(osd, allROIs.r041, pct, ['addMask', 'panZoom'], storyNum, waypointNum);
         }
         domElement.appendChild(svgContainer);
+        
+        // //insert table that matches the heatmap pathways to their abbreviation below the heatmap in the waypoint.
+        // const table_showdown = new showdown.Converter({tables: true});
+        // const pathways = new String("| Pathway | Full PathwayName |\n|:---------|:---------------------------------------------|\n| SLC21   | SLC21/ASLCO: Organic anion transporter |\n| ABC| ABC transporters|\n| SLC16| Monocarboxylate transporter|\n| SLC17| Vesicular glutamate transporter|\n| SLC6| Sodium- and chloride-dependent neurotransmitter transporter|\n| SLC22| Organic cation/anion/zwitterion transporter                         |\n| OCT| Organic cation transporter (OCT) family|\n| SLC38| System A and System N sodium-coupled neutral amino acid transporter |\n| SLC5    | Sodium glucose cotransporter|\n| SLC23   | Na+-dependent ascorbic acid transporter|\n| SLC44   | Choline-like transporter|\n| SLC39   | SLC39: Metal ion transporter|\n| SLC4    | Bicarbonate transporter|\n| SLC2    | Facilitative GLUT transporter|\n| SLC36   | Proton-coupled amino acid transporter|\n| SLC34   | Type II Na+-phosphate cotransporter|\n| SLC13   | Human Na+-sulfate/carboxylate cotransporter|\n| SLC42   | Rh ammonium transporter|");
+        // const table_html = table_showdown.makeHtml(pathways)
+        // domElement.insertAdjacentHTML('afterend', table_html)
     }
     else if (waypointNum === 5 && storyNum === 1 && windowInnerWidth >= scrnWBps[2]) {
         const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'largeVolcanoPlot', 'img/corGlomVsMedGlom.png', [largeVPlotCor, largeVPlotMed], storyNum, waypointNum)

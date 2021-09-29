@@ -11,6 +11,8 @@ function loadNanostringStory(storyType) {
       switch (storyType) {
         case 'kidney':
           return require('./nanostringKidney.js');
+        case 'pancreas':
+          return require('./nanostringPancreas');
         default:
           throw new Error('unsupported story type');
       }

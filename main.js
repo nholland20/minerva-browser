@@ -2502,8 +2502,6 @@ body .tooltip {
 .minerva-root .axis--x path {
     display: none;
 }
-
-/*! Nanostring-specific */
 `
 
 const exhibitHTML = `

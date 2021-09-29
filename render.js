@@ -206,11 +206,10 @@ const newCopyButton = function() {
 
 // Render the non-openseadragon UI
 export const Render = function(hashstate, osd, eventHandler) {
-
   this.eventHandler = eventHandler;
   this.trackers = hashstate.trackers;
   this.pollycache = hashstate.pollycache;
-  this.showdown = new showdown.Converter();
+  this.showdown = new showdown.Converter({tables: true});
 
   this.osd = osd;
   this.hashstate = hashstate;
@@ -1045,7 +1044,8 @@ Render.prototype = {
         //render without menu redraw
         THIS.osd.newView(true);
         //delay visible arrow until animation end
-        HS.a = [viewportCoordinates.x,viewportCoordinates.y];
+        //Nanostring edit: removed the arrow from visualizations
+        //HS.a = [viewportCoordinates.x,viewportCoordinates.y];
     }
 
 
