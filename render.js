@@ -209,7 +209,7 @@ export const Render = function(hashstate, osd, eventHandler) {
   this.eventHandler = eventHandler;
   this.trackers = hashstate.trackers;
   this.pollycache = hashstate.pollycache;
-  this.showdown = new showdown.Converter({tables: true});
+  this.showdown = new showdown.Converter();
 
   this.osd = osd;
   this.hashstate = hashstate;

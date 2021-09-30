@@ -1,5 +1,6 @@
 const slideMedulla = require('./slideMedulla.json');
 const slideCortex = require('./slideCortex.json');
+import { image } from 'd3-fetch';
 import { getConfig } from './nanostringStoryConfig';
 import { addMask, addEListener, buildCartoonImage} from './nanostringUtils';
 
@@ -523,9 +524,9 @@ const largeGlomEllipse = {
     stroke: 'red',
     strokeWidth: '2',
     eventTypes: ['addMask', 'panZoom'],
-    panCoord: {x: 0.2518, y: 0.4838},
-    zoomRatio: 1.0785,
-    ROIBox: [{overlay: {x: 0.4056, y: 0.429, width: 0.0085, height: 0.0077}}, {overlay: {x: 0.1579, y: 0.6106, width: 0.0084, height: 0.008}}],
+    panCoord: {x: 0.1646, y: 0.6141},
+    zoomRatio: 19.9398,
+    ROIBox: [{overlay: {x: 0.1579, y: 0.6106, width: 0.0084, height: 0.008}}],
     maskNum: [3, 6]
 }
 
@@ -540,9 +541,9 @@ const largeFiltMemEllipse = {
     stroke: 'red',
     strokeWidth: '2',
     eventTypes: ['addMask', 'panZoom'],
-    panCoord: {x: 0.3235, y: 0.3758},
-    zoomRatio: 2.8316,
-    ROIBox: [{overlay: {x: 0.3635, y: 0.4326, width: 0.0269, height: 0.0139}}, {overlay: { x: 0.275, y: 0.3217, width: 0.0235, height: 0.0224}}],
+    panCoord: {x: 0.2855, y: 0.3292},
+    zoomRatio: 14.6104,
+    ROIBox: [{overlay: { x: 0.275, y: 0.3217, width: 0.0235, height: 0.0224}}],
     maskNum: [2, 5]
 }
 
@@ -829,7 +830,37 @@ const smallVPlotMed ={
 
 function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElement, osd) {
     const svgNS = 'http://www.w3.org/2000/svg';
-    if (waypointNum === 0 && storyNum === 1 && windowInnerWidth >= scrnWBps[2]) {
+    if (waypointNum === 0 && storyNum === 0){
+        // insert the logo
+        const logoDiv = document.createElement('div');
+        logoDiv.id = 'logoDiv'
+        const logo = document.createElement('img');
+        logo.id = 'logo'
+        logo.src = 'img/SOA_logo.png'
+        logoDiv.appendChild(logo)
+        domElement.appendChild(logoDiv);
+        //insert the text
+        const tocText = document.createElement('div');
+        tocText.id = 'tocText'
+        tocText.innerText = `Welcome to the the Spatial Organ Atlas (SOA) demonstration of GeoMx DSP on Kidney.
+
+        All the data in the SOA is downloadable and this kidney is sample 1 in the downloadable data set
+        
+        This Story is constructed with Minerva
+        
+         This demonstration shows some of the key analysis we carried out on this kidney data . For instructions on navigating see this video
+        Summary
+        
+        Image can be zoomed in panned via Mouse/trackpad
+        
+        Left and right hand menus hand menu can be collapsed or opened   by clicking on < or >
+        
+        Left hand menu contains results with selectable regions and selectable aoi masks- allows switching of overlays
+        
+        Right hand menu controls the images allowing different layers to be turned on and off`
+        document.querySelector('.minerva-story-container').appendChild(tocText)
+    }
+    else if (waypointNum === 0 && storyNum === 1 && windowInnerWidth >= scrnWBps[2]) {
         const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'largeSvgContainer', 'img/finalKidney.jpeg', [largeSlideMedullaPath, largeCortexPath], storyNum, waypointNum)
         domElement.appendChild(cartoonImgContainer);
       }
@@ -966,11 +997,14 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
         }
         domElement.appendChild(svgContainer);
         
-        // //insert table that matches the heatmap pathways to their abbreviation below the heatmap in the waypoint.
-        // const table_showdown = new showdown.Converter({tables: true});
-        // const pathways = new String("| Pathway | Full PathwayName |\n|:---------|:---------------------------------------------|\n| SLC21   | SLC21/ASLCO: Organic anion transporter |\n| ABC| ABC transporters|\n| SLC16| Monocarboxylate transporter|\n| SLC17| Vesicular glutamate transporter|\n| SLC6| Sodium- and chloride-dependent neurotransmitter transporter|\n| SLC22| Organic cation/anion/zwitterion transporter                         |\n| OCT| Organic cation transporter (OCT) family|\n| SLC38| System A and System N sodium-coupled neutral amino acid transporter |\n| SLC5    | Sodium glucose cotransporter|\n| SLC23   | Na+-dependent ascorbic acid transporter|\n| SLC44   | Choline-like transporter|\n| SLC39   | SLC39: Metal ion transporter|\n| SLC4    | Bicarbonate transporter|\n| SLC2    | Facilitative GLUT transporter|\n| SLC36   | Proton-coupled amino acid transporter|\n| SLC34   | Type II Na+-phosphate cotransporter|\n| SLC13   | Human Na+-sulfate/carboxylate cotransporter|\n| SLC42   | Rh ammonium transporter|");
-        // const table_html = table_showdown.makeHtml(pathways)
-        // domElement.insertAdjacentHTML('afterend', table_html)
+        //insert table that matches the heatmap pathways to their abbreviation below the heatmap in the waypoint.
+        const tableDiv = document.createElement('div');
+        tableDiv.id = 'pathwayTable'
+        const table_showdown = new showdown.Converter({tables: true});
+        const pathways = "| Pathway | Full PathwayName |\n|:---------|:---------------------------------------------|\n| SLC21   | SLC21/ASLCO: Organic anion transporter |\n| ABC| ABC transporters|\n| SLC16| Monocarboxylate transporter|\n| SLC17| Vesicular glutamate transporter|\n| SLC6| Sodium- and chloride-dependent neurotransmitter transporter|\n| SLC22| Organic cation/anion/zwitterion transporter                         |\n| OCT| Organic cation transporter (OCT) family|\n| SLC38| System A and System N sodium-coupled neutral amino acid transporter |\n| SLC5    | Sodium glucose cotransporter|\n| SLC23   | Na+-dependent ascorbic acid transporter|\n| SLC44   | Choline-like transporter|\n| SLC39   | SLC39: Metal ion transporter|\n| SLC4    | Bicarbonate transporter|\n| SLC2    | Facilitative GLUT transporter|\n| SLC36   | Proton-coupled amino acid transporter|\n| SLC34   | Type II Na+-phosphate cotransporter|\n| SLC13   | Human Na+-sulfate/carboxylate cotransporter|\n| SLC42   | Rh ammonium transporter|";
+        const table_html = table_showdown.makeHtml(pathways)
+        tableDiv.innerHTML = table_html
+        domElement.appendChild(tableDiv)
     }
     else if (waypointNum === 5 && storyNum === 1 && windowInnerWidth >= scrnWBps[2]) {
         const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'largeVolcanoPlot', 'img/corGlomVsMedGlom.png', [largeVPlotCor, largeVPlotMed], storyNum, waypointNum)
@@ -984,6 +1018,14 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
         const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'smallVolcanoPlot', 'img/corGlomVsMedGlom.png', [smallVPlotCor, smallVPlotMed], storyNum, waypointNum)
         domElement.appendChild(cartoonImgContainer);
     }
+    // else if (waypointNum === 6 && storyNum === 1){
+    //     window.onload = function (){
+    //        legendEl = document.querySelectorAll('.legend');
+    //        legendEl.forEach(el => {
+    //            el.remove()
+    //        });
+    //     };
+    // }
 }
 
 // Add cartoon image to a specific waypoint
@@ -1026,18 +1068,26 @@ window.addEventListener('resize', function (e){
     if ((currW < scrnWBps[1] && oldW >= scrnWBps[1]) || (currW < scrnWBps[2] && oldW >= scrnWBps[2]) || (currW >= scrnWBps[2] && oldW < scrnWBps[2]) || (currW >= scrnWBps[1] && oldW < scrnWBps[1])) {
         const {waypointNum, storyNum, domElement, osd} = e.target.window.waypointAttr;
         const svgCont = ['#largeSvgContainer', '#mediumSvgContainer', '#smallSvgContainer', '#largeSubstructureSvgContainer', '#mediumSubstructureSvgContainer', '#smallSubstructureSvgContainer','#plotSvg', '#legend1Svg', '#legend2Svg',
-    '#largeVolcanoPlot', '#mediumVolcanoPlot', '#smallVolcanoPlot']
-        for (let id of svgCont) {
-            if (document.querySelector(id)) {
-                document.querySelector(id).remove();
-            }
+    '#largeVolcanoPlot', '#mediumVolcanoPlot', '#smallVolcanoPlot', '#pathwayTable', '#logo', '#tocText']
+    svgCont.forEach((id) => {
+        if (document.querySelector(id)) {
+            document.querySelector(id).remove();
         }
+    });
         buildWaypointCartoon(waypointNum, storyNum, currW, domElement, osd);
     } 
     e.target.window.waypointAttr.width = currW
 });
 
 const css = `
+#logoDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#logoDiv img {
+    width:50%;
+}
 @media (min-width: 1100px) {
     .minerva-root .minerva-sidebar-menu {
         width: 450px !important;

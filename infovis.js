@@ -484,34 +484,34 @@ infovis.renderScatterplot = function(wid_waypoint, id, visdata, events, eventHan
             });
 
         // draw legend
-        var legend = svg.selectAll(".legend")
-            .data(sortedColor.domain())
-            .enter().append("g")
-            .attr("class", "legend")
-            .attr("transform", function (d, i) {
-                return "translate(0," + i * 20 + ")";
-            });
+        // var legend = svg.selectAll(".legend")
+        //     .data(sortedColor.domain())
+        //     .enter().append("g")
+        //     .attr("class", "legend")
+        //     .attr("transform", function (d, i) {
+        //         return "translate(0," + i * 20 + ")";
+        //     });
 
         // draw legend colored rectangles
-        legend.append("rect")
-            .attr("x", width - 18)
-            .attr("width", 18)
-            .attr("height", 18)
-            .style("fill", function(d){
-                console.log(sortedColor(d));
-                return "#" + sortedColor(d);
-            })
+    //     legend.append("rect")
+    //         .attr("x", width - 18)
+    //         .attr("width", 18)
+    //         .attr("height", 18)
+    //         .style("fill", function(d){
+    //             console.log(sortedColor(d));
+    //             return "#" + sortedColor(d);
+    //         })
 
-        // draw legend text
-        legend.append("text")
-            .attr("x", width - 24)
-            .attr("y", 9)
-            .attr("dy", ".35em")
-            .style("text-anchor", "end")
-            .text(function (d) {
-                return d;
-            }).attr('font-size', '0.8em')
-            .attr('fill', 'white');
+    //     // draw legend text
+    //     legend.append("text")
+    //         .attr("x", width - 24)
+    //         .attr("y", 9)
+    //         .attr("dy", ".35em")
+    //         .style("text-anchor", "end")
+    //         .text(function (d) {
+    //             return d;
+    //         }).attr('font-size', '0.8em')
+    //         .attr('fill', 'white');
     }).catch((error) => {
         throw error;
     });

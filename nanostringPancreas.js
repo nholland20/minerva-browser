@@ -348,6 +348,21 @@ const smallVPlotBeta ={
 
 function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElement, osd) {
     const svgNS = 'http://www.w3.org/2000/svg';
+    if (waypointNum === 0 && storyNum === 0){
+        // insert the logo
+        const logoDiv = document.createElement('div');
+        logoDiv.id = 'logoDiv'
+        const logo = document.createElement('img');
+        logo.id = 'logo'
+        logo.src = 'img/SOA_logo.png'
+        logoDiv.appendChild(logo)
+        domElement.appendChild(logoDiv);
+        //insert the text
+        const tocText = document.createElement('div');
+        tocText.id = 'tocText'
+        tocText.innerText = `Text to be inserted here`
+        document.querySelector('.minerva-story-container').appendChild(tocText)
+    }
     if (waypointNum === 0 && storyNum === 1 && windowInnerWidth >= scrnWBps[2]) {
         const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'largeSvgContainer', 'img/pancreas.png', [largePancreas], storyNum, waypointNum)
         domElement.appendChild(cartoonImgContainer);
@@ -455,7 +470,17 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
                 }
             })
         };
+
         domElement.appendChild(svgContainer)
+
+        //insert table that matches the heatmap pathways to their abbreviation below the heatmap in the waypoint.
+        const tableDiv = document.createElement('div');
+        tableDiv.id = 'pathwayTable'
+        const table_showdown = new showdown.Converter({tables: true});
+        const pathways = "| Pathway | Pathway Name                                              |\n|---------|-----------------------------------------------------------|\n| 1       | Pancreatic secretion                                      |\n| 2       | AGE-RAGE signaling pathway in diabetic complications      |\n| 3       | Pancreatic cancer                                         |\n| 4       | Type I diabetes mellitus                                  |\n| 5       | RTK class II (Insulin receptor family)                    |\n| 6       | Insulin signaling pathway                                 |\n| 7       | Insulin resistance                                        |\n| 8       | Maturity onset diabetes of the young                      |\n| 9       | Glucagon                                                  |\n| 10      | Glucagon signaling pathway                                |\n| 11      | Endocrine and other factor-regulated calcium reabsorption |\n| 12      | Insulin secretion                                         |\n| 13      | Type II diabetes mellitus                                 |";
+        const table_html = table_showdown.makeHtml(pathways)
+        tableDiv.innerHTML = table_html
+        domElement.appendChild(tableDiv)
     }
 
     else if (waypointNum === 5 && storyNum === 1 && windowInnerWidth >= scrnWBps[2]) {
@@ -509,7 +534,7 @@ window.addEventListener('resize', function (e){
     const oldW = e.target.window.waypointAttr.width
     if ((currW < scrnWBps[1] && oldW >= scrnWBps[1]) || (currW < scrnWBps[2] && oldW >= scrnWBps[2]) || (currW >= scrnWBps[2] && oldW < scrnWBps[2]) || (currW >= scrnWBps[1] && oldW < scrnWBps[1])) {
         const {waypointNum, storyNum, domElement, osd} = e.target.window.waypointAttr;
-        const svgCont = ['#largeSvgContainer', '#mediumSvgContainer', '#smallSvgContainer', '#substructures', '#plotSvg', '#largeVolcanoPlot', '#mediumVolcanoPlot', '#smallVolcanoPlot'];
+        const svgCont = ['#largeSvgContainer', '#mediumSvgContainer', '#smallSvgContainer', '#substructures', '#plotSvg', '#legend1Svg', '#largeVolcanoPlot', '#mediumVolcanoPlot', '#smallVolcanoPlot', '#pathwayTable',  '#logo', '#tocText'];
         svgCont.forEach((id) => {
             if (document.querySelector(id)) {
                 document.querySelector(id).remove();
@@ -522,6 +547,14 @@ window.addEventListener('resize', function (e){
 
 
 const css = `
+#logoDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#logoDiv img {
+    width:50%;
+}
 @media (min-width: 1100px) {
     .minerva-root .minerva-sidebar-menu {
         width: 450px !important;
