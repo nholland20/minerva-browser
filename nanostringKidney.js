@@ -828,8 +828,16 @@ const smallVPlotMed ={
     maskNum: [6]
 }
 
+function addHintText(hintText, hintId, showdown_text) {
+    const hintTextDiv = document.createElement('div');
+    hintTextDiv.id = hintId
+    hintTextDiv.innerHTML = showdown_text.makeHtml(hintText);
+    document.querySelector('.minerva-mask-layers').appendChild(hintTextDiv);
+}
+
 function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElement, osd) {
     const svgNS = 'http://www.w3.org/2000/svg';
+    const showdown_text = new showdown.Converter({tables: true}); 
     if (waypointNum === 0 && storyNum === 0){
         // insert the logo
         const logoDiv = document.createElement('div');
@@ -840,50 +848,63 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
         logoDiv.appendChild(logo)
         domElement.appendChild(logoDiv);
         //insert the text
-        const tocText = document.createElement('div');
-        tocText.id = 'tocText'
-        tocText.innerText = `Welcome to the the Spatial Organ Atlas (SOA) demonstration of GeoMx DSP on Kidney.
-
-        All the data in the SOA is downloadable and this kidney is sample 1 in the downloadable data set
-        
-        This Story is constructed with Minerva
-        
-         This demonstration shows some of the key analysis we carried out on this kidney data . For instructions on navigating see this video
-        Summary
-        
-        Image can be zoomed in panned via Mouse/trackpad
-        
-        Left and right hand menus hand menu can be collapsed or opened   by clicking on < or >
-        
-        Left hand menu contains results with selectable regions and selectable aoi masks- allows switching of overlays
-        
-        Right hand menu controls the images allowing different layers to be turned on and off`
-        document.querySelector('.minerva-story-container').appendChild(tocText)
+        const tocTextDiv = document.createElement('div');
+        tocTextDiv.id = 'tocText'
+        const tocText = "Welcome to the Spatial Organ Atlas (SOA) Kidney Demonstration.\n\nAll the data in the SOA is downloadable [link needed] and this kidney is sample 1 [link needed] in the downloadable data set.\n\nThis Story is constructed with [Minerva](https://github.com/labsyspharm/minerva-story/wiki).\n\nThis demonstration shows some of the key analysis, carried out using the downloadable kidney. For instructions on navigating in Minerva see this video [link needed].\n\nHints:\n1. The slide image can be zoomed in and panned via Mouse/trackpad\n2. Left- and right-hand menus can be collapsed or opened by clicking on < or >\n3. Left hand menu contains results with selectable regions and selectable AOI masks- allows switching of overlays\n4. Right hand menu controls the images allowing different layers to be turned on and off"
+        tocTextDiv.innerHTML = showdown_text.makeHtml(tocText)
+        document.querySelector('.minerva-story-container').appendChild(tocTextDiv)
     }
     else if (waypointNum === 0 && storyNum === 1 && windowInnerWidth >= scrnWBps[2]) {
         const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'largeSvgContainer', 'img/finalKidney.jpeg', [largeSlideMedullaPath, largeCortexPath], storyNum, waypointNum)
         domElement.appendChild(cartoonImgContainer);
+        const hintText = `Hint:   
+        Select an individual point to jump to that specific ROI`
+        const hintId = 'hintTextRemove';
+        addHintText(hintText, hintId, showdown_text);
       }
     else if (waypointNum === 0 && storyNum === 1 && windowInnerWidth >= scrnWBps[1] && windowInnerWidth <= scrnWBps[2]){
         const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'mediumSvgContainer', 'img/finalKidney.jpeg', [mediumSlideMedullaPath, mediumCortexPath], storyNum, waypointNum)
         domElement.appendChild(cartoonImgContainer);
+        const hintText = `Hint:   
+        Select an individual point to jump to that specific ROI`
+        const hintId = 'hintTextRemove';
+        addHintText(hintText, hintId, showdown_text);
     }
     else if (waypointNum === 0 && storyNum === 1 && windowInnerWidth < scrnWBps[1]){
         const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'smallSvgContainer', 'img/finalKidney.jpeg', [smallSlideMedullaPath, smallCortexPath], storyNum, waypointNum)
         domElement.appendChild(cartoonImgContainer);
+        const hintText = `Hint:   
+        Select an individual point to jump to that specific ROI`
+        const hintId = 'hintTextRemove';
+        addHintText(hintText, hintId, showdown_text);
     }
 
     else if (waypointNum === 1 && storyNum === 1 && windowInnerWidth >= scrnWBps[2]) {
         const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'largeSubstructureSvgContainer', 'img/kidneySubstructures.png', [largeCollDuctPath, largeDctEllipse, largePctEllipse, largeLoopHEllipse, largeGlomEllipse, largeFiltMemEllipse], storyNum, waypointNum)
         domElement.appendChild(cartoonImgContainer);
+        const hintText = `Hints:   
+        1. Features can also be highlighted by selecting data layers (right hand menu)   
+        2. Selecting channels will show how AOI were selected`
+        const hintId = 'hintTextRemove';
+        addHintText(hintText, hintId, showdown_text);
     }
     else if (waypointNum === 1 && storyNum === 1 && windowInnerWidth >= scrnWBps[1] && windowInnerWidth <= scrnWBps[2]) {
         const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'mediumSubstructureSvgContainer', 'img/kidneySubstructures.png', [medCollDuctPath, medDctEllipse, medPctEllipse, medLoopHEllipse, medGlomEllipse, medFiltMemEllipse], storyNum, waypointNum)
         domElement.appendChild(cartoonImgContainer);
+        const hintText = `Hints:   
+        1. Features can also be highlighted by selecting data layers (right hand menu)   
+        2. Selecting channels will show how AOI were selected`
+        const hintId = 'hintTextRemove';
+        addHintText(hintText, hintId, showdown_text);
     }
     else if (waypointNum === 1 && storyNum === 1 && windowInnerWidth < scrnWBps[1]) {
         const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'smallSubstructureSvgContainer', 'img/kidneySubstructures.png', [smallCollDuctPath, smallDctEll, smallPctEll, smallLoopHEll, smallGlomEll, smallFiltMemEll], storyNum, waypointNum)
         domElement.appendChild(cartoonImgContainer);
+        const hintText = `Hints:   
+        1. Features can also be highlighted by selecting data layers (right hand menu)   
+        2. Selecting channels will show how AOI were selected`
+        const hintId = 'hintTextRemove';
+        addHintText(hintText, hintId, showdown_text);
     }
 
     else if (waypointNum === 2 && storyNum === 1) {
@@ -911,11 +932,15 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
             corFiltMem.addEventListener('click', () => addMask(osd, [2]));
         }
         domElement.appendChild(svgContainer);
+        const hintText = `Hint:   
+        If you want to use the data layers you can turn off all but one by selecting one of the box plots`
+        const hintId = 'hintText';
+        addHintText(hintText, hintId, showdown_text);
     }
 
     else if (waypointNum === 3 && storyNum === 1) {
         const svgLegend2 = document.createElement('object');
-        svgLegend2.data = 'svg/cellTypeDeconLegend2.svg';
+        svgLegend2.data = 'svg/maskType.svg';
         svgLegend2.type = 'image/svg+xml';
         svgLegend2.id = 'legend2Svg';
         svgLegend2.onload = function (){
@@ -973,6 +998,11 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
         svgLegend1.type = 'image/svg+xml';
         svgLegend1.id = 'legend1Svg';
         domElement.appendChild(svgLegend1);
+
+        const hintText = `Hint:   
+        Select a single row of the figure to be taken to that ROI`
+        const hintId = 'hintText';
+        addHintText(hintText, hintId, showdown_text);
     }
 
     else if (waypointNum === 4 && storyNum === 1) {
@@ -1000,23 +1030,80 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
         //insert table that matches the heatmap pathways to their abbreviation below the heatmap in the waypoint.
         const tableDiv = document.createElement('div');
         tableDiv.id = 'pathwayTable'
-        const table_showdown = new showdown.Converter({tables: true});
         const pathways = "| Pathway | Full PathwayName |\n|:---------|:---------------------------------------------|\n| SLC21   | SLC21/ASLCO: Organic anion transporter |\n| ABC| ABC transporters|\n| SLC16| Monocarboxylate transporter|\n| SLC17| Vesicular glutamate transporter|\n| SLC6| Sodium- and chloride-dependent neurotransmitter transporter|\n| SLC22| Organic cation/anion/zwitterion transporter                         |\n| OCT| Organic cation transporter (OCT) family|\n| SLC38| System A and System N sodium-coupled neutral amino acid transporter |\n| SLC5    | Sodium glucose cotransporter|\n| SLC23   | Na+-dependent ascorbic acid transporter|\n| SLC44   | Choline-like transporter|\n| SLC39   | SLC39: Metal ion transporter|\n| SLC4    | Bicarbonate transporter|\n| SLC2    | Facilitative GLUT transporter|\n| SLC36   | Proton-coupled amino acid transporter|\n| SLC34   | Type II Na+-phosphate cotransporter|\n| SLC13   | Human Na+-sulfate/carboxylate cotransporter|\n| SLC42   | Rh ammonium transporter|";
-        const table_html = table_showdown.makeHtml(pathways)
+        const table_html = showdown_text.makeHtml(pathways)
         tableDiv.innerHTML = table_html
         domElement.appendChild(tableDiv)
+
+        const hintText = `Hint:   
+        Select a section of heat map to see all the ROI of that type be shown (toggling the nuclei layer may help spot smaller ROI)`
+        const hintId = 'hintText';
+        addHintText(hintText, hintId, showdown_text);
     }
     else if (waypointNum === 5 && storyNum === 1 && windowInnerWidth >= scrnWBps[2]) {
         const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'largeVolcanoPlot', 'img/corGlomVsMedGlom.png', [largeVPlotCor, largeVPlotMed], storyNum, waypointNum)
         domElement.appendChild(cartoonImgContainer);
+        const hintText = `Hint:   
+        Select of the boxed (significant) sides of the volcano plot to see all the ROI of cortical or juxtamedullary ROI (toggling the nuclei layer may help spot smaller ROI)`
+        const hintId = 'hintTextRemove';
+        addHintText(hintText, hintId, showdown_text);
     }
     else if (waypointNum === 5 && storyNum === 1 && windowInnerWidth >= scrnWBps[1] && windowInnerWidth <= scrnWBps[2]) {
         const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'mediumVolcanoPlot', 'img/corGlomVsMedGlom.png', [medVPlotCor, medVPlotMed], storyNum, waypointNum)
         domElement.appendChild(cartoonImgContainer);
+        const hintText = `Hint:   
+        Select of the boxed (significant) sides of the volcano plot to see all the ROI of cortical or juxtamedullary ROI (toggling the nuclei layer may help spot smaller ROI)`
+        const hintId = 'hintTextRemove';
+        addHintText(hintText, hintId, showdown_text);
     }
     else if (waypointNum === 5 && storyNum === 1 && windowInnerWidth < scrnWBps[1]) {
         const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'smallVolcanoPlot', 'img/corGlomVsMedGlom.png', [smallVPlotCor, smallVPlotMed], storyNum, waypointNum)
         domElement.appendChild(cartoonImgContainer);
+        const hintText = `Hint:   
+        Select of the boxed (significant) sides of the volcano plot to see all the ROI of cortical or juxtamedullary ROI (toggling the nuclei layer may help spot smaller ROI)`
+        const hintId = 'hintTextRemove';
+        addHintText(hintText, hintId, showdown_text);
+    }
+
+    else if ((waypointNum === 6 || waypointNum === 7) && storyNum === 1) {
+        const svgLegend1 = document.createElement('object');
+        svgLegend1.data = 'svg/maskType.svg';
+        svgLegend1.type = 'image/svg+xml';
+        svgLegend1.id = 'legend1Svg';
+        svgLegend1.onload = function (){
+            const doc = this.getSVGDocument();
+            const collDuct = doc.querySelector('#collDuct');
+            collDuct.addEventListener('click', () => addMask(osd, [1]));
+            const loop = doc.querySelector('#loop');
+            loop.addEventListener('click', () => addMask(osd, [7]));
+            const dct = doc.querySelector('#dct');
+            dct.addEventListener('click', () => addMask(osd, [4]));
+            const pct = doc.querySelector('#pct');
+            pct.addEventListener('click', () => addMask(osd, [8]));
+            const corGlom = doc.querySelector('#corGlom');
+            corGlom.addEventListener('click', () => addMask(osd, [3]));
+            const medGlom = doc.querySelector('#medGlom');
+            medGlom.addEventListener('click', () => addMask(osd, [6]));
+            const medFiltMem = doc.querySelector('#medFiltMem');
+            medFiltMem.addEventListener('click', () => addMask(osd, [5]));
+            const corFiltMem = doc.querySelector('#corFiltMem');
+            corFiltMem.addEventListener('click', () => addMask(osd, [2]));
+        };
+        domElement.appendChild(svgLegend1);
+        const hintText = `Hint:   
+        Select an individual point to jump to that specific ROI`
+        const hintId = 'hintText';
+        addHintText(hintText, hintId, showdown_text);
+    }
+
+    else if (waypointNum === 0 && storyNum === 2){
+        const lastpageTextDiv = document.createElement('div');
+        lastpageTextDiv.id = 'lastPageText'
+        const lastPageText = `For more information on NanoString GeoMx technology visit www.nanostring.com.   
+        Minerva is an open source software package was developed by Laboratory of Systems Pharmacology, Harvard University and is available [here](https://github.com/labsyspharm/minerva-story/wiki).   
+        We would like to thank John Hoffer and Jeremy Muhlich at the for assistance in enabling Minerva features to support the Spatial Organ Atlas.\n\nFOR RESEARCH USE ONLY, not for Diagnostic Use`
+        lastpageTextDiv.innerHTML = showdown_text.makeHtml(lastPageText);
+        domElement.appendChild(lastpageTextDiv);
     }
     // else if (waypointNum === 6 && storyNum === 1){
     //     window.onload = function (){
@@ -1067,14 +1154,21 @@ window.addEventListener('resize', function (e){
     const oldW = e.target.window.waypointAttr.width
     if ((currW < scrnWBps[1] && oldW >= scrnWBps[1]) || (currW < scrnWBps[2] && oldW >= scrnWBps[2]) || (currW >= scrnWBps[2] && oldW < scrnWBps[2]) || (currW >= scrnWBps[1] && oldW < scrnWBps[1])) {
         const {waypointNum, storyNum, domElement, osd} = e.target.window.waypointAttr;
-        const svgCont = ['#largeSvgContainer', '#mediumSvgContainer', '#smallSvgContainer', '#largeSubstructureSvgContainer', '#mediumSubstructureSvgContainer', '#smallSubstructureSvgContainer','#plotSvg', '#legend1Svg', '#legend2Svg',
-    '#largeVolcanoPlot', '#mediumVolcanoPlot', '#smallVolcanoPlot', '#pathwayTable', '#logo', '#tocText']
+        const svgCont = ['#largeSvgContainer', '#mediumSvgContainer', '#smallSvgContainer', '#largeSubstructureSvgContainer', '#mediumSubstructureSvgContainer', '#smallSubstructureSvgContainer',
+    '#largeVolcanoPlot', '#mediumVolcanoPlot', '#smallVolcanoPlot', '#hintTextRemove']
     svgCont.forEach((id) => {
         if (document.querySelector(id)) {
             document.querySelector(id).remove();
         }
     });
-        buildWaypointCartoon(waypointNum, storyNum, currW, domElement, osd);
+        // The waypoints that have images that need resizing via buildWaypointCartoon
+        const waypointsToRebuild = [0, 1, 5]
+        // For this story, all storyNums, except the Table of Contents page, which doesn't need rebuilding, are 1
+        waypointsToRebuild.forEach((waypoint) => {
+            if (waypointNum === waypoint && storyNum === 1) {
+                buildWaypointCartoon(waypointNum, storyNum, currW, domElement, osd);
+            }
+        });
     } 
     e.target.window.waypointAttr.width = currW
 });

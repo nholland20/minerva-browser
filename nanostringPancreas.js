@@ -534,13 +534,20 @@ window.addEventListener('resize', function (e){
     const oldW = e.target.window.waypointAttr.width
     if ((currW < scrnWBps[1] && oldW >= scrnWBps[1]) || (currW < scrnWBps[2] && oldW >= scrnWBps[2]) || (currW >= scrnWBps[2] && oldW < scrnWBps[2]) || (currW >= scrnWBps[1] && oldW < scrnWBps[1])) {
         const {waypointNum, storyNum, domElement, osd} = e.target.window.waypointAttr;
-        const svgCont = ['#largeSvgContainer', '#mediumSvgContainer', '#smallSvgContainer', '#substructures', '#plotSvg', '#legend1Svg', '#largeVolcanoPlot', '#mediumVolcanoPlot', '#smallVolcanoPlot', '#pathwayTable',  '#logo', '#tocText'];
+        const svgCont = ['#largeSvgContainer', '#mediumSvgContainer', '#smallSvgContainer', '#largeVolcanoPlot', '#mediumVolcanoPlot', '#smallVolcanoPlot'];
         svgCont.forEach((id) => {
             if (document.querySelector(id)) {
                 document.querySelector(id).remove();
             }
         });
-        buildWaypointCartoon(waypointNum, storyNum, currW, domElement, osd);
+        // The waypoints that have images that need resizing via buildWaypointCartoon
+        const waypointsToRebuild = [0, 5]
+        // For this story, all storyNums, except the Table of Contents page, which doesn't need rebuilding, are 1
+        waypointsToRebuild.forEach((waypoint) => {
+            if (waypointNum === waypoint && storyNum === 1) {
+                buildWaypointCartoon(waypointNum, storyNum, currW, domElement, osd);
+            }
+        });
     } 
     e.target.window.waypointAttr.width = currW
 });
