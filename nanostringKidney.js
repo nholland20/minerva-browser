@@ -19,7 +19,7 @@ const allROIs =
     r002: {
         panCoord: {x: 0.3698, y: 0.271},
         zoomRatio: 38.3376,
-        ROIBox: [{overlay: {x: 0.3673, y: 0.2665, width: 0.0102, height: 0.008}}],
+        ROIBox: [{overlay: {x: 0.3673, y: 0.2665, width: 0.008, height: 0.008}}],
         maskNum: [3]
     },
     r003: {
@@ -37,13 +37,13 @@ const allROIs =
     r005: {
         panCoord: {x: 0.3959, y: 0.5238},
         zoomRatio: 20.6127,
-        ROIBox: [{overlay: {x: 0.3946, y: 0.5179, width: 0.0105, height: 0.008}}],
+        ROIBox: [{overlay: {x: 0.3946, y: 0.5179, width: 0.008, height: 0.008}}],
         maskNum: [3]
     },
     r006: {
         panCoord: {x: 0.3736, y: 0.6929},
         zoomRatio: 20.6127,
-        ROIBox: [{overlay: {x: 0.3693, y: 0.6877, width: 0.011, height: 0.0105}}],
+        ROIBox: [{overlay: {x: 0.3693, y: 0.6877, width: 0.009, height: 0.0105}}],
         maskNum: [3]
     },
     r011: {
@@ -85,43 +85,43 @@ const allROIs =
     r021: {
         panCoord: {x: 0.3099, y: 0.3611},
         zoomRatio: 12.8392,
-        ROIBox: [{overlay: {x: 0.2946, y: 0.3499, width: 0.0301, height: 0.0154}}],
+        ROIBox: [{overlay: {x: 0.2946, y: 0.3499, width: 0.028, height: 0.0154}}],
         maskNum: [6]
     },
     r022: {
         panCoord: {x: 0.2691, y: 0.2307},
         zoomRatio: 12.8392,
-        ROIBox: [{overlay: {x: 0.2555, y: 0.2155, width: 0.0237, height: 0.0225}}],
+        ROIBox: [{overlay: {x: 0.2555, y: 0.2155, width: 0.021, height: 0.0225}}],
         maskNum: [6]
     },
     r024: {
         panCoord: {x: 0.3071, y: 0.542},
         zoomRatio: 18.4884,
-        ROIBox: [{overlay: {x: 0.3024, y: 0.5324, width: 0.0118, height: 0.0172}}],
+        ROIBox: [{overlay: {x: 0.3024, y: 0.5324, width: 0.01, height: 0.0172}}],
         maskNum: [6]
     },
     r028: {
         panCoord: {x: 0.1638, y: 0.6154},
         zoomRatio: 22.1861,
-        ROIBox: [{overlay: {x: 0.1574, y: 0.61, width: 0.011, height: 0.0087}}],
+        ROIBox: [{overlay: {x: 0.1574, y: 0.61, width: 0.01, height: 0.0087}}],
         maskNum: [6]
     },
     r029: {
         panCoord: {x: 0.0982, y: 0.6192},
         zoomRatio: 18.4885,
-        ROIBox: [{overlay: {x: 0.0938, y: 0.6121, width: 0.0122, height: 0.0097}}],
+        ROIBox: [{overlay: {x: 0.0938, y: 0.6121, width: 0.01, height: 0.0097}}],
         maskNum: [6]
     },
     r030: {
         panCoord: {x: 0.0795, y: 0.6121},
         zoomRatio: 18.4884,
-        ROIBox: [{overlay: {x: 0.0756, y: 0.6047, width: 0.0116, height: 0.0086}}],
+        ROIBox: [{overlay: {x: 0.0756, y: 0.6047, width: 0.01, height: 0.0086}}],
         maskNum: [6]
     },
     r031: {
         panCoord: {x: 0.2565, y: 0.5855},
         zoomRatio: 22.1862,
-        ROIBox: [{overlay: {x: 0.2489, y: 0.5804, width: 0.0126, height: 0.0087}}],
+        ROIBox: [{overlay: {x: 0.2489, y: 0.5804, width: 0.011, height: 0.0087}}],
         maskNum: [6]
     },
     r032: {
@@ -133,25 +133,25 @@ const allROIs =
     r033: {
         panCoord: {x: 0.2695, y: 0.348},
         zoomRatio: 15.4071,
-        ROIBox: [{overlay: {x: 0.2598, y: 0.3365, width: 0.0204, height: 0.0173}}],
+        ROIBox: [{overlay: {x: 0.2598, y: 0.3365, width: 0.018, height: 0.0173}}],
         maskNum: [6]
     },
     r034: {
         panCoord: {x: 0.2765, y: 0.3176},
         zoomRatio: 18.4885,
-        ROIBox: [{overlay: {x: 0.2696, y: 0.3109, width: 0.013, height: 0.0107}}],
+        ROIBox: [{overlay: {x: 0.2696, y: 0.3109, width: 0.01, height: 0.0107}}],
         maskNum: [6]
     },
     r035: {
         panCoord: {x: 0.2358, y: 0.3005},
         zoomRatio: 22.1862,
-        ROIBox: [{overlay: {x: 0.2304, y: 0.2946, width: 0.0097, height: 0.0075}}],
+        ROIBox: [{overlay: {x: 0.2304, y: 0.2946, width: 0.008, height: 0.0075}}],
         maskNum: [6]
     },
     r036: {
         panCoord: {x: 0.1732, y: 0.6612},
         zoomRatio: 18.4885,
-        ROIBox: [{overlay: {x: 0.1624, y: 0.6517, width: 0.02, height: 0.0159}}],
+        ROIBox: [{overlay: {x: 0.1624, y: 0.6517, width: 0.018, height: 0.0159}}],
         maskNum: [6]
     },
     r055: {
@@ -193,13 +193,13 @@ const allROIs =
     r007: {
         panCoord: {x: 0.3449, y: 0.6931},
         zoomRatio: 15.4069,
-        ROIBox: [{overlay: {x: 0.3357, y: 0.6807, width: 0.0211, height: 0.0232}}],
+        ROIBox: [{overlay: {x: 0.3357, y: 0.6807, width: 0.019, height: 0.0232}}],
         maskNum: [2]
     },
     r008: {
         panCoord: {x: 0.3734, y: 0.6164},
         zoomRatio: 12.8391,
-        ROIBox: [{overlay: {x: 0.3598, y: 0.6027, width: 0.0289, height: 0.0241}}],
+        ROIBox: [{overlay: {x: 0.3598, y: 0.6027, width: 0.027, height: 0.0241}}],
         maskNum: [2]
     },
     r009: {
@@ -211,19 +211,19 @@ const allROIs =
     r010: {
         panCoord: {x: 0.379, y: 0.4412},
         zoomRatio: 12.8391,
-        ROIBox: [{overlay: {x: 0.3637, y: 0.4324, width: 0.0301, height: 0.0143}}],
+        ROIBox: [{overlay: {x: 0.3637, y: 0.4324, width: 0.027, height: 0.0143}}],
         maskNum: [2]
     },
     r013: {
         panCoord: {x: 0.3399, y: 0.2463},
         zoomRatio: 10.6993,
-        ROIBox: [{overlay: {x: 0.3271, y: 0.2311, width: 0.0273, height: 0.0248}}],
+        ROIBox: [{overlay: {x: 0.3271, y: 0.2311, width: 0.024, height: 0.0248}}],
         maskNum: [2]
     },
     r017: {
         panCoord: {x: 0.4162, y: 0.3814},
         zoomRatio: 12.8392,
-        ROIBox: [{overlay: {x: 0.4001, y: 0.372, width: 0.0302, height: 0.0199}}],
+        ROIBox: [{overlay: {x: 0.4001, y: 0.372, width: 0.028, height: 0.0199}}],
         maskNum: [2]
     },
     r043: {
@@ -265,37 +265,37 @@ const allROIs =
     r019: {
         panCoord: {x: 0.2894, y: 0.5011},
         zoomRatio: 8.9161,
-        ROIBox: [{overlay: {x: 0.2754, y: 0.4891, width: 0.0296, height: 0.0226}}],
+        ROIBox: [{overlay: {x: 0.2754, y: 0.4891, width: 0.027, height: 0.0226}}],
         maskNum: [5]
     },
     r020: {
         panCoord: {x: 0.2888, y: 0.3332},
         zoomRatio: 12.8392,
-        ROIBox: [{overlay: {x: 0.2753, y: 0.3218, width: 0.0268, height: 0.0221}}],
+        ROIBox: [{overlay: {x: 0.2753, y: 0.3218, width: 0.024, height: 0.0221}}],
         maskNum: [5]
     },
     r023: {
         panCoord: {x: 0.108, y: 0.6487},
         zoomRatio: 10.6993,
-        ROIBox: [{overlay: {x: 0.0929, y: 0.6431, width: 0.0302, height: 0.0138}}],
+        ROIBox: [{overlay: {x: 0.0929, y: 0.6431, width: 0.028, height: 0.0138}}],
         maskNum: [5]
     },
     r025: {
         panCoord: {x: 0.3408, y: 0.5064},
         zoomRatio: 8.9161,
-        ROIBox: [{overlay: {x: 0.3329, y: 0.4911, width: 0.0226, height: 0.0293}}],
+        ROIBox: [{overlay: {x: 0.3329, y: 0.4911, width: 0.02, height: 0.0293}}],
         maskNum: [5]
     },
     r026: {
         panCoord: {x: 0.3042, y: 0.3865},
         zoomRatio: 10.6993,
-        ROIBox: [{overlay: {x: 0.2871, y: 0.373, width: 0.0303, height: 0.026}}],
+        ROIBox: [{overlay: {x: 0.2871, y: 0.373, width: 0.027, height: 0.026}}],
         maskNum: [5]
     },
     r027: {
         panCoord: {x: 0.2822, y: 0.2895},
         zoomRatio: 10.6993,
-        ROIBox: [{overlay: {x: 0.2699, y: 0.274, width: 0.0258, height: 0.0296}}],
+        ROIBox: [{overlay: {x: 0.2699, y: 0.274, width: 0.024, height: 0.0296}}],
         maskNum: [5]
     },
     r049: {
@@ -336,8 +336,8 @@ const allROIs =
     },
     r037: {
         panCoord: {x: 0.2669, y: 0.6152},
-        zoomRatio: 12.3835,
-        ROIBox: [{overlay: {x: 0.2513, y: 0.6011, width: 0.0295, height: 0.0258}}],
+        zoomRatio: 10.3196,
+        ROIBox: [{overlay: {x: 0.2513, y: 0.6011, width: 0.026, height: 0.0258}}],
         maskNum: [8]
     },
     r038: {
@@ -349,7 +349,7 @@ const allROIs =
     r039: {
         panCoord: {x: 0.2567, y: 0.6588},
         zoomRatio: 10.3196,
-        ROIBox: [{overlay: {x: 0.2426, y: 0.6502, width: 0.0316, height: 0.0219}}],
+        ROIBox: [{overlay: {x: 0.2426, y: 0.6502, width: 0.028, height: 0.0219}}],
         maskNum: [8]
     },
     r040: {
@@ -368,7 +368,7 @@ const allROIs =
     r042: {
         panCoord: {x: 0.3531, y: 0.2351},
         zoomRatio: 10.3196,
-        ROIBox: [{overlay: {x: 0.3458, y: 0.2272, width: 0.0292, height: 0.016}}],
+        ROIBox: [{overlay: {x: 0.3458, y: 0.2272, width: 0.025, height: 0.016}}],
         maskNum: [8]
     }
 }
@@ -835,9 +835,10 @@ function addHintText(hintText, hintId, showdown_text) {
     document.querySelector('.minerva-mask-layers').appendChild(hintTextDiv);
 }
 
-function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElement, osd) {
+function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElement, osd, finish_waypoint) {
     const svgNS = 'http://www.w3.org/2000/svg';
-    const showdown_text = new showdown.Converter({tables: true}); 
+    const showdown_text = new showdown.Converter({tables: true});
+
     if (waypointNum === 0 && storyNum === 0){
         // insert the logo
         const logoDiv = document.createElement('div');
@@ -850,15 +851,17 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
         //insert the text
         const tocTextDiv = document.createElement('div');
         tocTextDiv.id = 'tocText'
-        const tocText = "Welcome to the Spatial Organ Atlas (SOA) Kidney Demonstration.\n\nAll the data in the SOA is downloadable [link needed] and this kidney is sample 1 [link needed] in the downloadable data set.\n\nThis Story is constructed with [Minerva](https://github.com/labsyspharm/minerva-story/wiki).\n\nThis demonstration shows some of the key analysis, carried out using the downloadable kidney. For instructions on navigating in Minerva see this video [link needed].\n\nHints:\n1. The slide image can be zoomed in and panned via Mouse/trackpad\n2. Left- and right-hand menus can be collapsed or opened by clicking on < or >\n3. Left hand menu contains results with selectable regions and selectable AOI masks- allows switching of overlays\n4. Right hand menu controls the images allowing different layers to be turned on and off"
+        const tocText = "Welcome to the Spatial Organ Atlas (SOA) Kidney Demonstration.\n\nThe SOA is a database for spatial profiles of non-diseased tissues from human and mouse generated with the GeoMx® Digital Spatial Profiler.\nAll the data in the SOA is downloadable [link], including this kidney sample (#001).\n\nUsing [Minerva](https://github.com/labsyspharm/minerva-story/wiki), we will show you how the imaging and molecular data combine to give you a comprehensive profile of the tissue architecture and biology\
+        \n\nClick around to explore on your own, or see this video [link] for instructions on navigating in Minerva.\n\nHints:\n* Zoom and pan the image via the mouse/trackpad.\n* Open and close the left- and right- hand menus clicking on < or >.\n* See results in the left-hand menu and click on the selectable regions to zoom to the featured area of the tissue.\n* Turn layers on and off with the right-hand menu."
         tocTextDiv.innerHTML = showdown_text.makeHtml(tocText)
         document.querySelector('.minerva-story-container').appendChild(tocTextDiv)
     }
+    
     else if (waypointNum === 0 && storyNum === 1 && windowInnerWidth >= scrnWBps[2]) {
         const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'largeSvgContainer', 'img/finalKidney.jpeg', [largeSlideMedullaPath, largeCortexPath], storyNum, waypointNum)
         domElement.appendChild(cartoonImgContainer);
         const hintText = `Hint:   
-        Select an individual point to jump to that specific ROI`
+        Select the nuclei layer to easily see all ROIs.`
         const hintId = 'hintTextRemove';
         addHintText(hintText, hintId, showdown_text);
       }
@@ -866,7 +869,7 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
         const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'mediumSvgContainer', 'img/finalKidney.jpeg', [mediumSlideMedullaPath, mediumCortexPath], storyNum, waypointNum)
         domElement.appendChild(cartoonImgContainer);
         const hintText = `Hint:   
-        Select an individual point to jump to that specific ROI`
+        Select the nuclei layer to easily see all ROI.`
         const hintId = 'hintTextRemove';
         addHintText(hintText, hintId, showdown_text);
     }
@@ -874,7 +877,7 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
         const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'smallSvgContainer', 'img/finalKidney.jpeg', [smallSlideMedullaPath, smallCortexPath], storyNum, waypointNum)
         domElement.appendChild(cartoonImgContainer);
         const hintText = `Hint:   
-        Select an individual point to jump to that specific ROI`
+        Select the nuclei layer to easily see all ROIs.`
         const hintId = 'hintTextRemove';
         addHintText(hintText, hintId, showdown_text);
     }
@@ -882,27 +885,21 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
     else if (waypointNum === 1 && storyNum === 1 && windowInnerWidth >= scrnWBps[2]) {
         const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'largeSubstructureSvgContainer', 'img/kidneySubstructures.png', [largeCollDuctPath, largeDctEllipse, largePctEllipse, largeLoopHEllipse, largeGlomEllipse, largeFiltMemEllipse], storyNum, waypointNum)
         domElement.appendChild(cartoonImgContainer);
-        const hintText = `Hints:   
-        1. Features can also be highlighted by selecting data layers (right hand menu)   
-        2. Selecting channels will show how AOI were selected`
+        const hintText = "Hints:\n* Click a structure in the cartoon to see a representative ROI on the image.\n* Add a data layer to see all the corresponding ROIs on the image.\n* Toggle data layers and channels to see how compartments were selected."
         const hintId = 'hintTextRemove';
         addHintText(hintText, hintId, showdown_text);
     }
     else if (waypointNum === 1 && storyNum === 1 && windowInnerWidth >= scrnWBps[1] && windowInnerWidth <= scrnWBps[2]) {
         const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'mediumSubstructureSvgContainer', 'img/kidneySubstructures.png', [medCollDuctPath, medDctEllipse, medPctEllipse, medLoopHEllipse, medGlomEllipse, medFiltMemEllipse], storyNum, waypointNum)
         domElement.appendChild(cartoonImgContainer);
-        const hintText = `Hints:   
-        1. Features can also be highlighted by selecting data layers (right hand menu)   
-        2. Selecting channels will show how AOI were selected`
+        const hintText = "Hints:\n* Click a structure in the cartoon to see a representative ROI on the image.\n* Add a data layer to see all the corresponding ROIs on the image.\n* Toggle data layers and channels to see how compartments were selected."
         const hintId = 'hintTextRemove';
         addHintText(hintText, hintId, showdown_text);
     }
     else if (waypointNum === 1 && storyNum === 1 && windowInnerWidth < scrnWBps[1]) {
         const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'smallSubstructureSvgContainer', 'img/kidneySubstructures.png', [smallCollDuctPath, smallDctEll, smallPctEll, smallLoopHEll, smallGlomEll, smallFiltMemEll], storyNum, waypointNum)
         domElement.appendChild(cartoonImgContainer);
-        const hintText = `Hints:   
-        1. Features can also be highlighted by selecting data layers (right hand menu)   
-        2. Selecting channels will show how AOI were selected`
+        const hintText = "Hints:\n* Click a structure in the cartoon to see a representative ROI on the image.\n* Add a data layer to see all the corresponding ROIs on the image.\n* Toggle data layers and channels to see how compartments were selected."
         const hintId = 'hintTextRemove';
         addHintText(hintText, hintId, showdown_text);
     }
@@ -930,6 +927,13 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
             medFiltMem.addEventListener('click', () => addMask(osd, [5]));
             const corFiltMem = doc.querySelector('#corFiltMem');
             corFiltMem.addEventListener('click', () => addMask(osd, [2]));
+            Object.entries(allROIs).forEach(([key, val]) => {
+                const el = doc.querySelector(`#${key}`);
+                if(el){
+                   addEListener(osd, val, el, ['addMask', 'panZoom'], storyNum, waypointNum) ;
+                }
+            });
+            finish_waypoint('')
         }
         domElement.appendChild(svgContainer);
         const hintText = `Hint:   
@@ -961,6 +965,7 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
             medFiltMem.addEventListener('click', () => addMask(osd, [5]));
             const corFiltMem = doc.querySelector('#corFiltMem');
             corFiltMem.addEventListener('click', () => addMask(osd, [2]));
+            finish_waypoint('')
         };
         domElement.appendChild(svgLegend2);
         
@@ -988,8 +993,11 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
             corFiltMem.addEventListener('click', () => addMask(osd, [2]));
             Object.entries(allROIs).forEach(([key, val]) => {
                 const el = doc.querySelector(`#${key}`);
-                addEListener(osd, val, el, ['addMask', 'panZoom'], storyNum, waypointNum)
-            })
+                if(el){
+                   addEListener(osd, val, el, ['addMask', 'panZoom'], storyNum, waypointNum) ;
+                }
+            });
+            finish_waypoint('')
         }
         domElement.appendChild(svgContainer);
         
@@ -1000,7 +1008,7 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
         domElement.appendChild(svgLegend1);
 
         const hintText = `Hint:   
-        Select a single row of the figure to be taken to that ROI`
+        Select a single row of the figure to be taken to that ROI in the image.`
         const hintId = 'hintText';
         addHintText(hintText, hintId, showdown_text);
     }
@@ -1018,25 +1026,27 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
         svgContainer.id = 'plotSvg';
         svgContainer.onload = function (){
             const doc = this.getSVGDocument();
-            const dct = doc.querySelector('#dct')
-            addEListener(osd, allROIs.r044, dct, ['addMask', 'panZoom'], storyNum, waypointNum);
-            const collDuct = doc.querySelector('#cd');
-            addEListener(osd, allROIs.r056, collDuct, ['addMask', 'panZoom'], storyNum, waypointNum);
-            const pct = doc.querySelector('#pct');
-            addEListener(osd, allROIs.r041, pct, ['addMask', 'panZoom'], storyNum, waypointNum);
+            Object.entries(allROIs).forEach(([key, val]) => {
+                const el = doc.querySelector(`#${key}`);
+                if (el){
+                   addEListener(osd, val, el, ['addMask', 'panZoom'], storyNum, waypointNum); 
+                }
+            });
+            finish_waypoint('')
         }
         domElement.appendChild(svgContainer);
         
         //insert table that matches the heatmap pathways to their abbreviation below the heatmap in the waypoint.
         const tableDiv = document.createElement('div');
         tableDiv.id = 'pathwayTable'
-        const pathways = "| Pathway | Full PathwayName |\n|:---------|:---------------------------------------------|\n| SLC21   | SLC21/ASLCO: Organic anion transporter |\n| ABC| ABC transporters|\n| SLC16| Monocarboxylate transporter|\n| SLC17| Vesicular glutamate transporter|\n| SLC6| Sodium- and chloride-dependent neurotransmitter transporter|\n| SLC22| Organic cation/anion/zwitterion transporter                         |\n| OCT| Organic cation transporter (OCT) family|\n| SLC38| System A and System N sodium-coupled neutral amino acid transporter |\n| SLC5    | Sodium glucose cotransporter|\n| SLC23   | Na+-dependent ascorbic acid transporter|\n| SLC44   | Choline-like transporter|\n| SLC39   | SLC39: Metal ion transporter|\n| SLC4    | Bicarbonate transporter|\n| SLC2    | Facilitative GLUT transporter|\n| SLC36   | Proton-coupled amino acid transporter|\n| SLC34   | Type II Na+-phosphate cotransporter|\n| SLC13   | Human Na+-sulfate/carboxylate cotransporter|\n| SLC42   | Rh ammonium transporter|";
+        const pathways = "| Pathway | Full PathwayName |\n|:---------|:---------------------------------------------|\n| ABC| ABC transporters |\n|SLC13   | Human Na+-sulfate/carboxylate cotransporter|\n| SLC22| Organic cation/anion/zwitterion transporter|\n| OCT| Organic cation transporter (OCT) family|\n|SLC17| Vesicular glutamate transporter|\n| SLC5 | Sodium glucose cotransporter|\n| SLC36 | Proton-coupled amino acid transporter|\n| SLC2 | Facilitative GLUT transporter|\
+        \n| SLC34 | Type II Na+-phosphate cotransporter |\n|SLC16| Monocarboxylate transporter|\n| SLC6 | Sodium- and chloride-dependent neurotransmitter transporter |\n| SLC23 | Na+-dependent ascorbic acid transporter|\n| SLC4 | Bicarbonate transporter |\n| SLC38| System A and System N sodium-coupled neutral amino acid transporter |\n| SLC42 | Rh ammonium transporter|\n| SLC21 | SLC21/ASLCO: Organic anion transporter |\n| SLC44 | Choline-like transporter|\n| SLC39 | Metal ion transporter";
         const table_html = showdown_text.makeHtml(pathways)
         tableDiv.innerHTML = table_html
         domElement.appendChild(tableDiv)
 
         const hintText = `Hint:   
-        Select a section of heat map to see all the ROI of that type be shown (toggling the nuclei layer may help spot smaller ROI)`
+        Select a single column of the figure to be taken to that ROI in the image.`
         const hintId = 'hintText';
         addHintText(hintText, hintId, showdown_text);
     }
@@ -1044,7 +1054,7 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
         const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'largeVolcanoPlot', 'img/corGlomVsMedGlom.png', [largeVPlotCor, largeVPlotMed], storyNum, waypointNum)
         domElement.appendChild(cartoonImgContainer);
         const hintText = `Hint:   
-        Select of the boxed (significant) sides of the volcano plot to see all the ROI of cortical or juxtamedullary ROI (toggling the nuclei layer may help spot smaller ROI)`
+        Select the regions on the graph with the genes that are differentially expressed (in blue) to see all the ROIs where they are more highly expressed. Turning on only the nuclei channel may help you see smaller ROIs.`
         const hintId = 'hintTextRemove';
         addHintText(hintText, hintId, showdown_text);
     }
@@ -1052,7 +1062,7 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
         const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'mediumVolcanoPlot', 'img/corGlomVsMedGlom.png', [medVPlotCor, medVPlotMed], storyNum, waypointNum)
         domElement.appendChild(cartoonImgContainer);
         const hintText = `Hint:   
-        Select of the boxed (significant) sides of the volcano plot to see all the ROI of cortical or juxtamedullary ROI (toggling the nuclei layer may help spot smaller ROI)`
+        Select the regions on the graph with the genes that are differentially expressed (in blue) to see all the ROIs where they are more highly expressed. Turning on only the nuclei channel may help you see smaller ROIs.`
         const hintId = 'hintTextRemove';
         addHintText(hintText, hintId, showdown_text);
     }
@@ -1060,7 +1070,7 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
         const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'smallVolcanoPlot', 'img/corGlomVsMedGlom.png', [smallVPlotCor, smallVPlotMed], storyNum, waypointNum)
         domElement.appendChild(cartoonImgContainer);
         const hintText = `Hint:   
-        Select of the boxed (significant) sides of the volcano plot to see all the ROI of cortical or juxtamedullary ROI (toggling the nuclei layer may help spot smaller ROI)`
+        Select the regions on the graph with the genes that are differentially expressed (in blue) to see all the ROIs where they are more highly expressed. Turning on only the nuclei channel may help you see smaller ROIs.`
         const hintId = 'hintTextRemove';
         addHintText(hintText, hintId, showdown_text);
     }
@@ -1088,10 +1098,18 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
             medFiltMem.addEventListener('click', () => addMask(osd, [5]));
             const corFiltMem = doc.querySelector('#corFiltMem');
             corFiltMem.addEventListener('click', () => addMask(osd, [2]));
+            finish_waypoint('')
+            // const scatterPlot = document.querySelector('.VisScatterplot-1-6 svg g');
+            // scatterPlot.onload = function() {
+            //     const ticks = document.querySelectorAll('.tick');
+            //     ticks.forEach((tick) => {
+            //         tick.remove()
+            //     })
+            // }
         };
         domElement.appendChild(svgLegend1);
         const hintText = `Hint:   
-        Select an individual point to jump to that specific ROI`
+        Select an individual point on the graph to be taken to that ROI in the image.`
         const hintId = 'hintText';
         addHintText(hintText, hintId, showdown_text);
     }
@@ -1099,27 +1117,24 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
     else if (waypointNum === 0 && storyNum === 2){
         const lastpageTextDiv = document.createElement('div');
         lastpageTextDiv.id = 'lastPageText'
-        const lastPageText = `For more information on NanoString GeoMx technology visit www.nanostring.com.   
-        Minerva is an open source software package was developed by Laboratory of Systems Pharmacology, Harvard University and is available [here](https://github.com/labsyspharm/minerva-story/wiki).   
-        We would like to thank John Hoffer and Jeremy Muhlich at the for assistance in enabling Minerva features to support the Spatial Organ Atlas.\n\nFOR RESEARCH USE ONLY, not for Diagnostic Use`
+        const lastPageText = `For more information on NanoString GeoMx technology visit [www.nanostring.com](www.nanostring.com).   
+        \nDetails of the performance of WTA have been [published](https://doi.org/10.1101/2021.09.29.462442).   
+        \mMinerva is an open source software package that was developed by Laboratory of Systems Pharmacology at Harvard University and is available [here](https://github.com/labsyspharm/minerva-story/wiki).   
+        We would like to thank Jeremy Muhlich and John Thomas Hoffer assistance in enabling Minerva features to support the Spatial Organ Atlas.  
+        Sources:   
+        \nRashid R, Chen YA, Hoffer J, Muhlich JL, Lin JR, Krueger R, Pfister H, Mitchell R, Santagata S, and Sorger PK. Interpretative guides for interacting with tissue atlas and digital pathology data using the Minerva browser. BioRxiv. (2020) [https://doi.org/10.1101/2020.03.27.001834](https://doi.org/10.1101/2020.03.27.001834)
+        Hoffer J, Rashid R, Muhlich JL, Chen, YA, Russell D, Ruokonen J, Krueger R, Pfister H, Santagata S, Sorger PK. (2020). Minerva: a light-weight, narrative image browser for multiplexed tissue images. Journal of Open Source Software, 5(54), 2579, [https://doi.org/10.21105/joss.02579](https://doi.org/10.21105/joss.02579)
+        \n\nFOR RESEARCH USE ONLY. Not for use in diagnostic procedures.`
         lastpageTextDiv.innerHTML = showdown_text.makeHtml(lastPageText);
         domElement.appendChild(lastpageTextDiv);
     }
-    // else if (waypointNum === 6 && storyNum === 1){
-    //     window.onload = function (){
-    //        legendEl = document.querySelectorAll('.legend');
-    //        legendEl.forEach(el => {
-    //            el.remove()
-    //        });
-    //     };
-    // }
 }
 
 // Add cartoon image to a specific waypoint
 // Change the number that HS.w is equal to based on which waypoint the image needs to appear on.
 // If the waypoint is the first one after the Table of Contents HS.s must also be set, otherwise, it appears in the TOC too
 document.addEventListener('waypointBuildEvent', function(e) {
-    const {waypointNum, storyNum, domElement, osd} = e.detail;
+    const {waypointNum, storyNum, domElement, osd, finish_waypoint} = e.detail;
     const width = window.innerWidth;
     window.waypointAttr = {
         waypointNum: waypointNum,
@@ -1128,12 +1143,7 @@ document.addEventListener('waypointBuildEvent', function(e) {
         osd: osd,
         width: width
     }
-    buildWaypointCartoon(waypointNum, storyNum, width, domElement, osd)
-    })
-
-// Remove polygons and overlays when the waypoint is changed
-document.addEventListener('waypointBuildEvent', function(e){
-    const {osd} = e.detail
+    // Remove polygons and overlays when the waypoint is changed
     const overlayIds = ['#slideMedulla', '#slideCortex']
     for (let id of overlayIds) {
         if (document.querySelector(id)) {
@@ -1145,9 +1155,12 @@ document.addEventListener('waypointBuildEvent', function(e){
         for (let box of ROIBoxes){
             osd.viewer.removeOverlay(box.id)  
             document.querySelector(`#${box.id}`).remove()
-        }    
+        }
     }
-})
+    buildWaypointCartoon(waypointNum, storyNum, width, domElement, osd, finish_waypoint)
+    }
+);
+
 
 window.addEventListener('resize', function (e){
     const currW = e.target.window.innerWidth

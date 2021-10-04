@@ -346,7 +346,7 @@ const smallVPlotBeta ={
     maskNum: [6]
 }
 
-function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElement, osd) {
+function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElement, osd, finish_waypoint) {
     const svgNS = 'http://www.w3.org/2000/svg';
     if (waypointNum === 0 && storyNum === 0){
         // insert the logo
@@ -394,6 +394,7 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
             addEListener(osd, allROIs.r016Acini, acini, ['addMask', 'panZoom'], storyNum, waypointNum);
             const aciniDuct = doc.querySelector('#aciniDuct');
             addEListener(osd, allROIs.r023, aciniDuct, ['addMask', 'panZoom'], storyNum, waypointNum);
+            finish_waypoint('')
         }
         domElement.appendChild(svgContainer);
     }
@@ -417,6 +418,7 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
             beta.addEventListener('click', () => addMask(osd, [2]));
             const alpha = doc.querySelector('#alpha');
             alpha.addEventListener('click', () => addMask(osd, [1]));
+            finish_waypoint('')
         }
         domElement.appendChild(svgContainer)
     }
@@ -446,6 +448,7 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
                     addEListener(osd, val, el, ['addMask', 'panZoom'], storyNum, waypointNum)
                 }
             })
+            finish_waypoint('')
         };
         domElement.appendChild(svgContainer)
     }
@@ -469,6 +472,7 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
                     addEListener(osd, val, el, ['addMask', 'panZoom'], storyNum, waypointNum)
                 }
             })
+            finish_waypoint('')
         };
 
         domElement.appendChild(svgContainer)
@@ -498,7 +502,7 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
 };
 
 document.addEventListener('waypointBuildEvent', function(e) {
-    const {waypointNum, storyNum, domElement, osd} = e.detail;
+    const {waypointNum, storyNum, domElement, osd, finish_waypoint} = e.detail;
     const width = window.innerWidth;
     window.waypointAttr = {
         waypointNum: waypointNum,
@@ -507,19 +511,7 @@ document.addEventListener('waypointBuildEvent', function(e) {
         osd: osd,
         width: width
     }
-    buildWaypointCartoon(waypointNum, storyNum, width, domElement, osd);
-});
-
-// Remove polygons and overlays when the waypoint is changed
-document.addEventListener('waypointBuildEvent', function(e){
-    const {osd} = e.detail
-    const overlayIds = [];
-    overlayIds.forEach((id) => {
-        if (document.querySelector(id)) {
-            document.querySelector(id).remove();
-        }
-    });
-    
+    // Remove polygons and overlays when the waypoint is changed
     if (document.querySelector('[id^=ROIBox]')){
         const ROIBoxes = document.querySelectorAll('[id^=ROIBox]');
         ROIBoxes.forEach((box) => {
@@ -527,7 +519,12 @@ document.addEventListener('waypointBuildEvent', function(e){
             document.querySelector(`#${box.id}`).remove()
         });  
     }
+
+    buildWaypointCartoon(waypointNum, storyNum, width, domElement, osd, finish_waypoint);
 });
+
+
+
 
 window.addEventListener('resize', function (e){
     const currW = e.target.window.innerWidth

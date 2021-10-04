@@ -1,3 +1,5 @@
+import { index_name } from './state'
+
 // Functions to build Rectangle, Ellipse, and Path SVGs
 function buildRectSvg(osd, svgNS, rectObj, storyNum, waypointNum){
     const rectSvg = document.createElementNS(svgNS,'rect');
@@ -75,22 +77,59 @@ function addROIBox(osd, ROIBox, id, storyNum, waypointNum){
 }
 
 export function addMask(osd, maskNums) {
-    // const maskNums = svgObj.maskNum;
-    const numMasks = osd.hashstate.masks.length
-    //Add the mask to all the ROIs of the same structure
-    for (let i=0; i <= numMasks; i++){
-        if(osd.hashstate.m.includes(i)) {
-            osd.hashstate.m = osd.hashstate.m.filter(i => i != i)
-        }
+    if (maskNums >= 0) {
+        osd.hashstate.m = maskNums;
     }
-    osd.hashstate.pushState();
-    window.onpopstate();
-    for (let maskInd of maskNums){
-        osd.hashstate.m.push(maskInd);
-    }
-    osd.hashstate.pushState();
-    window.onpopstate();
+    window.testRender.newView(true);
 }
+//     // How can I use the render.js addMasks function??
+//     const HS = osd.hashstate;
+//     $('.minerva-mask-layers').empty();
+//     if (HS.edit || HS.waypoint.Mode == 'explore') {
+//         // Show as a multi-column
+//         $('.minerva-mask-layers').addClass('flex');
+//         $('.minerva-mask-layers').removeClass('flex-column');
+//     }
+//     else {
+//         // Show as a single column
+//         $('.minerva-mask-layers').addClass('flex-column');
+//         $('.minerva-mask-layers').removeClass('flex');
+//     }
+//     const mask_names = HS.waypoint.Masks || [];
+//     const masks = HS.masks.filter(mask => {
+//       return mask_names.includes(mask.Name);
+//     });
+//     if (masks.length || HS.edit) {
+//       $('.minerva-mask-label').show()
+//     }
+//     else {
+//       $('.minerva-mask-label').hide()
+//     }
+//     // Add masks with indices
+//     masks.forEach(function(mask) {
+//       const m = index_name(HS.masks, mask.Name);
+//       osd.addMask(mask, m);
+//     });
+//     // osd.newView(true);
+//   }
+
+// export function addMask(osd, maskNums) {
+//     // const maskNums = svgObj.maskNum;
+//     const numMasks = osd.hashstate.masks.length
+//     //Add the mask to all the ROIs of the same structure
+//     for (let i=0; i <= numMasks; i++){
+//         if(osd.hashstate.m.includes(i)) {
+//             osd.hashstate.m = osd.hashstate.m.filter(i => i != i)
+//         }
+//     }
+//     osd.hashstate.pushState();
+//     window.onpopstate();
+//     for (let maskInd of maskNums){
+//         osd.hashstate.m.push(maskInd);
+//     }
+//     osd.hashstate.pushState();
+//     window.onpopstate();
+// }
 
 
 //Add Event Listeners to SVG elements based on attributes in their SVG object

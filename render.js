@@ -957,32 +957,33 @@ Render.prototype = {
     // Waypoint description markdown
     var md = waypoint.Description;
 
+    // NanoString change: removed per Michael's request
     // Create links for cell types
-    HS.cell_type_links_map.forEach(function(link, type){
-      var escaped_type = type.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      var re = RegExp(escaped_type+'s?', 'gi');
-      md = md.replace(re, function(m) {
-        return '['+m+']('+link+')';
-      });
-    });
+    // HS.cell_type_links_map.forEach(function(link, type){
+    //   var escaped_type = type.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    //   var re = RegExp(escaped_type+'s?', 'gi');
+    //   md = md.replace(re, function(m) {
+    //     return '['+m+']('+link+')';
+    //   });
+    // });
 
-    // Create code blocks for protein markers
-    HS.marker_links_map.forEach(function(link, marker){
-      var escaped_marker = marker.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      var re = RegExp('(^|[^0-9A-Za-z`])\('+escaped_marker+'\)([^0-9A-Za-z`]|$)', 'gi');
-      md = md.replace(re, function(m, pre, m1, post) {
-        return m.replace(m1, '`'+m1+'`', 'gi');
-      });
-    });
+    // // Create code blocks for protein markers
+    // HS.marker_links_map.forEach(function(link, marker){
+    //   var escaped_marker = marker.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    //   var re = RegExp('(^|[^0-9A-Za-z`])\('+escaped_marker+'\)([^0-9A-Za-z`]|$)', 'gi');
+    //   md = md.replace(re, function(m, pre, m1, post) {
+    //     return m.replace(m1, '`'+m1+'`', 'gi');
+    //   });
+    // });
 
     // Create links for protein markers
-    HS.marker_links_map.forEach(function(link, marker){
-      var escaped_marker = marker.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      var re = RegExp('`'+escaped_marker+'`', 'gi');
-      md = md.replace(re, function(m) {
-        return '['+m+']('+link+')';
-      });
-    });
+    // HS.marker_links_map.forEach(function(link, marker){
+    //   var escaped_marker = marker.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    //   var re = RegExp('`'+escaped_marker+'`', 'gi');
+    //   md = md.replace(re, function(m) {
+    //     return '['+m+']('+link+')';
+    //   });
+    // });
 
     // All categories of possible visualization types
     const allVis = ['VisMatrix', 'VisBarChart', 'VisScatterplot', "VisCanvasScatterplot"];
@@ -995,8 +996,8 @@ Render.prototype = {
     const finish_waypoint = function(visType) {
       renderedVis.add(visType);
       if ([...waypointVis].every(v => renderedVis.has(v))) {
-        $('.minerva-waypoint-content').scrollTop(scroll_dist);
         $(wid_waypoint).css('height', '');
+        $('.minerva-waypoint-content').scrollTop(scroll_dist);
         THIS.colorMarkerText(wid_waypoint);
       }
     }
@@ -1117,13 +1118,13 @@ Render.prototype = {
       }
     })
 
-    finish_waypoint('');
-
     // Nanostring-specific event - for adding content to a specific waypoint
-    const currentWaypointInfo = {waypointNum: HS.w, storyNum: HS.s, domElement: wid_waypoint, osd: this.osd}
+    const currentWaypointInfo = {waypointNum: HS.w, storyNum: HS.s, domElement: wid_waypoint, osd: this.osd, finish_waypoint}
     const waypointBuildEvent = new CustomEvent('waypointBuildEvent', {
       detail: currentWaypointInfo});
     document.dispatchEvent(waypointBuildEvent);
+
+    finish_waypoint('');
 },
 
   // Color all the remaining HTML Code elements
