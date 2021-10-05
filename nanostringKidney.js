@@ -25,13 +25,13 @@ const allROIs =
     r003: {
         panCoord: {x: 0.3988, y: 0.362},
         zoomRatio: 26.8993,
-        ROIBox: [{overlay: {x: 0.3942, y: 0.3567, width: 0.0098, height: 0.0088}}],
+        ROIBox: [{overlay: {x: 0.3942, y: 0.3567, width: 0.008, height: 0.0088}}],
         maskNum: [3]
     },
     r004: {
         panCoord: {x: 0.3991, y: 0.572},
         zoomRatio: 29.3777,
-        ROIBox: [{overlay: {x: 0.3961, y: 0.5668, width: 0.0105, height: 0.0089}}],
+        ROIBox: [{overlay: {x: 0.3961, y: 0.5668, width: 0.009, height: 0.0089}}],
         maskNum: [3]
     },
     r005: {
@@ -47,39 +47,39 @@ const allROIs =
         maskNum: [3]
     },
     r011: {
-        panCoord: {x: 0.3967, y: 0.3086},
+        panCoord: {x: 0.3943, y: 0.3033},
         zoomRatio: 17.1773,
-        ROIBox: [{overlay: {x: 0.385, y: 0.2935, width: 0.0215, height: 0.0254}}],
+        ROIBox: [{overlay: {x: 0.385, y: 0.2935, width: 0.019, height: 0.0254}}],
         maskNum: [3]
     },
     r012: {
         panCoord: {x: 0.3433, y: 0.1979},
-        zoomRatio: 20.6128,
-        ROIBox: [{overlay: {x: 0.3314, y: 0.1871, width: 0.0228, height: 0.0166}}],
+        zoomRatio: 14.3144,
+        ROIBox: [{overlay: {x: 0.3314, y: 0.1871, width: 0.021, height: 0.0166}}],
         maskNum: [3]
     },
     r014: {
         panCoord: {x: 0.3412, y: 0.1624},
         zoomRatio: 20.6128,
-        ROIBox: [{overlay: {x: 0.3303, y: 0.1519, width: 0.0212, height: 0.0214}}],
+        ROIBox: [{overlay: {x: 0.3303, y: 0.1519, width: 0.019, height: 0.0214}}],
         maskNum: [3]
     },
     r015: {
         panCoord: {x: 0.3183, y: 0.1757},
-        zoomRatio: 17.1773,
-        ROIBox: [{overlay: {x: 0.3046, y: 0.1645, width: 0.0253, height: 0.0217}}],
+        zoomRatio: 11.9287,
+        ROIBox: [{overlay: {x: 0.3046, y: 0.1645, width: 0.023, height: 0.0217}}],
         maskNum: [3]
     },
     r016: {
-        panCoord: {x: 0.379, y: 0.3093},
-        zoomRatio: 17.1773,
-        ROIBox: [{overlay: {x: 0.3647, y: 0.2945, width: 0.0259, height: 0.0255}}],
+        panCoord: {x: 0.3769, y: 0.3061},
+        zoomRatio: 14.3144,
+        ROIBox: [{overlay: {x: 0.3647, y: 0.2945, width: 0.024, height: 0.0255}}],
         maskNum: [3]
     },
     r018: {
         panCoord: {x: 0.3525, y: 0.6435},
         zoomRatio: 14.3144,
-        ROIBox: [{overlay: {x: 0.34, y: 0.6306, width: 0.0219, height: 0.0263}}],
+        ROIBox: [{overlay: {x: 0.34, y: 0.6306, width: 0.021, height: 0.0263}}],
         maskNum: [3]
     },
     r021: {
@@ -157,7 +157,7 @@ const allROIs =
     r055: {
         panCoord: {x: 0.2312, y: 0.5238},
         zoomRatio: 12.8392,
-        ROIBox: [{overlay: {x: 0.2154, y: 0.5079, width: 0.0307, height: 0.0315}}],
+        ROIBox: [{overlay: {x: 0.2154, y: 0.5079, width: 0.027, height: 0.0315}}],
         maskNum: [1]
     },
     r056: {
@@ -169,19 +169,19 @@ const allROIs =
     r057: {
         panCoord: {x: 0.0898, y: 0.5291},
         zoomRatio: 10.6993,
-        ROIBox: [{overlay: {x: 0.073, y: 0.5112, width: 0.0313, height: 0.0318}}],
+        ROIBox: [{overlay: {x: 0.073, y: 0.5112, width: 0.027, height: 0.0318}}],
         maskNum: [1]
     },
     r058: {
         panCoord: {x: 0.2384, y: 0.4912},
         zoomRatio: 10.6993,
-        ROIBox: [{overlay: {x: 0.2189, y: 0.4724, width: 0.0311, height: 0.031}}],
+        ROIBox: [{overlay: {x: 0.2189, y: 0.4724, width: 0.026, height: 0.031}}],
         maskNum: [1]
     },
     r059: {
         panCoord: {x: 0.1895, y: 0.2892},
         zoomRatio: 8.9161,
-        ROIBox: [{overlay: {x: 0.1684, y: 0.2699, width: 0.0327, height: 0.0305}}],
+        ROIBox: [{overlay: {x: 0.1684, y: 0.2699, width: 0.027, height: 0.0305}}],
         maskNum: [1]
     },
     r060: {
@@ -223,7 +223,7 @@ const allROIs =
     r017: {
         panCoord: {x: 0.4162, y: 0.3814},
         zoomRatio: 12.8392,
-        ROIBox: [{overlay: {x: 0.4001, y: 0.372, width: 0.028, height: 0.0199}}],
+        ROIBox: [{overlay: {x: 0.4001, y: 0.372, width: 0.026, height: 0.0199}}],
         maskNum: [2]
     },
     r043: {
@@ -277,13 +277,13 @@ const allROIs =
     r023: {
         panCoord: {x: 0.108, y: 0.6487},
         zoomRatio: 10.6993,
-        ROIBox: [{overlay: {x: 0.0929, y: 0.6431, width: 0.028, height: 0.0138}}],
+        ROIBox: [{overlay: {x: 0.0929, y: 0.6431, width: 0.026, height: 0.0138}}],
         maskNum: [5]
     },
     r025: {
         panCoord: {x: 0.3408, y: 0.5064},
         zoomRatio: 8.9161,
-        ROIBox: [{overlay: {x: 0.3329, y: 0.4911, width: 0.02, height: 0.0293}}],
+        ROIBox: [{overlay: {x: 0.3329, y: 0.4911, width: 0.018, height: 0.0293}}],
         maskNum: [5]
     },
     r026: {
@@ -299,39 +299,39 @@ const allROIs =
         maskNum: [5]
     },
     r049: {
-        panCoord: {x: 0.0791, y: 0.4494},
-        zoomRatio: 8.9161,
-        ROIBox: [{overlay: {x: 0.0614, y: 0.4353, width: 0.0316, height: 0.0315}}],
+        panCoord: {x: 0.0789, y: 0.4513},
+        zoomRatio: 10.6993,
+        ROIBox: [{overlay: {x: 0.0614, y: 0.4353, width: 0.027, height: 0.0315}}],
         maskNum: [7]
     },
     r050: {
         panCoord: {x: 0.0843, y: 0.4796},
         zoomRatio: 8.9161,
-        ROIBox: [{overlay: {x: 0.0681, y: 0.4669, width: 0.0322, height: 0.0315}}],
+        ROIBox: [{overlay: {x: 0.0681, y: 0.4669, width: 0.027, height: 0.0315}}],
         maskNum: [7]
     },
     r051: {
         panCoord: {x: 0.0886, y: 0.414},
         zoomRatio: 8.9161,
-        ROIBox: [{overlay: {x: 0.071, y: 0.3958, width: 0.0344, height: 0.0318}}],
+        ROIBox: [{overlay: {x: 0.071, y: 0.3958, width: 0.029, height: 0.0318}}],
         maskNum: [7]
     },
     r052: {
         panCoord: {x: 0.1158, y: 0.2595},
         zoomRatio: 12.3835,
-        ROIBox: [{overlay: {x: 0.0998, y: 0.2438, width: 0.0307, height: 0.0311}}],
+        ROIBox: [{overlay: {x: 0.0998, y: 0.2438, width: 0.027, height: 0.0311}}],
         maskNum: [7]
     },
     r053: {
-        panCoord: {x: 0.0753, y: 0.3054},
-        zoomRatio: 12.3835,
-        ROIBox: [{overlay: {x: 0.0566, y: 0.2907, width: 0.031, height: 0.0323}}],
+        panCoord: {x: 0.0722, y: 0.3048},
+        zoomRatio: 10.3196,
+        ROIBox: [{overlay: {x: 0.0566, y: 0.2907, width: 0.027, height: 0.0323}}],
         maskNum: [7]
     },
     r054: {
         panCoord: {x: 0.1095, y: 0.4946},
         zoomRatio: 10.3196,
-        ROIBox: [{overlay: {x: 0.0972, y: 0.4788, width: 0.033, height: 0.0318}}],
+        ROIBox: [{overlay: {x: 0.0972, y: 0.4788, width: 0.027, height: 0.0318}}],
         maskNum: [7]
     },
     r037: {
@@ -355,7 +355,7 @@ const allROIs =
     r040: {
         panCoord: {x: 0.3269, y: 0.2029},
         zoomRatio: 8.5997,
-        ROIBox: [{overlay: {x: 0.3094, y: 0.1851, width: 0.0302, height: 0.0256}}],
+        ROIBox: [{overlay: {x: 0.3094, y: 0.1851, width: 0.025, height: 0.0256}}],
         maskNum: [8]
     },
     r041: {
@@ -622,9 +622,9 @@ const medGlomEllipse = {
     stroke: 'red',
     strokeWidth: '2',
     eventTypes: ['addMask', 'panZoom'],
-    panCoord: {x: 0.2518, y: 0.4838},
-    zoomRatio: 1.0785,
-    ROIBox: [{overlay: {x: 0.4056, y: 0.429, width: 0.0085, height: 0.0077}}, {overlay: {x: 0.1579, y: 0.6106, width: 0.0084, height: 0.008}}],
+    panCoord: {x: 0.1646, y: 0.6141},
+    zoomRatio: 19.9398,
+    ROIBox: [{overlay: {x: 0.1579, y: 0.6106, width: 0.0084, height: 0.008}}],
     maskNum: [3, 6]
 }
 
@@ -639,9 +639,9 @@ const medFiltMemEllipse = {
     stroke: 'red',
     strokeWidth: '2',
     eventTypes: ['addMask', 'panZoom'],
-    panCoord: {x: 0.3235, y: 0.3758},
-    zoomRatio: 2.8316,
-    ROIBox: [{overlay: {x: 0.3635, y: 0.4326, width: 0.0269, height: 0.0139}}, {overlay: { x: 0.275, y: 0.3217, width: 0.0235, height: 0.0224}}],
+    panCoord: {x: 0.2855, y: 0.3292},
+    zoomRatio: 14.6104,
+    ROIBox: [{overlay: { x: 0.275, y: 0.3217, width: 0.0235, height: 0.0224}}],
     maskNum: [2, 5]
 }
 
@@ -721,9 +721,9 @@ const smallGlomEll = {
     stroke: 'red',
     strokeWidth: '2',
     eventTypes: ['addMask', 'panZoom'],
-    panCoord: {x: 0.2518, y: 0.4838},
-    zoomRatio: 1.0785,
-    ROIBox: [{overlay: {x: 0.4056, y: 0.429, width: 0.0085, height: 0.0077}}, {overlay: {x: 0.1579, y: 0.6106, width: 0.0084, height: 0.008}}],
+    panCoord: {x: 0.1646, y: 0.6141},
+    zoomRatio: 19.9398,
+    ROIBox: [{overlay: {x: 0.1579, y: 0.6106, width: 0.0084, height: 0.008}}],
     maskNum: [3, 6]
 }
 
@@ -738,9 +738,9 @@ const smallFiltMemEll = {
     stroke: 'red',
     strokeWidth: '2',
     eventTypes: ['addMask', 'panZoom'],
-    panCoord: {x: 0.3235, y: 0.3758},
-    zoomRatio: 2.8316,
-    ROIBox: [{overlay: {x: 0.3635, y: 0.4326, width: 0.0269, height: 0.0139}}, {overlay: { x: 0.275, y: 0.3217, width: 0.0235, height: 0.0224}}],
+    panCoord: {x: 0.2855, y: 0.3292},
+    zoomRatio: 14.6104,
+    ROIBox: [{overlay: { x: 0.275, y: 0.3217, width: 0.0235, height: 0.0224}}],
     maskNum: [2, 5]
 }
 
@@ -851,8 +851,8 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
         //insert the text
         const tocTextDiv = document.createElement('div');
         tocTextDiv.id = 'tocText'
-        const tocText = "Welcome to the Spatial Organ Atlas (SOA) Kidney Demonstration.\n\nThe SOA is a database for spatial profiles of non-diseased tissues from human and mouse generated with the GeoMx® Digital Spatial Profiler.\nAll the data in the SOA is downloadable [link], including this kidney sample (#001).\n\nUsing [Minerva](https://github.com/labsyspharm/minerva-story/wiki), we will show you how the imaging and molecular data combine to give you a comprehensive profile of the tissue architecture and biology\
-        \n\nClick around to explore on your own, or see this video [link] for instructions on navigating in Minerva.\n\nHints:\n* Zoom and pan the image via the mouse/trackpad.\n* Open and close the left- and right- hand menus clicking on < or >.\n* See results in the left-hand menu and click on the selectable regions to zoom to the featured area of the tissue.\n* Turn layers on and off with the right-hand menu."
+        const tocText = "Welcome to the Spatial Organ Atlas (SOA) Kidney Demonstration.\n\nThe SOA is a database for spatial profiles of non-diseased tissues from human and mouse generated with the GeoMx® Digital Spatial Profiler.\nAll the data in the [**SOA is downloadable**](www.nanostring.com/spatial-organ-atlas), including this kidney sample (#001).\n\nUsing [**Minerva**](https://github.com/labsyspharm/minerva-story/wiki), we will show you how the imaging and molecular data combine to give you a comprehensive profile of the tissue architecture and biology.\
+        \n\nClick around to explore on your own.\n\nHints:\n* Zoom and pan the image via the mouse/trackpad.\n* Open and close the left- and right-hand menus clicking on < or >.\n* See results in the left-hand menu and click on the selectable regions to zoom to the featured area of the tissue.\n* Turn layers on and off with the right-hand menu."
         tocTextDiv.innerHTML = showdown_text.makeHtml(tocText)
         document.querySelector('.minerva-story-container').appendChild(tocTextDiv)
     }
@@ -937,7 +937,7 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
         }
         domElement.appendChild(svgContainer);
         const hintText = `Hint:   
-        If you want to use the data layers you can turn off all but one by selecting one of the box plots`
+        If you want to use the data layers, you can turn off all but one by selecting one of the box plots`
         const hintId = 'hintText';
         addHintText(hintText, hintId, showdown_text);
     }
@@ -1039,7 +1039,7 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
         //insert table that matches the heatmap pathways to their abbreviation below the heatmap in the waypoint.
         const tableDiv = document.createElement('div');
         tableDiv.id = 'pathwayTable'
-        const pathways = "| Pathway | Full PathwayName |\n|:---------|:---------------------------------------------|\n| ABC| ABC transporters |\n|SLC13   | Human Na+-sulfate/carboxylate cotransporter|\n| SLC22| Organic cation/anion/zwitterion transporter|\n| OCT| Organic cation transporter (OCT) family|\n|SLC17| Vesicular glutamate transporter|\n| SLC5 | Sodium glucose cotransporter|\n| SLC36 | Proton-coupled amino acid transporter|\n| SLC2 | Facilitative GLUT transporter|\
+        const pathways = "| Pathway | Full Pathway Name |\n|:---------|:---------------------------------------------|\n| ABC| ABC transporters |\n|SLC13   | Human Na+-sulfate/carboxylate cotransporter|\n| SLC22| Organic cation/anion/zwitterion transporter|\n| OCT| Organic cation transporter (OCT) family|\n|SLC17| Vesicular glutamate transporter|\n| SLC5 | Sodium glucose cotransporter|\n| SLC36 | Proton-coupled amino acid transporter|\n| SLC2 | Facilitative GLUT transporter|\
         \n| SLC34 | Type II Na+-phosphate cotransporter |\n|SLC16| Monocarboxylate transporter|\n| SLC6 | Sodium- and chloride-dependent neurotransmitter transporter |\n| SLC23 | Na+-dependent ascorbic acid transporter|\n| SLC4 | Bicarbonate transporter |\n| SLC38| System A and System N sodium-coupled neutral amino acid transporter |\n| SLC42 | Rh ammonium transporter|\n| SLC21 | SLC21/ASLCO: Organic anion transporter |\n| SLC44 | Choline-like transporter|\n| SLC39 | Metal ion transporter";
         const table_html = showdown_text.makeHtml(pathways)
         tableDiv.innerHTML = table_html
@@ -1117,13 +1117,13 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
     else if (waypointNum === 0 && storyNum === 2){
         const lastpageTextDiv = document.createElement('div');
         lastpageTextDiv.id = 'lastPageText'
-        const lastPageText = `For more information on NanoString GeoMx technology visit [www.nanostring.com](www.nanostring.com).   
-        \nDetails of the performance of WTA have been [published](https://doi.org/10.1101/2021.09.29.462442).   
-        \mMinerva is an open source software package that was developed by Laboratory of Systems Pharmacology at Harvard University and is available [here](https://github.com/labsyspharm/minerva-story/wiki).   
+        const lastPageText = `For more information on NanoString GeoMx technology visit [**our website**](www.nanostring.com).   
+        \nDetails of the performance of WTA have been [**published**](https://doi.org/10.1101/2021.09.29.462442).   
+        \Minerva is an open source software package that was developed by Laboratory of Systems Pharmacology at Harvard University and is available [**here**](https://github.com/labsyspharm/minerva-story/wiki).   
         We would like to thank Jeremy Muhlich and John Thomas Hoffer assistance in enabling Minerva features to support the Spatial Organ Atlas.  
-        Sources:   
-        \nRashid R, Chen YA, Hoffer J, Muhlich JL, Lin JR, Krueger R, Pfister H, Mitchell R, Santagata S, and Sorger PK. Interpretative guides for interacting with tissue atlas and digital pathology data using the Minerva browser. BioRxiv. (2020) [https://doi.org/10.1101/2020.03.27.001834](https://doi.org/10.1101/2020.03.27.001834)
-        Hoffer J, Rashid R, Muhlich JL, Chen, YA, Russell D, Ruokonen J, Krueger R, Pfister H, Santagata S, Sorger PK. (2020). Minerva: a light-weight, narrative image browser for multiplexed tissue images. Journal of Open Source Software, 5(54), 2579, [https://doi.org/10.21105/joss.02579](https://doi.org/10.21105/joss.02579)
+        \nSources:   
+        Rashid R, Chen YA, Hoffer J, Muhlich JL, Lin JR, Krueger R, Pfister H, Mitchell R, Santagata S, and Sorger PK. Interpretative guides for interacting with tissue atlas and digital pathology data using the Minerva browser. BioRxiv. (2020) [https://doi.org/10.1101/2020.03.27.001834](https://doi.org/10.1101/2020.03.27.001834)
+        \nHoffer J, Rashid R, Muhlich JL, Chen, YA, Russell D, Ruokonen J, Krueger R, Pfister H, Santagata S, Sorger PK. (2020). Minerva: a light-weight, narrative image browser for multiplexed tissue images. Journal of Open Source Software, 5(54), 2579, [https://doi.org/10.21105/joss.02579](https://doi.org/10.21105/joss.02579)
         \n\nFOR RESEARCH USE ONLY. Not for use in diagnostic procedures.`
         lastpageTextDiv.innerHTML = showdown_text.makeHtml(lastPageText);
         domElement.appendChild(lastpageTextDiv);

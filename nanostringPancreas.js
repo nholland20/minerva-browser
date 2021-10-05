@@ -418,6 +418,12 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
             beta.addEventListener('click', () => addMask(osd, [2]));
             const alpha = doc.querySelector('#alpha');
             alpha.addEventListener('click', () => addMask(osd, [1]));
+            Object.entries(allROIs).forEach(([key, val]) => {
+                const el = doc.querySelector(`#${key}`);
+                if (el){
+                   addEListener(osd, val, el, ['addMask', 'panZoom'], storyNum, waypointNum); 
+                }
+            });
             finish_waypoint('')
         }
         domElement.appendChild(svgContainer)
@@ -481,7 +487,7 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
         const tableDiv = document.createElement('div');
         tableDiv.id = 'pathwayTable'
         const table_showdown = new showdown.Converter({tables: true});
-        const pathways = "| Pathway | Pathway Name                                              |\n|---------|-----------------------------------------------------------|\n| 1       | Pancreatic secretion                                      |\n| 2       | AGE-RAGE signaling pathway in diabetic complications      |\n| 3       | Pancreatic cancer                                         |\n| 4       | Type I diabetes mellitus                                  |\n| 5       | RTK class II (Insulin receptor family)                    |\n| 6       | Insulin signaling pathway                                 |\n| 7       | Insulin resistance                                        |\n| 8       | Maturity onset diabetes of the young                      |\n| 9       | Glucagon                                                  |\n| 10      | Glucagon signaling pathway                                |\n| 11      | Endocrine and other factor-regulated calcium reabsorption |\n| 12      | Insulin secretion                                         |\n| 13      | Type II diabetes mellitus                                 |";
+        const pathways = "| Pathway | Pathway Name |\n|---------|-----------------------------------------------------------|\n| 1 | Pancreatic secretion  |\n| 2 | AGE-RAGE signaling pathway in diabetic complications  |\n| 3 | Pancreatic cancer |\n| 4 | Type I diabetes mellitus |\n| 5 | RTK class II (Insulin receptor family) |\n| 6 | Insulin signaling pathway |\n| 7 | Insulin resistance |\n| 8 | Maturity onset diabetes of the young |\n| 9 | Glucagon |\n| 10 | Glucagon signaling pathway |\n| 11 | Endocrine and other factor-regulated calcium reabsorption |\n| 12 | Insulin secretion |\n| 13 | Type II diabetes mellitus |";
         const table_html = table_showdown.makeHtml(pathways)
         tableDiv.innerHTML = table_html
         domElement.appendChild(tableDiv)
