@@ -937,7 +937,7 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
         }
         domElement.appendChild(svgContainer);
         const hintText = `Hint:   
-        If you want to use the data layers, you can turn off all but one by selecting one of the box plots`
+        Select a data point to see the corresponding ROI.`
         const hintId = 'hintText';
         addHintText(hintText, hintId, showdown_text);
     }
