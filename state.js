@@ -823,7 +823,8 @@ HashState.prototype = {
 
     // Three types of empty story
     const name = {
-      'explore': 'Free Explore',
+      // NanoString change: Changed name from 'Free Explore' to Appendix
+      'explore': 'Appendix',
       'tag': 'Shared Link',
       'outline': 'Introduction'
     }[mode];

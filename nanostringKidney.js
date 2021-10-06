@@ -1,8 +1,7 @@
 const slideMedulla = require('./slideMedulla.json');
 const slideCortex = require('./slideCortex.json');
-import { image } from 'd3-fetch';
-import { getConfig } from './nanostringStoryConfig';
-import { addMask, addEListener, buildCartoonImage} from './nanostringUtils';
+import * as d3 from "d3"
+import { addMask, addEListener, buildCartoonImage, addHintText} from './nanostringUtils';
 
 // Breakpoints for when to resize the cartoon image and subsequently redraw the corresponding SVGs
 // Align with CSS breakpoints (or TO DO: set description box width dynamically with JavaScript)
@@ -527,7 +526,7 @@ const largeGlomEllipse = {
     panCoord: {x: 0.1646, y: 0.6141},
     zoomRatio: 19.9398,
     ROIBox: [{overlay: {x: 0.1579, y: 0.6106, width: 0.0084, height: 0.008}}],
-    maskNum: [3, 6]
+    maskNum: [6]
 }
 
 const largeFiltMemEllipse = {
@@ -544,7 +543,7 @@ const largeFiltMemEllipse = {
     panCoord: {x: 0.2855, y: 0.3292},
     zoomRatio: 14.6104,
     ROIBox: [{overlay: { x: 0.275, y: 0.3217, width: 0.0235, height: 0.0224}}],
-    maskNum: [2, 5]
+    maskNum: [5]
 }
 
 const medCollDuctPath = {
@@ -625,7 +624,7 @@ const medGlomEllipse = {
     panCoord: {x: 0.1646, y: 0.6141},
     zoomRatio: 19.9398,
     ROIBox: [{overlay: {x: 0.1579, y: 0.6106, width: 0.0084, height: 0.008}}],
-    maskNum: [3, 6]
+    maskNum: [6]
 }
 
 const medFiltMemEllipse = {
@@ -642,7 +641,7 @@ const medFiltMemEllipse = {
     panCoord: {x: 0.2855, y: 0.3292},
     zoomRatio: 14.6104,
     ROIBox: [{overlay: { x: 0.275, y: 0.3217, width: 0.0235, height: 0.0224}}],
-    maskNum: [2, 5]
+    maskNum: [5]
 }
 
 const smallCollDuctPath = {
@@ -724,7 +723,7 @@ const smallGlomEll = {
     panCoord: {x: 0.1646, y: 0.6141},
     zoomRatio: 19.9398,
     ROIBox: [{overlay: {x: 0.1579, y: 0.6106, width: 0.0084, height: 0.008}}],
-    maskNum: [3, 6]
+    maskNum: [6]
 }
 
 const smallFiltMemEll = {
@@ -741,7 +740,7 @@ const smallFiltMemEll = {
     panCoord: {x: 0.2855, y: 0.3292},
     zoomRatio: 14.6104,
     ROIBox: [{overlay: { x: 0.275, y: 0.3217, width: 0.0235, height: 0.0224}}],
-    maskNum: [2, 5]
+    maskNum: [5]
 }
 
 const largeVPlotCor ={
@@ -828,18 +827,14 @@ const smallVPlotMed ={
     maskNum: [6]
 }
 
-function addHintText(hintText, hintId, showdown_text) {
-    const hintTextDiv = document.createElement('div');
-    hintTextDiv.id = hintId
-    hintTextDiv.innerHTML = showdown_text.makeHtml(hintText);
-    document.querySelector('.minerva-mask-layers').appendChild(hintTextDiv);
-}
-
 function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElement, osd, finish_waypoint) {
     const svgNS = 'http://www.w3.org/2000/svg';
     const showdown_text = new showdown.Converter({tables: true});
 
     if (waypointNum === 0 && storyNum === 0){
+        // remove the home button
+        document.querySelector('.minerva-home-button').style.display = 'none';
+
         // insert the logo
         const logoDiv = document.createElement('div');
         logoDiv.id = 'logoDiv'
@@ -848,11 +843,12 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
         logo.src = 'img/SOA_logo.png'
         logoDiv.appendChild(logo)
         domElement.appendChild(logoDiv);
-        //insert the text
+
+        // insert the text
         const tocTextDiv = document.createElement('div');
         tocTextDiv.id = 'tocText'
-        const tocText = "Welcome to the Spatial Organ Atlas (SOA) Kidney Demonstration.\n\nThe SOA is a database for spatial profiles of non-diseased tissues from human and mouse generated with the GeoMx® Digital Spatial Profiler.\nAll the data in the [**SOA is downloadable**](www.nanostring.com/spatial-organ-atlas), including this kidney sample (#001).\n\nUsing [**Minerva**](https://github.com/labsyspharm/minerva-story/wiki), we will show you how the imaging and molecular data combine to give you a comprehensive profile of the tissue architecture and biology.\
-        \n\nClick around to explore on your own.\n\nHints:\n* Zoom and pan the image via the mouse/trackpad.\n* Open and close the left- and right-hand menus clicking on < or >.\n* See results in the left-hand menu and click on the selectable regions to zoom to the featured area of the tissue.\n* Turn layers on and off with the right-hand menu."
+        const tocText = "Welcome to the Spatial Organ Atlas (SOA) Kidney Demonstration.\n\nThe SOA is a database for spatial profiles of non-diseased tissues from human and mouse generated with the GeoMx® Digital Spatial Profiler.\nAll the data in the [**SOA is downloadable**](https://www.nanostring.com/spatial-organ-atlas), including this kidney sample (#001).\n\nUsing [**Minerva**](https://github.com/labsyspharm/minerva-story/wiki), we will show you how the imaging and molecular data combine to give you a comprehensive profile of the tissue architecture and biology.\
+        \n\nClick around to explore on your own.\n\nHints:\n* Zoom and pan the image via the mouse/trackpad.\n* Open and close the left- and right-hand menus clicking on < or >.\n* See results in the left-hand menu and click on the selectable regions to zoom to the featured area of the tissue.\n* Turn channels on and off with the right-hand menu."
         tocTextDiv.innerHTML = showdown_text.makeHtml(tocText)
         document.querySelector('.minerva-story-container').appendChild(tocTextDiv)
     }
@@ -1039,7 +1035,7 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
         //insert table that matches the heatmap pathways to their abbreviation below the heatmap in the waypoint.
         const tableDiv = document.createElement('div');
         tableDiv.id = 'pathwayTable'
-        const pathways = "| Pathway | Full Pathway Name |\n|:---------|:---------------------------------------------|\n| ABC| ABC transporters |\n|SLC13   | Human Na+-sulfate/carboxylate cotransporter|\n| SLC22| Organic cation/anion/zwitterion transporter|\n| OCT| Organic cation transporter (OCT) family|\n|SLC17| Vesicular glutamate transporter|\n| SLC5 | Sodium glucose cotransporter|\n| SLC36 | Proton-coupled amino acid transporter|\n| SLC2 | Facilitative GLUT transporter|\
+        const pathways = "| Abbr. | Full Gene Set Name |\n|:---------|:---------------------------------------------|\n| ABC| ABC transporters |\n|SLC13   | Human Na+-sulfate/carboxylate cotransporter|\n| SLC22| Organic cation/anion/zwitterion transporter|\n| OCT| Organic cation transporter (OCT) family|\n|SLC17| Vesicular glutamate transporter|\n| SLC5 | Sodium glucose cotransporter|\n| SLC36 | Proton-coupled amino acid transporter|\n| SLC2 | Facilitative GLUT transporter|\
         \n| SLC34 | Type II Na+-phosphate cotransporter |\n|SLC16| Monocarboxylate transporter|\n| SLC6 | Sodium- and chloride-dependent neurotransmitter transporter |\n| SLC23 | Na+-dependent ascorbic acid transporter|\n| SLC4 | Bicarbonate transporter |\n| SLC38| System A and System N sodium-coupled neutral amino acid transporter |\n| SLC42 | Rh ammonium transporter|\n| SLC21 | SLC21/ASLCO: Organic anion transporter |\n| SLC44 | Choline-like transporter|\n| SLC39 | Metal ion transporter";
         const table_html = showdown_text.makeHtml(pathways)
         tableDiv.innerHTML = table_html
@@ -1099,14 +1095,8 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
             const corFiltMem = doc.querySelector('#corFiltMem');
             corFiltMem.addEventListener('click', () => addMask(osd, [2]));
             finish_waypoint('')
-            // const scatterPlot = document.querySelector('.VisScatterplot-1-6 svg g');
-            // scatterPlot.onload = function() {
-            //     const ticks = document.querySelectorAll('.tick');
-            //     ticks.forEach((tick) => {
-            //         tick.remove()
-            //     })
-            // }
         };
+
         domElement.appendChild(svgLegend1);
         const hintText = `Hint:   
         Select an individual point on the graph to be taken to that ROI in the image.`
@@ -1117,13 +1107,14 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
     else if (waypointNum === 0 && storyNum === 2){
         const lastpageTextDiv = document.createElement('div');
         lastpageTextDiv.id = 'lastPageText'
-        const lastPageText = `For more information on NanoString GeoMx technology visit [**our website**](www.nanostring.com).   
+        const lastPageText = `For more information on NanoString GeoMx technology visit [**our website**](https://www.nanostring.com/products/geomx-digital-spatial-profiler/geomx-dsp-overview/).   
         \nDetails of the performance of WTA have been [**published**](https://doi.org/10.1101/2021.09.29.462442).   
         \Minerva is an open source software package that was developed by Laboratory of Systems Pharmacology at Harvard University and is available [**here**](https://github.com/labsyspharm/minerva-story/wiki).   
         We would like to thank Jeremy Muhlich and John Thomas Hoffer assistance in enabling Minerva features to support the Spatial Organ Atlas.  
         \nSources:   
         Rashid R, Chen YA, Hoffer J, Muhlich JL, Lin JR, Krueger R, Pfister H, Mitchell R, Santagata S, and Sorger PK. Interpretative guides for interacting with tissue atlas and digital pathology data using the Minerva browser. BioRxiv. (2020) [https://doi.org/10.1101/2020.03.27.001834](https://doi.org/10.1101/2020.03.27.001834)
         \nHoffer J, Rashid R, Muhlich JL, Chen, YA, Russell D, Ruokonen J, Krueger R, Pfister H, Santagata S, Sorger PK. (2020). Minerva: a light-weight, narrative image browser for multiplexed tissue images. Journal of Open Source Software, 5(54), 2579, [https://doi.org/10.21105/joss.02579](https://doi.org/10.21105/joss.02579)
+        \n\nKidney Illustrations: ©Dave Carlson/ [CarlsonStockArt.com](https://www.carlsonstockart.com/)   
         \n\nFOR RESEARCH USE ONLY. Not for use in diagnostic procedures.`
         lastpageTextDiv.innerHTML = showdown_text.makeHtml(lastPageText);
         domElement.appendChild(lastpageTextDiv);

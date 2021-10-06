@@ -1,7 +1,7 @@
 // const slideMedulla = require('./slideMedulla.json');
 // const slideCortex = require('./slideCortex.json');
 import { getConfig } from './nanostringStoryConfig';
-import { addMask, addEListener, buildCartoonImage} from './nanostringUtils';
+import { addMask, addEListener, buildCartoonImage, addHintText} from './nanostringUtils';
 
 // Breakpoints for when to resize the cartoon image and subsequently redraw the corresponding SVGs
 // Align with CSS breakpoints (or TO DO: set description box width dynamically with JavaScript)
@@ -346,9 +346,15 @@ const smallVPlotBeta ={
     maskNum: [6]
 }
 
+
+
 function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElement, osd, finish_waypoint) {
     const svgNS = 'http://www.w3.org/2000/svg';
+    const showdown_text = new showdown.Converter({tables: true});
     if (waypointNum === 0 && storyNum === 0){
+        // remove the home button
+        document.querySelector('.minerva-home-button').style.display = 'none';
+
         // insert the logo
         const logoDiv = document.createElement('div');
         logoDiv.id = 'logoDiv'
@@ -357,24 +363,41 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
         logo.src = 'img/SOA_logo.png'
         logoDiv.appendChild(logo)
         domElement.appendChild(logoDiv);
-        //insert the text
-        const tocText = document.createElement('div');
-        tocText.id = 'tocText'
-        tocText.innerText = `Text to be inserted here`
-        document.querySelector('.minerva-story-container').appendChild(tocText)
+         // insert the text
+         const tocTextDiv = document.createElement('div');
+         tocTextDiv.id = 'tocText'
+         const tocText = "Welcome to the Spatial Organ Atlas (SOA) Pancreas Demonstration.\n\nThe SOA is a database for spatial profiles of non-diseased tissues from human and mouse generated with the GeoMx® Digital Spatial Profiler. All the data in the [**SOA is downloadable**](https://www.nanostring.com/spatial-organ-atlas), including this pancreas sample (#001).\
+         \n\nUsing [**Minerva**](https://github.com/labsyspharm/minerva-story/wiki), we will show you how the imaging and molecular data combine to give you a comprehensive profile of the tissue architecture and biology.\n\nClick around to explore on your own.\n\nHints:\n* Zoom and pan the image via the mouse/trackpad.\n* Open and close the left- and right-hand menus\
+          clicking on < or >.\n* See results in the left-hand menu and click on the selectable regions to zoom to the featured area of the tissue.\n* Turn channels on and off with the right-hand menu."
+         tocTextDiv.innerHTML = showdown_text.makeHtml(tocText)
+         document.querySelector('.minerva-story-container').appendChild(tocTextDiv)
     }
+
     if (waypointNum === 0 && storyNum === 1 && windowInnerWidth >= scrnWBps[2]) {
         const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'largeSvgContainer', 'img/pancreas.png', [largePancreas], storyNum, waypointNum)
         domElement.appendChild(cartoonImgContainer);
+        const hintText = `Hint:   
+        Select the nuclei channel to easily see all ROIs.`
+        const hintId = 'hintTextRemove';
+        addHintText(hintText, hintId, showdown_text);
       }
     else if (waypointNum === 0 && storyNum === 1 && windowInnerWidth >= scrnWBps[1] && windowInnerWidth <= scrnWBps[2]){
         const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'mediumSvgContainer', 'img/pancreas.png', [medPancreas], storyNum, waypointNum)
         domElement.appendChild(cartoonImgContainer);
+        const hintText = `Hint:   
+        Select the nuclei layer to easily see all ROI.`
+        const hintId = 'hintTextRemove';
+        addHintText(hintText, hintId, showdown_text);
     }
     else if (waypointNum === 0 && storyNum === 1 && windowInnerWidth < scrnWBps[1]){
         const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'smallSvgContainer', 'img/pancreas.png', [smallPancreas], storyNum, waypointNum)
         domElement.appendChild(cartoonImgContainer);
+        const hintText = `Hint:   
+        Select the nuclei layer to easily see all ROI.`
+        const hintId = 'hintTextRemove';
+        addHintText(hintText, hintId, showdown_text);
     }
+
     else if (waypointNum === 1 && storyNum === 1){
         const svgContainer = document.createElement('object');
         svgContainer.data = 'svg/pancreasDetail.svg'
@@ -397,6 +420,9 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
             finish_waypoint('')
         }
         domElement.appendChild(svgContainer);
+        const hintText = "Hints:\n* Toggle the different channels to easily see all ROI.\n* Select an islet ROI, then toggle between Insulin, Glucagon, and All marker channels to see the segmentation possible with GeoMx DSP.\n* Select a Duct and Acini ROI, then toggle between PanCK and All marker channels to see the segmentation possible with GeoMx DSP."
+        const hintId = 'hintText';
+        addHintText(hintText, hintId, showdown_text);
     }
 
     else if (waypointNum === 2 && storyNum === 1) {
@@ -457,6 +483,10 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
             finish_waypoint('')
         };
         domElement.appendChild(svgContainer)
+        const hintText = `Hint:   
+        Select a single row of the figure to be taken to that ROI in the image.`
+        const hintId = 'hintText';
+        addHintText(hintText, hintId, showdown_text);
     }
 
     else if (waypointNum === 4 && storyNum === 1) {
@@ -491,6 +521,11 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
         const table_html = table_showdown.makeHtml(pathways)
         tableDiv.innerHTML = table_html
         domElement.appendChild(tableDiv)
+
+        const hintText = `Hint:   
+        Select a single column of the figure to be taken to that ROI in the image.`
+        const hintId = 'hintText';
+        addHintText(hintText, hintId, showdown_text);
     }
 
     else if (waypointNum === 5 && storyNum === 1 && windowInnerWidth >= scrnWBps[2]) {
@@ -504,6 +539,21 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
     else if (waypointNum === 5 && storyNum === 1 && windowInnerWidth < scrnWBps[1]) {
         const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'smallVolcanoPlot', 'img/AlphaVsBetaCells.png', [smallVPlotAlpha, smallVPlotBeta], storyNum, waypointNum)
         domElement.appendChild(cartoonImgContainer);
+    }
+    else if (waypointNum === 0 && storyNum === 2){
+        const lastpageTextDiv = document.createElement('div');
+        lastpageTextDiv.id = 'lastPageText'
+        const lastPageText = `For more information on NanoString GeoMx technology visit [**our website**](https://www.nanostring.com/products/geomx-digital-spatial-profiler/geomx-dsp-overview/).   
+        \nDetails of the performance of WTA have been [**published**](https://doi.org/10.1101/2021.09.29.462442).   
+        \Minerva is an open source software package that was developed by Laboratory of Systems Pharmacology at Harvard University and is available [**here**](https://github.com/labsyspharm/minerva-story/wiki).   
+        We would like to thank Jeremy Muhlich and John Thomas Hoffer assistance in enabling Minerva features to support the Spatial Organ Atlas.  
+        \nSources:   
+        Rashid R, Chen YA, Hoffer J, Muhlich JL, Lin JR, Krueger R, Pfister H, Mitchell R, Santagata S, and Sorger PK. Interpretative guides for interacting with tissue atlas and digital pathology data using the Minerva browser. BioRxiv. (2020) [https://doi.org/10.1101/2020.03.27.001834](https://doi.org/10.1101/2020.03.27.001834)
+        \nHoffer J, Rashid R, Muhlich JL, Chen, YA, Russell D, Ruokonen J, Krueger R, Pfister H, Santagata S, Sorger PK. (2020). Minerva: a light-weight, narrative image browser for multiplexed tissue images. Journal of Open Source Software, 5(54), 2579, [https://doi.org/10.21105/joss.02579](https://doi.org/10.21105/joss.02579)
+        \n\nIllustrations  by Dave Carlson/[CarlsonStockArt.com](https://www.carlsonstockart.com/)   
+        \n\nFOR RESEARCH USE ONLY. Not for use in diagnostic procedures.`
+        lastpageTextDiv.innerHTML = showdown_text.makeHtml(lastPageText);
+        domElement.appendChild(lastpageTextDiv);
     }
 };
 
@@ -537,7 +587,7 @@ window.addEventListener('resize', function (e){
     const oldW = e.target.window.waypointAttr.width
     if ((currW < scrnWBps[1] && oldW >= scrnWBps[1]) || (currW < scrnWBps[2] && oldW >= scrnWBps[2]) || (currW >= scrnWBps[2] && oldW < scrnWBps[2]) || (currW >= scrnWBps[1] && oldW < scrnWBps[1])) {
         const {waypointNum, storyNum, domElement, osd} = e.target.window.waypointAttr;
-        const svgCont = ['#largeSvgContainer', '#mediumSvgContainer', '#smallSvgContainer', '#largeVolcanoPlot', '#mediumVolcanoPlot', '#smallVolcanoPlot'];
+        const svgCont = ['#largeSvgContainer', '#mediumSvgContainer', '#smallSvgContainer', '#largeVolcanoPlot', '#mediumVolcanoPlot', '#smallVolcanoPlot', '#hintTextRemove'];
         svgCont.forEach((id) => {
             if (document.querySelector(id)) {
                 document.querySelector(id).remove();

@@ -135,3 +135,10 @@ export function buildCartoonImage(osd, svgNS, id, imagePath, svgTypes, storyNum,
     cartoonImgContainer.appendChild(svgNode);
     return cartoonImgContainer
 }
+
+export function addHintText(hintText, hintId, showdown_text) {
+    const hintTextDiv = document.createElement('div');
+    hintTextDiv.id = hintId
+    hintTextDiv.innerHTML = showdown_text.makeHtml(hintText);
+    document.querySelector('.minerva-mask-layers').appendChild(hintTextDiv);
+}
