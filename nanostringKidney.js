@@ -848,7 +848,7 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
         const tocTextDiv = document.createElement('div');
         tocTextDiv.id = 'tocText'
         const tocText = "Welcome to the Spatial Organ Atlas (SOA) Kidney Demonstration.\n\nThe SOA is a database for spatial profiles of non-diseased tissues from human and mouse generated with the GeoMx® Digital Spatial Profiler.\nAll the data in the [**SOA is downloadable**](https://www.nanostring.com/spatial-organ-atlas), including this kidney sample (#001).\n\nUsing [**Minerva**](https://github.com/labsyspharm/minerva-story/wiki), we will show you how the imaging and molecular data combine to give you a comprehensive profile of the tissue architecture and biology.\
-        \n\nClick around to explore on your own.\n\nHints:\n* Zoom and pan the image via the mouse/trackpad.\n* Open and close the left- and right-hand menus clicking on < or >.\n* See results in the left-hand menu and click on the selectable regions to zoom to the featured area of the tissue.\n* Turn channels on and off with the right-hand menu."
+        \n\nClick around to explore on your own.\n\nHints:\n* Zoom and pan the image via the mouse/trackpad.\n* Open and close the left- and right-hand menus by clicking on < or >.\n* See results in the left-hand menu and click on the selectable regions to zoom to the featured area of the tissue.\n* Turn channels on and off with the right-hand menu."
         tocTextDiv.innerHTML = showdown_text.makeHtml(tocText)
         document.querySelector('.minerva-story-container').appendChild(tocTextDiv)
     }
@@ -1110,7 +1110,7 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
         const lastPageText = `For more information on NanoString GeoMx technology visit [**our website**](https://www.nanostring.com/products/geomx-digital-spatial-profiler/geomx-dsp-overview/).   
         \nDetails of the performance of WTA have been [**published**](https://doi.org/10.1101/2021.09.29.462442).   
         \Minerva is an open source software package that was developed by Laboratory of Systems Pharmacology at Harvard University and is available [**here**](https://github.com/labsyspharm/minerva-story/wiki).   
-        We would like to thank Jeremy Muhlich and John Thomas Hoffer assistance in enabling Minerva features to support the Spatial Organ Atlas.  
+        We would like to thank Jeremy Muhlich and John Thomas Hoffer for assistance in enabling Minerva features to support the Spatial Organ Atlas.  
         \nSources:   
         Rashid R, Chen YA, Hoffer J, Muhlich JL, Lin JR, Krueger R, Pfister H, Mitchell R, Santagata S, and Sorger PK. Interpretative guides for interacting with tissue atlas and digital pathology data using the Minerva browser. BioRxiv. (2020) [https://doi.org/10.1101/2020.03.27.001834](https://doi.org/10.1101/2020.03.27.001834)
         \nHoffer J, Rashid R, Muhlich JL, Chen, YA, Russell D, Ruokonen J, Krueger R, Pfister H, Santagata S, Sorger PK. (2020). Minerva: a light-weight, narrative image browser for multiplexed tissue images. Journal of Open Source Software, 5(54), 2579, [https://doi.org/10.21105/joss.02579](https://doi.org/10.21105/joss.02579)
