@@ -351,6 +351,7 @@ const smallVPlotBeta ={
 function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElement, osd, finish_waypoint) {
     const svgNS = 'http://www.w3.org/2000/svg';
     const showdown_text = new showdown.Converter({tables: true});
+
     if (waypointNum === 0 && storyNum === 0){
         // remove the home button
         document.querySelector('.minerva-home-button').style.display = 'none';
@@ -420,7 +421,7 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
             finish_waypoint('')
         }
         domElement.appendChild(svgContainer);
-        const hintText = "Hints:\n* Toggle the different channels to easily see all ROI.\n* Select an islet ROI, then toggle between Insulin, Glucagon, and All marker channels to see the segmentation possible with GeoMx DSP.\n* Select a Duct and Acini ROI, then toggle between PanCK and All marker channels to see the segmentation possible with GeoMx DSP."
+        const hintText = "Hints:\n* Toggle the different channels to easily see all ROI.\n* Select Alpha cell on the diagram above, then toggle between Alpha Cell Enriched and Beta Cell Enriched to see the segmentation possible with GeoMx DSP. Toggling between Insulin, Glucagon, and All markers channels will aid in visualizing.\n* Select Acinar cells on diagram above, then toggle between the Acini cells and Duct data layers to see the segmentation possible with GeoMx DSP. Toggling between PanCK and All markers channels will aid in visualizing."
         const hintId = 'hintText';
         addHintText(hintText, hintId, showdown_text);
     }
@@ -453,6 +454,10 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
             finish_waypoint('')
         }
         domElement.appendChild(svgContainer)
+        const hintText = `Hint:   
+        Select a single data point to be taken to that ROI.`
+        const hintId = 'hintText';
+        addHintText(hintText, hintId, showdown_text);
     }
 
     else if (waypointNum === 3 && storyNum === 1) {
@@ -491,7 +496,7 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
 
     else if (waypointNum === 4 && storyNum === 1) {
         const svgLegend1 = document.createElement('object');
-        svgLegend1.data = 'svg/heatmapLegend.svg';
+        svgLegend1.data = 'svg/maskTypeLegend.svg';
         svgLegend1.type = 'image/svg+xml';
         svgLegend1.id = 'legend1Svg';
         domElement.appendChild(svgLegend1)
@@ -531,15 +536,41 @@ function buildWaypointCartoon(waypointNum, storyNum, windowInnerWidth, domElemen
     else if (waypointNum === 5 && storyNum === 1 && windowInnerWidth >= scrnWBps[2]) {
         const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'largeVolcanoPlot', 'img/AlphaVsBetaCells.png', [largeVPlotAlpha, largeVPlotBeta], storyNum, waypointNum)
         domElement.appendChild(cartoonImgContainer);
+        const hintText = `Hint:   
+        Select the regions on the graph with the genes that are differentially expressed (in yellow and orange) to see all the ROIs where they are more highly expressed. Turning on only the nuclei channel may help you see smaller ROIs.`
+        const hintId = 'hintTextRemove';
+        addHintText(hintText, hintId, showdown_text);
     }
     else if (waypointNum === 5 && storyNum === 1 && windowInnerWidth >= scrnWBps[1] && windowInnerWidth <= scrnWBps[2]) {
         const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'mediumVolcanoPlot', 'img/AlphaVsBetaCells.png', [medVPlotAlpha, medVPlotBeta], storyNum, waypointNum)
         domElement.appendChild(cartoonImgContainer);
+        const hintText = `Hint:   
+        Select the regions on the graph with the genes that are differentially expressed (in yellow and orange) to see all the ROIs where they are more highly expressed. Turning on only the nuclei channel may help you see smaller ROIs.`
+        const hintId = 'hintTextRemove';
+        addHintText(hintText, hintId, showdown_text);
     }
     else if (waypointNum === 5 && storyNum === 1 && windowInnerWidth < scrnWBps[1]) {
         const cartoonImgContainer = buildCartoonImage(osd, svgNS, 'smallVolcanoPlot', 'img/AlphaVsBetaCells.png', [smallVPlotAlpha, smallVPlotBeta], storyNum, waypointNum)
         domElement.appendChild(cartoonImgContainer);
+        const hintText = `Hint:   
+        Select the regions on the graph with the genes that are differentially expressed (in yellow and orange) to see all the ROIs where they are more highly expressed. Turning on only the nuclei channel may help you see smaller ROIs.`
+        const hintId = 'hintTextRemove';
+        addHintText(hintText, hintId, showdown_text);
+
     }
+    else if (storyNum === 1 && (waypointNum === 6 || waypointNum === 7 || waypointNum === 8 || waypointNum === 9)) {
+        const svgLegend1 = document.createElement('object');
+        svgLegend1.data = 'svg/maskTypeLegend.svg';
+        svgLegend1.type = 'image/svg+xml';
+        svgLegend1.id = 'legend1Svg';
+        domElement.appendChild(svgLegend1)
+
+        const hintText = `Hint:   
+        Select an individual point on the graph to be taken to that ROI in the image.`
+        const hintId = 'hintText';
+        addHintText(hintText, hintId, showdown_text);
+    }
+
     else if (waypointNum === 0 && storyNum === 2){
         const lastpageTextDiv = document.createElement('div');
         lastpageTextDiv.id = 'lastPageText'

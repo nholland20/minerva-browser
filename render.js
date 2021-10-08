@@ -3,6 +3,7 @@ import { index_name } from './state'
 import { index_regex } from './state'
 import { Clipboard } from './clipboard'
 import infovis from './infovis'
+import { addHintText } from './nanostringUtils'
 
 // Round to one decimal place
 const round1 = function(n) {
@@ -786,26 +787,26 @@ Render.prototype = {
         }
       }
     }
-    
-    var moreEl = document.createElement('a');
-    if (selected && show_more && s_w) {
-      const opacity = 'opacity: ' +  + ';';
-      moreEl = Object.assign(moreEl, {
-        className : 'text-white',
-        style: 'position: absolute; right: 5px;',
-        href: 'javascript:;',
-        innerText: 'MORE',
-      });
-      aEl.appendChild(moreEl);
+    // NanoString change. Get rid of "MORE"
+    // var moreEl = document.createElement('a');
+    // if (selected && show_more && s_w) {
+    //   const opacity = 'opacity: ' +  + ';';
+    //   moreEl = Object.assign(moreEl, {
+    //     className : 'text-white',
+    //     style: 'position: absolute; right: 5px;',
+    //     href: 'javascript:;',
+    //     innerText: 'MORE',
+    //   });
+    //   aEl.appendChild(moreEl);
 
-      // Update Waypoint
-      $(moreEl).click(this, function(e) {
-        HS.s = s_w[0];
-        HS.w = s_w[1];
-        HS.pushState();
-        window.onpopstate();
-      });
-    }
+    //   // Update Waypoint
+    //   $(moreEl).click(this, function(e) {
+    //     HS.s = s_w[0];
+    //     HS.w = s_w[1];
+    //     HS.pushState();
+    //     window.onpopstate();
+    //   });
+    // }
 
     // Append channel group to element
     el.appendChild(aEl);
@@ -1000,6 +1001,12 @@ Render.prototype = {
         $('.minerva-waypoint-content').scrollTop(scroll_dist);
         THIS.colorMarkerText(wid_waypoint);
       }
+
+      // NanoString edit: change all url links to open in a new tab (had to filter our href=javascript;;)
+      const links = document.querySelectorAll('a[href*="http"]:not(a[href*="javascript"])');
+      links.forEach((link) => {
+          link.setAttribute('target', '_blank');
+      })  
     }
 
     // Handle click from plot that selects a mask
@@ -1038,12 +1045,15 @@ Render.prototype = {
     }
 
     // Handle click from plot that selects a cell position
-    const arrowHandler = function(cellPosition){
+    const arrowHandler = function(cellPosition, maskNum){
         var viewportCoordinates = THIS.osd.viewer.viewport.imageToViewportCoordinates(cellPosition[0], cellPosition[1]);
         //change hashstate vars
         HS.v = [ 10, viewportCoordinates.x, viewportCoordinates.y]
         //render without menu redraw
         THIS.osd.newView(true);
+        THIS.osd.hashstate.m = [-1, maskNum]
+        THIS.osd.hashstate.pushState();
+        window.onpopstate();
         //delay visible arrow until animation end
         //Nanostring edit: removed the arrow from visualizations
         //HS.a = [viewportCoordinates.x,viewportCoordinates.y];

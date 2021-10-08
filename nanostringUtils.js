@@ -50,10 +50,10 @@ export function panZoom(osd, svgObj, storyNum, waypointNum) {
     //If a 'Best in Class ROI is already highlighted, remove it and add a box around the new one
     if (document.querySelector(`#${id}-1`)){
         const ROIBoxes = document.querySelectorAll(`[id^=${id}-`)
-        for (let box of ROIBoxes){
-          osd.viewer.removeOverlay(box.id)
-          document.querySelector(`#${box.id}`).remove()
-        }
+        ROIBoxes.forEach((box) => {
+            osd.viewer.removeOverlay(box.id)
+            document.querySelector(`#${box.id}`).remove() 
+        })
     }
     for (let i=1; i <= (svgObj.ROIBox).length; i++){
         addROIBox(osd, svgObj.ROIBox[i-1], `${id}-${i}`, storyNum, waypointNum)
@@ -74,9 +74,13 @@ function addROIBox(osd, ROIBox, id, storyNum, waypointNum){
     osd.addOverlay(overlay, id, storyNum, waypointNum)
 }
 
+
 export function addMask(osd, maskNums) {
-    osd.hashstate.m = maskNums;
-    window.testRender.newView(true);
+    // Add the mask to all the ROIs of the same structure
+    // onpopstate seems to need a list longer than 1 so -1 is added
+    osd.hashstate.m = [-1, ...maskNums]
+    osd.hashstate.pushState();
+    window.onpopstate();
 }
 
 //Add Event Listeners to SVG elements based on attributes in their SVG object

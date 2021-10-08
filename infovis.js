@@ -463,7 +463,10 @@ infovis.renderScatterplot = function(wid_waypoint, id, visdata, events, eventHan
             })
             .attr('fill-opacity', opacity)
             .on('click', function (d){
-                events.clickHandler(cellPos(d));
+                d3.select(this).style("cursor", "default");
+                tooltip.transition()
+                    .style("opacity", 0);
+                events.clickHandler(cellPos(d), d.clust_ID);
             })
             .on("mouseover", function (d) {
                 d3.select(this).style("cursor", "pointer");
@@ -481,8 +484,7 @@ infovis.renderScatterplot = function(wid_waypoint, id, visdata, events, eventHan
                 tooltip.transition()
                     .duration(500)
                     .style("opacity", 0);
-            });
-
+            })
         //Nanostring change. Removed legend to add a different one beneath the graph
         // draw legend
         // var legend = svg.selectAll(".legend")
